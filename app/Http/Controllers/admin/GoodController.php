@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\admin\Cate;
-use App\Models\admin\Good;
+use App\Models\Admin\Cate;
+use App\Models\Admin\Good;
 use Illuminate\Http\Request;
 use DB;
+use App\Models\Admin\Comment;
 
 class GoodController extends Controller
 {

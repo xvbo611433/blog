@@ -18,6 +18,7 @@ class ImageController extends Controller
      */
     public function index()
     {
+        // 获取所有数据 分配到页面
         $data = Image::all();
         return view('admin.image.index',['title'=>'图片浏览','data'=>$data]);
     }
@@ -29,6 +30,7 @@ class ImageController extends Controller
      */
     public function create()
     {
+        // 显示页面
         return view('admin.image.create',['title'=>'添加图片']);
     }
 

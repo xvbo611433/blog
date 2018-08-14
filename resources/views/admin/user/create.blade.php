@@ -51,10 +51,10 @@
                         </div>
                     </div>
                     <div class="mws-form-row">
-                        <label class="mws-form-label">状态</label>
+                        <label class="mws-form-label">性别</label>
                         <div class="mws-form-item">
-                            <input type="radio"  name="status" checked value="1">激活
-                            <input type="radio"  name="status" value="2">未激活
+                            <input type="radio"  name="sex" checked value="1">男
+                            <input type="radio"  name="sex" value="2">女
                         </div>
                     </div>
                     <div class="mws-button-row">

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\admin\Recycle;
+use App\models\admin\User;
+
 
 class RecycleController extends Controller
 {
@@ -15,9 +17,12 @@ class RecycleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function getIndex()
     {
-        //
+        // 获取删除的数据 显示到页面
+        $data = User::onlyTrashed()->get();
+
+        return view('admin.recycle.index',['title'=>'回收站','data'=>$data]);
     }
 
     /**
@@ -25,9 +30,17 @@ class RecycleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function getRollback($id)
     {
-        //
+        //单条恢复
+        $res = User::withTrashed()->where('id', $id)->restore();
+        if ($res) {
+            // 成功返回列表页
+            return redirect('/admin/user')->with('success', '恢复成功');
+        } else {
+            // 失败返回
+            return back()->with('error','恢复失败');
+        }
     }
 
     /**
@@ -36,9 +49,17 @@ class RecycleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function getRecover()
     {
-        //
+        //恢复全部
+        $res = User::withTrashed()->restore();
+        if ($res) {
+            // 成功返回列表页
+            return redirect('/admin/user')->with('success', '恢复成功');
+        } else {
+            // 失败返回
+            return back()->with('error','恢复失败');
+        }
     }
 
     /**
@@ -47,9 +68,17 @@ class RecycleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function getDestroytime($id)
     {
-        //
+
+        $res = User::withTrashed()->where('id',$id)->forceDelete();
+        if ($res) {
+            // 成功返回列表页
+            return redirect('/admin/user')->with('success', '删除成功');
+        } else {
+            // 失败返回
+            return back()->with('error','删除失败');
+        }
     }
 
     /**
@@ -58,9 +87,16 @@ class RecycleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function getDestroy()
     {
-        //
+        $res = User::withTrashed()->where('id', )->forceDelete();
+        if ($res) {
+            // 成功返回列表页
+            return redirect('/admin/user')->with('success', '删除成功');
+        } else {
+            // 失败返回
+            return back()->with('error','删除失败');
+        }
     }
 
     /**
@@ -75,14 +111,5 @@ class RecycleController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+
 }

@@ -41,10 +41,11 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        // 接收头像信息
-        $profile = $request->file('profile');
+
         // 判断头像是否上传
-        if($request->hasFile('image')){
+        if($request->hasFile('profile')){
+            // 接收头像信息
+            $profile = $request->file('profile');
             // 为防止文件信息重复随机文件名
             $temp_name = str_random(18);
             // 防止文件格式错误  获取文件后缀名

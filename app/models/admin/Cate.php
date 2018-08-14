@@ -2,8 +2,8 @@
 
 namespace App\Models\admin;
 use DB;
-
 use Illuminate\Database\Eloquent\Model;
+use App\Models\admin\Good;
 
 class Cate extends Model
 {
@@ -37,6 +37,11 @@ class Cate extends Model
 		         $cate_data[$key]['cname'] = str_repeat('&nbsp;',$n*5).'-----|'.$value['cname'];
 		     }
 		      return $cate_data;
-		} 
+		}
+
+    public function goods_cate()
+    {
+        return $this->hasMany('(new Good)', 'id');
+    }
 
 }

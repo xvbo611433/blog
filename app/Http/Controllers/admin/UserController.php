@@ -11,6 +11,7 @@ use Hash;
 use DB;
 use App\Http\Requests\UserStoreRequest;
 
+
 class UserController extends Controller
 {
     /**
@@ -55,16 +56,14 @@ class UserController extends Controller
         $users -> upwd = Hash::make($request->input('upwd'));
         $users -> tel = $request->input('tel');
         $users -> email = $request->input('email');
-
-        $users -> status = $request->input('status');
-
+        $users -> sex = $request->input('sex');
         $res = $users->save();
 
         if($res){
-
+                // 成功跳入列表页
             return redirect('/admin/user')->with('success','添加成功');
         }else{
-
+                // 失败返回
             return back()->with('error','添加失败');
         }
 
@@ -104,7 +103,6 @@ class UserController extends Controller
     {
 
         // 获取修改信息
-//        $data = User::find($id);
         $this->validate($request, [
             'tel' => 'required|regex:/^1[3578]{1}\d{9}$/',
             'email' => 'required|regex:/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/',
@@ -114,7 +112,7 @@ class UserController extends Controller
             'tel.required'=>'电话不能为空',
             'tel.regex'=>'电话格式错误',
         ]);
-        $data = $request->only('uname','tel','email','status');
+        $data = $request->only('uname','tel','email','sex');
 
         // 将信息更新到数据库
         $res = DB::table('user')->where('id', $id)->update($data);
@@ -122,7 +120,7 @@ class UserController extends Controller
         if($res){
             return redirect('/admin/user')->with('success', '修改成功');
         }else{
-            return back()->with('success', '修改失败');
+            return back()->with('error', '修改失败');
         }
 
     }
@@ -141,7 +139,7 @@ class UserController extends Controller
         if($res){
             return redirect('/admin/user')->with('success', '删除成功');
         }else{
-            return redirect('/admin/user')->with('success', '删除失败');
+            return back()->with('error', '删除失败');
         }
     }
 }

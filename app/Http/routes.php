@@ -22,3 +22,4 @@ Route::resource('/admin/comment','admin\CommentController');//评论管理控制
 Route::resource('/admin/image','admin\imageController');//轮番图管理控制器
 Route::resource('/admin/good','admin\GoodController');//文章管理
 Route::resource('/admin/link','admin\LinkController');//友情链接管理
+Route::controller('/admin/recycle','admin\RecycleController');//友情链接管理

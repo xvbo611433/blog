@@ -16,8 +16,5 @@ class Good extends Model
     protected $primaryKey='gid';
 
 
-        public function goods_cate()
-   {
-   	 	return $this->belongsTo('App\Models\admin\Cate','id');
-   }
+
 }

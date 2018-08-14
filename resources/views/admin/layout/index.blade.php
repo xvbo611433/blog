@@ -284,7 +284,7 @@
 
                 <li class="active">
                     <a href="#"><i class="icon-add-contact"></i>用户管理</a>
-                    <ul>
+                    <ul class='closed'>
                         <li class="icon-add-contact"><a href="/admin/user/create">添加用户</a></li>
                         <li><a href="/admin/user">浏览用户</a></li>
 
@@ -292,13 +292,13 @@
                 </li>
                 <li class="active">
                     <a href="#"><i class="icon-archive"></i>类别管理</a>
-                    <ul>
+                    <ul class='closed'>
                         <li class="icon-add-contact"><a href="/admin/cate/create">添加类别</a></li>
                         <li><a href="/admin/cate">浏览类别</a></li>
 
                     </ul>
                 </li>
-                <li>
+                <li class="active">
                     <a href="#"><i class="icon-edit"></i>文章管理</a>
                     <ul class='closed'>
                         <li><a href="/admin/good/create">添加文章</a></li>
@@ -307,7 +307,7 @@
                 </li>
                 <li class="active">
                     <a href="#"><i  class="icon-comments"></i>评论管理</a>
-                    <ul>
+                    <ul class='closed'>
                         <li class="icon-add-contact"><a href="/admin/comment/create">添加评论</a></li>
                         <li><a href="/admin/comment">浏览评论</a></li>
 
@@ -315,21 +315,30 @@
                 </li>
                 <li class="active">
                     <a href="#"><i class="icon-picture"></i>轮番图管理</a>
-                    <ul>
+                    <ul class='closed'>
                         <li class="icon-add-contact"><a href="/admin/image/create">添加轮番图</a></li>
                         <li><a href="/admin/image">浏览轮番图</a></li>
 
                     </ul>
                 </li>
-                <li>
+                <li class="active">
                     <a href="#"><i class="icon-link"></i>友情链接管理</a>
                     <ul class='closed'>
                         <li><a href="/admin/link/create">添加友情链接</a></li>
                         <li><a href="/admin/link">浏览友情链接</a></li>
                     </ul>
                 </li>
+                <li class="active">
+                    <a href="#"><i class="icon-trash"></i>回收站</a>
+                    <ul class='closed'>
+                        <li><a href="/admin/recycle/index">回收列表</a></li>
+                        <li><a href="/admin/recycle"></a></li>
+                    </ul>
+                </li>
             </ul>
+
         </div>
+
     </div>
 
     <!-- Main Container Start -->

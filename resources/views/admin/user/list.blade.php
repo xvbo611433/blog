@@ -46,7 +46,7 @@
                     <th>用户</th>
                     <th>电话</th>
                     <th>邮箱</th>
-                    <th>状态</th>
+                    <th>性别</th>
                     <th>操作</th>
                 </tr>
                 </thead>
@@ -59,16 +59,14 @@
                         <td>{{ $v['tel'] }}</td>
                         <td>{{ $v['email'] }}</td>
                         <td>
-                            @if($v['status'] == 1)
-                                '激活';
+                            @if($v['sex'] == 1)
+                                男
                             @else
-                                '未激活';
+                                女
                             @endif
                         </td>
                         <td>
                             <a href="/admin/user/{{ $v['id'] }}/edit"><button class="btn btn-warning">修改</button></a>
-
-
 
                             <form action="/admin/user/{{ $v['id'] }}" method="post" style="display: inline;">
                                 {{ csrf_field() }}
