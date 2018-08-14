@@ -64,7 +64,7 @@ class GoodController extends Controller
 
             $data['gpic'] = '/upload/' . date('Ymd', time()) . '/' . $temp_name . '.' . $hz;
         }
-        dd($data);
+        // dd($data);
         $good = new Good;
         $good->gname = $request->input('gname');
         $good->id = $request->input('id');
