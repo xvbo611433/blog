@@ -58,12 +58,13 @@ class CommentController extends Controller
             // 拼接图片存储路径
             $str = $dir.'/'.$name;
             // 对图片路径进行处理
-            $tep = ltrim($str,'.');
+            $tep = ltrim($str,'.') ;
+            $data['profile'] = $tep;
 
         }
         $data = new Comment;
         $data->cname = $request->input('cname');
-        $data->profile = $tep;
+        $data->profile = $data['profile'];
         $data->status = $request->input('status');
         $data->comment = $request->input('comment');
         $res = $data->save();
