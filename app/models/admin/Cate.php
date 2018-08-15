@@ -39,9 +39,6 @@ class Cate extends Model
 		      return $cate_data;
 		}
 
-    public function goods_cate()
-    {
-        return $this->hasMany('(new Good)', 'id');
-    }
+
 
 }
