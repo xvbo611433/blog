@@ -37,7 +37,7 @@
                         <td>{{ $v['cname'] }}</td>
                         <td><img style="width: 80px;height:80px;border-radius:60px" src="{{ $v['profile'] }}"></td>
                         <td>{{ $v['status'] }}</td>
-                        <td>{{ $v['comment'] }}</td>
+                        <td>{!! $v['comment'] !!}</td>
                         <td>{{ $v['created_at'] }}</td>
                         <td>
                             <form action="/admin/comment/{{ $v['id'] }}" method="post" style="display: inline;">

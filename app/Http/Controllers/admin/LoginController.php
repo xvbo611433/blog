@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\admin\user;
 use DB;
 use Session;
+use Hash;
 
 class LoginController extends Controller
 {
@@ -28,15 +29,14 @@ class LoginController extends Controller
         //获取用户输入信息
         $data = $request->except('_token');
         $uname = $data['uname'];
-        $upwd = $data['upwd'];
-        dump($data);
+        $upwd = Hash::make($data['upwd']);
         //检验验证码是否正确
         if(session('code') != $request -> input('code')){
             return back()->with('error','验证码输入错误');
         }
         //查询数据库是否存在用户
         $tem = user::where('uname',$uname)->first();
-        dump($tem['upwd']);
+
         // //验证用户名是否存在
         if(empty($tem)){
             return back()->with('error','用户名不存在');

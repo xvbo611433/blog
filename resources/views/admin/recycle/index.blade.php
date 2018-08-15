@@ -26,11 +26,11 @@
                         <tbody role="alert" aria-live="polite" aria-relevant="all">
                         @foreach($data as $k=>$v)
                             <tr class="odd">
-                                <td class="  sorting_1">{{ $v['id'] }}</td>
-                                <td class=" ">{{ $v['uname'] }}</td>
-                                <td class=" ">{{ $v['sex'] }}</td>
-                                <td class=" ">{{ $v['email'] }}</td>
-                                <td class=" "><span class="badge badge-info">{{ $v['tel'] }}</span></td>
+                                <td class="  sorting_1">{{ $v['gid'] }}</td>
+                                <td class=" ">{{ $v['gname'] }}</td>
+                                <td class=" ">{{ $v['gpic'] }}</td>
+                                <td class=" ">{{ $v['gdes'] }}</td>
+                                <td class=" "><span class="badge badge-info">{{ $v['status'] }}</span></td>
                                 <td class=" ">
                                         <span class="btn-group">
 

@@ -1,6 +1,9 @@
 @extends('admin.layout.index');
 @section('container')
-
+    <!-- 配置文件 -->
+    <script type="text/javascript" src="/editor/ueditor.config.js"></script>
+    <!-- 编辑器源码文件 -->
+    <script type="text/javascript" src="/editor/ueditor.all.js"></script>
     <div class="mws-panel grid_8">
         <div class="mws-panel-header">
             <span><i class="icon-picture"></i>{{ $title }}</span>
@@ -28,7 +31,23 @@
             </div>
         </div>
     </div>
+    <!-- 实例化编辑器 -->
+    <script type="text/javascript">
+        var ue = UE.getEditor('abc',{
+            toolbars: [
+                [
+                    'undo', //撤销
+                    'selectall', //全选
+                    'fontfamily', //字体
+                    'fontsize', //字号
+                    'simpleupload', //单图上传
+                    'emotion', //表情
+                    'spechars', //特殊字符
+                    'forecolor', //字体颜色
 
+                ]
+            ]
+        });
 
 
 @endsection

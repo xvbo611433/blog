@@ -42,6 +42,7 @@ class CommentController extends Controller
     public function store(Request $request)
     {
 
+        $data = new Comment;
         // 判断头像是否上传
         if($request->hasFile('profile')){
             // 接收头像信息
@@ -63,7 +64,6 @@ class CommentController extends Controller
             $data['profile'] = $tep;
 
         }
-        $data = new Comment;
         $data->cname = $request->input('cname');
         $data->profile = $data['profile'];
         $data->status = $request->input('status');
@@ -78,39 +78,6 @@ class CommentController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.
