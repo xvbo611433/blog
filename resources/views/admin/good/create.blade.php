@@ -30,26 +30,21 @@
                     <div class="mws-form-row">
                         <label class="mws-form-label">文章内容</label>
                         <div class="mws-form-item">
-                            <textarea rows="" cols="" class="large" name="gdesc"></textarea>
-                        </div>
-                    </div>
-                    <div class="mws-form-row">
-                        <label class="mws-form-label">文章图片</label>
-                        <div class="mws-form-item">
-                            <td><input name="gpic" id="" type="file"></td>
+                        <!-- 加载编辑器的容器 -->
+                        <script id="container" name="content" type="text/plain">
+                           
+                        </script>
+                        <!-- 配置文件 -->
+
+                        <!-- 实例化编辑器 -->
+                        <script type="text/javascript">
+                            var ue = UE.getEditor('container');
+                        </script>
                         </div>
                     </div>
 
-                    <div class="mws-form-row">
-                        <label class="mws-form-label">文章状态</label>
-                        <div class="mws-form-item clearfix">
-                            <ul class="mws-form-list inline">
-                                <li><input type="radio" name="status" value="1" checked> <label>激活</label></li>
-                                <li><input type="radio" name="status" value="0"> <label>隐藏</label></li>
 
-                            </ul>
-                        </div>
-                    </div>
+
                     <div class="mws-button-row">
                         <input type="submit" value="提交" class="btn btn-success btn-block btn-amc-mse">
                     </div>

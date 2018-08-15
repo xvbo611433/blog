@@ -78,20 +78,14 @@
                             文章内容
 
                          </th>
-                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
-                        rowspan="1" colspan="1" style="width: 126px;" aria-label="CSS grade: activate to sort column ascending">
-                           文章图片
-                        </th>
+
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
 
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" style="width: 126px;" aria-label="CSS grade: activate to sort column ascending">
-                           修改时间
+                            更新时间
                         </th>                                                                    
-                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
-                        rowspan="1" colspan="1" style="width: 126px;" aria-label="CSS grade: activate to sort column ascending">
-                           文章状态
-                        </th>
+
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" style="width: 126px;" aria-label="CSS grade: activate to sort column ascending">
                            操作
@@ -104,7 +98,7 @@
 
                     <tr class="@if($k % 2 == 1)  odd   @else even  @endif">
                         <td class="">
-                            {{$v['id']}}
+                            {{$v['gid']}}
                         </td>
                         <td class=" ">
                             {{$v['goods_cate']['cname']}}
@@ -113,24 +107,17 @@
                             {{$v['gname']}}
                         </td>
                         <td class=" ">
-                            {{$v['gdesc']}}
+                            {{!!$v['content']!!}}
 
                         </td>
-                        <td style="width: 165px">
-                         <img src="{{$v['gpic']}}">
-                        </td>
+
 
                          <td class=" ">
                             {{$v['updated_at']}}
 
                         </td>                                                
                         </td>
-                         <td class=" ">
 
-                            @if($v->status==1)激活
-                            @elseif($v->status==0)隐藏
-                            @endif
-                        </td>
                          <td class=" ">
                          <a href="/admin/good/{{$v['gid']}}/edit"><button class="btn btn-danger">修改</button></a>
                     <form action="/admin/good/{{$v['gid']}}" method="post" style="display: inline;">

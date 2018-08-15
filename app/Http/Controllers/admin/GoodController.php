@@ -18,8 +18,8 @@ class GoodController extends Controller
      */
     public function index(request $request)
     {
-        $search = $request->input('search', ''); //接受商品名称
-        $id = $request->input('id', ''); //接收商品类
+        $search = $request->input('search', ''); //接受文章名称
+        // $id = $request->input('id', ''); //接收文章类
         $count = Good::count();
         $page_count = $request->input('page_count', 5);
         $goods = new Good(); //创建数据对象
@@ -28,7 +28,9 @@ class GoodController extends Controller
         }
 
         $cate_data = Cate::get();
+        // dump($cate_data);die;
         $data = $goods->paginate($page_count);
+        
 
         return view('admin/good/index', ['title' => '文章列表', 'data' => $data, 'cate_data' => $cate_data, 'search' => $request->all()]);
     }
@@ -54,7 +56,8 @@ class GoodController extends Controller
     {
 
         $data = $request->except('_token', 's');
-        if ($request->hasFile('gpic') == true) {
+        // dump($data);die;
+/*        if ($request->hasFile('gpic') == true) {
             $pic = $request->file('gpic');
             $temp_name = time() + rand(10000, 99999);
             $hz = $pic->getClientOriginalExtension();
@@ -64,14 +67,14 @@ class GoodController extends Controller
             $pic->move($dir, $filename); //执行上传
 
             $data['gpic'] = '/upload/' . date('Ymd', time()) . '/' . $temp_name . '.' . $hz;
-        }
+        }*/
         // dd($data);
         $good = new Good;
         $good->gname = $request->input('gname');
         $good->id = $request->input('id');
-        $good->status = $request->input('status');
-        $good->gpic = $data['gpic'];
-        $good->gdesc = $request->input('gdesc');
+        // $good->status = $request->input('status');
+        // $good->gpic = $data['gpic'];
+        $good->content = $request->input('content');
         $res = $good->save();
         // $res = Good::insert($data);
         if ($res) {

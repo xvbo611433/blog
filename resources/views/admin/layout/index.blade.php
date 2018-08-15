@@ -40,6 +40,9 @@
     <!-- Theme Stylesheet -->
     <link rel="stylesheet" type="text/css" href="/admin/css/mws-theme.css" media="screen">
     <link rel="stylesheet" type="text/css" href="/admin/css/themer.css" media="screen">
+    <script type="text/javascript" src="/utf8-php/ueditor.config.js"></script>
+    <!-- 编辑器源码文件 -->
+    <script type="text/javascript" src="/utf8-php/ueditor.all.js"></script>
 
     <title>MWS Admin - Form Elements</title>
 
