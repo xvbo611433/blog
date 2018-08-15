@@ -89,7 +89,7 @@ class RecycleController extends Controller
      */
     public function getDestroy()
     {
-        $res = User::withTrashed()->where('delete_at','>',1)->forceDelete();
+        $res = User::withTrashed()->where('deleted_at','>',1)->forceDelete();
         if ($res) {
             // 成功返回列表页
             return redirect('/admin/user')->with('success', '删除成功');

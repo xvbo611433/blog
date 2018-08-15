@@ -5,7 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\admin\Cate;
 use Illuminate\Http\Request;
-use
+
 
 class CateController extends Controller
 {

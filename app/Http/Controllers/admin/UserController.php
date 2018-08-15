@@ -48,12 +48,12 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserStoreRequest $request)
+    public function store(Request $request)
     {
         // 向数据库插入用户信息
         $users = new User;
         $users -> uname = $request->input('uname');
-        $users -> upwd = Hash::make($request->input('upwd'));
+        $users -> upwd = $request->input('upwd');
         $users -> tel = $request->input('tel');
         $users -> email = $request->input('email');
         $users -> sex = $request->input('sex');

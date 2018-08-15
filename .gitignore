@@ -5,6 +5,4 @@ Homestead.json
 .env
 :wq
 *.lock
-public/uploads/
-public/upload/
-public/link/
+
