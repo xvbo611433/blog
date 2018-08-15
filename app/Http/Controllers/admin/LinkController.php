@@ -48,18 +48,18 @@ class LinkController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->except('_token', 's');
+        $data = $request->except('_token', 's');//获取请求
         // dd($data);
         if ($request->hasFile('LinkInfo') == true) {
             $pic = $request->file('LinkInfo');
             $temp_name = time() + rand(10000, 99999);
-            $hz = $pic->getClientOriginalExtension();
+            $hz = $pic->getClientOriginalExtension();//后缀名
             $file = $temp_name . '.' . $hz;
             $dir = 'link/' . date('Ymd', time());
             $filename = ltrim($dir . '/' . $file, '.');
-            $j = $pic->move($dir, $filename); //执行上传
+            $j = $pic->move($dir, $filename); //执行上传图片
 
-            $data['LinkInfo'] = '/link/' . date('Ymd', time()) . '/' . $temp_name . '.' . $hz;
+            $data['LinkInfo'] = '/link/' . date('Ymd', time()) . '/' . $temp_name . '.' . $hz;//存入数据库
         }
 
         $res = Link::insert($data);
@@ -89,7 +89,7 @@ class LinkController extends Controller
      */
     public function edit($id)
     {
-        $data = Link::find($id);
+        $data = Link::find($id);//获取要修改的数据
         return view('admin/link/edit', ['title' => '友情链接修改', 'data' => $data]);
     }
 
@@ -117,11 +117,11 @@ class LinkController extends Controller
             $res = DB::table('blog_links')->where('id', $id)->update($data);
             //做判断
             if ($res) {
-                DB::commit(); //提交事务
+
                 return redirect('/admin/link')->with('success', '修改成功');
 
             } else {
-                DB::rollBack();
+
                 return back()->with('error', '修改失败');
 
             }

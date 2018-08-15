@@ -237,19 +237,23 @@
         <div id="mws-user-info" class="mws-inset">
 
             <!-- User Photo -->
-            <div id="mws-user-photo">
-                <img src="/admin/example/profile.jpg" alt="User Photo">
-            </div>
+<!--             <div id="mws-user-photo">
+                <img src="/admin/example/scottwills_cat.jpg" alt="User Photo">
+            </div> -->
 
             <!-- Username and Functions -->
             <div id="mws-user-functions">
+
                 <div id="mws-username">
-                    Hello, John Doe
+               <?php 
+              
+                echo session('login');
+                ?>
                 </div>
                 <ul>
 
                     <li><a href="#">更改密码</a></li>
-                    <li><a href="index.html">登陆</a></li>
+                    <li><a href="/login/outlogin">退出</a></li>
                 </ul>
             </div>
         </div>

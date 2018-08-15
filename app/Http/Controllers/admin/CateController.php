@@ -4,8 +4,9 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\admin\Cate;
+use App\Models\admin\Good;
+use DB;
 use Illuminate\Http\Request;
-
 
 class CateController extends Controller
 {
@@ -16,7 +17,7 @@ class CateController extends Controller
      */
     public function index()
     {
-        $sql = "select *,concat(path,',','id') as paths from cates order by paths asc";
+        $sql       = "select *,concat(path,',','id') as paths from cates order by paths asc";
         $cate_data = Cate::getDatecate();
         // dump($cate_data);die;
 
@@ -110,26 +111,27 @@ class CateController extends Controller
     public function destroy($id)
     {
         //检测当前要删除的分类下面是否有子分类
-        $cate = new Cate();
-        $child_data = $cate->where('pid', $id)->first();
-        //检测当前分类下是否有商品
-        // $camp = Goods::where('id',$id)->first();
-        // if ($camp) {
-        //      return $arr = ['status'=>0,'msg'=>'当前分类下有商品,不允许删除'];
-        // }
-        // // dump($child_data);
-        // // die;
-        // if (!empty($child_data)) {
-        //     // 当前分类下有子分类不允许删除
-        //     return $arr = ['status'=>0,'msg'=>'当前分类下有子分类不允许删除'];
-        // }
-        //执行删除
-        $tmp = $cate::find($id);
-        $res = $tmp->delete();
-        if ($res) {
+
+        $cate = Cate::where('pid', $id)->first();
+          if ($cate) {
+            return back()->with('error', '有子类不能删除');
+        }
+        
+
+        //
+        $goods = Good::where('id','=',$id)->first();
+        $data = $goods['id'];
+        if($data == $id){
+            return back()->with('error', '有文章不能删除');
+        }
+      
+
+        //删除获得的数据
+        $tmp = Cate::destroy($id);
+        if ($tmp) {
             return redirect('/admin/cate')->with('success', '删除成功');
         } else {
-            return back()->with('error', '添加失败');
+            return back()->with('error', '删除失败');
         }
     }
 }
