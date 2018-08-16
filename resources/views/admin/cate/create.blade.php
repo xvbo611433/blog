@@ -2,7 +2,7 @@
 
 @section('title',$title)
 @section('container')
-     <div class="mws-panel grid_8">
+     <div class="mws-panel grid_8 " >
         <div class="mws-panel-header">
             <span>添加类别</span>
         </div>
@@ -22,7 +22,7 @@
                 {{session('success')}}
 
             </div>
-            <form class="mws-form" action="/admin/cate" method="post" enctype="multipart/form-data">
+            <form class="mws-form " action="/admin/cate" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                 <div class="mws-form-inline">
                     <div class="mws-form-row">
@@ -47,8 +47,8 @@
                     </div>
                 </div>
                 <div class="mws-button-row">
-                    <input type="submit" value="提交" class="btn btn-danger">
-                    <input type="reset" value="重置" class="btn ">
+                    <input type="submit" value="提交" class="btn btn-success btn-block">
+
                 </div>
             </form>
         </div>

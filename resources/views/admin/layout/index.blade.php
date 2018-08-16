@@ -237,33 +237,22 @@
         <div id="mws-user-info" class="mws-inset">
 
             <!-- User Photo -->
-<!--             <div id="mws-user-photo">
+            <div id="mws-user-photo">
                 <img src="/admin/example/scottwills_cat.jpg" alt="User Photo">
-            </div> -->
+            </div>
 
             <!-- Username and Functions -->
             <div id="mws-user-functions">
 
                 <div id="mws-username">
-<<<<<<< Updated upstream
-               <?php 
-              
-                echo session('login');
-                ?>
-                </div>
-                <ul>
-                    <li><a href="#">更改密码</a></li>
-                    <li><a href="/login/outlogin">退出</a></li>
-=======
+
                     Hello,{{ session('uname') }}
                 </div>
                 <ul>
+                    <li><a href="/admin/index/edit">更改密码</a></li>
+                    <li><a href="/login/outlogin">退出</a></li>
 
-                    <li><a href="">更改密码</a></li>
-                    <li><a href="index.html">登录
 
-                        </a></li>
->>>>>>> Stashed changes
                 </ul>
             </div>
         </div>
@@ -323,7 +312,7 @@
                     </ul>
                 </li>
                 <li class="active">
-                    <a href="#"><i  class="icon-comments"></i>评论管理</a>
+                    <a href="#"><i class="icon-comments"></i>评论管理</a>
                     <ul class='closed'>
                         <li class="icon-add-contact"><a href="/admin/comment/create">添加评论</a></li>
                         <li><a href="/admin/comment">浏览评论</a></li>

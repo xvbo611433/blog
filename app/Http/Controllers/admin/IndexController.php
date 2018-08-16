@@ -4,6 +4,9 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Admin\User;
+use Hash;
+use DB;
 
 class IndexController extends Controller
 {
@@ -12,43 +15,14 @@ class IndexController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //后台首页
-        return view('admin/index/index', ['title=>后台首页']);
+        $data = $request->session()->all();
+        return view('admin.layout.index', ['title'=>'后台首页','data'=>$data]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
 
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -56,9 +30,9 @@ class IndexController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function getEdit()
     {
-        //
+        return view('admin.index.edit',['title'=>'修改密码']);
     }
 
     /**
@@ -68,10 +42,40 @@ class IndexController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function postUpdate(Request $request)
     {
-        //
-    }
+        $this->validate($request, [
+            'pwd' => 'required',
+            'repwd' => 'required',
+            'upwd' => 'required',
+        ],[
+            'pwd.required'=>'原密码不能为空',
+            'repwd.required'=>'确认密码不能为空',
+            'upwd.required'=>'新密码不能为空',
+        ]);
+        $arr = $request->except('s','_token');
+        // 获取原密码信息
+        $pwd = $arr['pwd'];
+        $repwd = $arr['repwd'];
+        $upwd = $arr['upwd'];
+        // 判断两次密码是否一致
+        if($repwd != $upwd){
+            return back()->with('error','两次密码不一致');
+        }
+        // 获取session用户信息
+        $data = $request->session()->all();
+         Hash::check($pwd, $data['upwd']);
+        //密码加密
+        $password = Hash::make($upwd);
+        // 更新到数据库
+        $res =  DB::table('user')->where('id', $data['id'])->update(['upwd'=>$password]);
+        if($res){
+            return redirect('/login')->with('success','您的密码有更改,请重新登录');
+        }else{
+            return back()->with('error','修改失败');
+        }
+
+        }
 
     /**
      * Remove the specified resource from storage.

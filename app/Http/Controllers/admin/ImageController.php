@@ -11,27 +11,18 @@ use DB;
 
 class ImageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        // 获取所有数据 分配到页面
-        $data = Image::all();
-        return view('admin.image.index',['title'=>'图片浏览','data'=>$data]);
-    }
+
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function getCreate()
     {
+        $data = Image::all();
         // 显示页面
-        return view('admin.image.create',['title'=>'添加图片']);
+        return view('admin.image.create',['title'=>'添加图片','data'=>$data,'image'=>'图片浏览']);
     }
 
     /**
@@ -40,7 +31,7 @@ class ImageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function postStore(Request $request)
     {
         // 接收头像信息
         $profile = $request->file('image');
@@ -70,7 +61,7 @@ class ImageController extends Controller
         $res = $image->save();
         if ($res) {
             // 成功返回列表页
-            return redirect('/admin/image')->with('success', '添加成功');
+            return back()->with('success', '添加成功');
         } else {
             // 失败返回添加页
             return back()->with('error', '添加失败');
@@ -98,7 +89,7 @@ class ImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function getEdit($id)
     {
         $data = Image::find($id);
         return view('admin.image.edit',['title'=>'图片修改','data'=>$data]);
@@ -111,7 +102,7 @@ class ImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function postUpdate(Request $request, $id)
     {
         // 接收头像信息
         $profile = $request->file('image');
@@ -138,7 +129,7 @@ class ImageController extends Controller
         $res = DB::table('blog_image')->where('id', $id)->update($data);
         if ($res) {
             // 成功返回列表页
-            return redirect('/admin/image')->with('success', '修改成功');
+            return redirect('/admin/image/create')->with('success', '修改成功');
         } else {
             // 失败返回添加页
             return back()->with('error', '修改失败');
@@ -151,12 +142,12 @@ class ImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function getDestroy($id)
     {
        $res = Image::destroy($id);
         if ($res) {
             // 成功返回列表页
-            return redirect('/admin/image')->with('success', '删除成功');
+            return redirect('/admin/image/create')->with('success', '删除成功');
         } else {
             // 失败返回添加页
             return back()->with('error', '删除失败');

@@ -41,13 +41,14 @@
                             var ue = UE.getEditor('container');
                         </script>
                         </div>
+                        <div class="mws-form-row">
+                            <input type="submit" value="提交" class="btn btn-success btn-block btn-amc-mse">
+                        </div>
                     </div>
 
 
 
-                    <div class="mws-button-row">
-                        <input type="submit" value="提交" class="btn btn-success btn-block btn-amc-mse">
-                    </div>
+
             </form>
         </div>
     </div>

@@ -54,29 +54,11 @@ class GoodController extends Controller
      */
     public function store(Request $request)
     {
-
-        $data = $request->except('_token', 's');
-        // dump($data);die;
-/*        if ($request->hasFile('gpic') == true) {
-            $pic = $request->file('gpic');
-            $temp_name = time() + rand(10000, 99999);
-            $hz = $pic->getClientOriginalExtension();
-            $file = $temp_name . '.' . $hz;
-            $dir = './upload/' . date('Ymd', time());
-            $filename = ltrim($dir . '/' . $file, '.');
-            $pic->move($dir, $filename); //执行上传
-
-            $data['gpic'] = '/upload/' . date('Ymd', time()) . '/' . $temp_name . '.' . $hz;
-        }*/
-        // dd($data);
         $good = new Good;
         $good->gname = $request->input('gname');
         $good->id = $request->input('id');
-        // $good->status = $request->input('status');
-        // $good->gpic = $data['gpic'];
         $good->content = $request->input('content');
         $res = $good->save();
-        // $res = Good::insert($data);
         if ($res) {
             return redirect('admin/good')->with('success', '添加成功');
         } else {

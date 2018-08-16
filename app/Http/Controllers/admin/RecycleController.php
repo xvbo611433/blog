@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\admin\Recycle;
 use App\models\admin\Good;
-
+use App\Models\admin\Image;
 
 class RecycleController extends Controller
 {
@@ -19,10 +19,12 @@ class RecycleController extends Controller
      */
     public function getIndex()
     {
-        // 获取删除的数据 显示到页面
+        // 获取文章删除的数据 显示到页面
         $data = Good::onlyTrashed()->get();
+        // 获取图片删除的数据 显示到页面
+        $images = Image::onlyTrashed()->get();
 
-        return view('admin.recycle.index',['title'=>'回收站','data'=>$data]);
+        return view('admin.recycle.index',['title'=>'回收站','data'=>$data,'images'=>$images]);
     }
 
     /**
@@ -34,9 +36,10 @@ class RecycleController extends Controller
     {
         //单条恢复
         $res = Good::withTrashed()->where('id', $id)->restore();
-        if ($res) {
+        $image = Image::withTrashed()->where('id', $id)->restore();
+        if ($res || $image) {
             // 成功返回列表页
-            return redirect('/admin/user')->with('success', '恢复成功');
+            return redirect('/admin/recycle')->with('success', '恢复成功');
         } else {
             // 失败返回
             return back()->with('error','恢复失败');
@@ -53,9 +56,10 @@ class RecycleController extends Controller
     {
         //恢复全部
         $res = Good::withTrashed()->restore();
-        if ($res) {
+        $image = Image::withTrashed()->restore();
+        if ($res || $image) {
             // 成功返回列表页
-            return redirect('/admin/user')->with('success', '恢复成功');
+            return redirect('/admin/recycle')->with('success', '恢复成功');
         } else {
             // 失败返回
             return back()->with('error','恢复失败');
@@ -72,9 +76,10 @@ class RecycleController extends Controller
     {
 
         $res = Good::withTrashed()->where('id',$id)->forceDelete();
-        if ($res) {
+        $image = Image::withTrashed()->where('id',$id)->forceDelete();
+        if ($res || $image) {
             // 成功返回列表页
-            return redirect('/admin/user')->with('success', '删除成功');
+            return redirect('/admin/index')->with('success', '删除成功');
         } else {
             // 失败返回
             return back()->with('error','删除失败');
@@ -90,9 +95,10 @@ class RecycleController extends Controller
     public function getDestroy()
     {
         $res = Good::withTrashed()->where('deleted_at','>',1)->forceDelete();
-        if ($res) {
+        $image = Image::withTrashed()->where('deleted_at','>',1)->forceDelete();
+        if ($res || $image) {
             // 成功返回列表页
-            return redirect('/admin/user')->with('success', '删除成功');
+            return redirect('/admin/index')->with('success', '删除成功');
         } else {
             // 失败返回
             return back()->with('error','删除失败');
