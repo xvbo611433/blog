@@ -27,19 +27,12 @@
                             <input type="text" class="small" name="gname">
                         </div>
                     </div>
-                   <div class="mws-form-row">
-                        <label class="mws-form-label">文章介绍</label>
-                        <div class="mws-form-item">
-                             <textarea style="height:60px" rows="" cols="" class="large" name="abs"></textarea>
-                        </div>
-                   </div>
-                   
                     <div class="mws-form-row">
                         <label class="mws-form-label">文章内容</label>
                         <div class="mws-form-item">
                         <!-- 加载编辑器的容器 -->
                         <script id="container" name="content" type="text/plain">
-
+                           
                         </script>
                         <!-- 配置文件 -->
 
@@ -59,4 +52,4 @@
             </form>
         </div>
     </div>
-@endsection
+@endsection  

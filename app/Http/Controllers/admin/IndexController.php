@@ -15,13 +15,12 @@ class IndexController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function getIndex(Request $request)
     {
         //后台首页
-        $data = $request->session()->all();
-        return view('admin.layout.index', ['title'=>'后台首页','data'=>$data]);
+        // $data = $request->session()->all();
+        return view('admin/index/index', ['title'=>'后台首页']);
     }
-
 
 
     /**

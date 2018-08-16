@@ -1,8 +1,7 @@
 @extends('admin.layout.index');
 @section('container')
 
-<<<<<<< Updated upstream
-=======
+
 
 <div class="result_wrap">
     <div class="result_title">
@@ -50,5 +49,5 @@
         </ul>
     </div>
 </div>
->>>>>>> Stashed changes
+
 @endsection
