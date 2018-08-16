@@ -51,7 +51,15 @@ class LoginController extends Controller
 
             return redirect('/admin/index');
         }else{
+<<<<<<< Updated upstream
             return back()->with('error','密码错误');
+=======
+            // //取值并给session赋值
+        
+            // dump($info);die;
+          session::put(['login' => $tem['uname']]);
+            return redirect('/admin/index');
+>>>>>>> Stashed changes
         }
 
         }

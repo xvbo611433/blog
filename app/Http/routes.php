@@ -14,9 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
-//前台
+//后台
 
-Route::get('/code','admin\CodeController@code');
+Route::get('/code','admin\CodeController@code');//验证码
 Route::controller('/login','admin\LoginController');//用户登录
 
 Route::group(['middleware'=>'login'],function(){
@@ -37,3 +37,5 @@ Route::resource('/admin/link','admin\LinkController');//友情链接管理
 Route::controller('/admin/recycle','admin\RecycleController');//回收站管理
 
 });
+//前台
+Route::get('/','home\IndexController@index');

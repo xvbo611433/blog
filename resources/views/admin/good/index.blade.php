@@ -73,6 +73,7 @@
                             文章所属类别
                         </th>
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
+<<<<<<< Updated upstream
                             rowspan="1" colspan="1" style="width: 247px;"
                             aria-label="Platform(s): activate to sort column ascending">
                             文章名称
@@ -84,6 +85,19 @@
 
                         </th>
 
+=======
+                        rowspan="1" colspan="1" style="width: 247px;" aria-label="Platform(s): activate to sort column ascending">
+                            文章标题
+                        </th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
+                        rowspan="1" colspan="1" style="width: 247px;" aria-label="Platform(s): activate to sort column ascending">
+                            文章简介
+                        </th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
+                        rowspan="1" colspan="1" style="width: 247px;" aria-label="Platform(s): activate to sort column ascending">
+                            文章简图
+                        </th>
+>>>>>>> Stashed changes
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
 
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
@@ -103,6 +117,7 @@
 
                     @foreach($data as $k => $v)
 
+<<<<<<< Updated upstream
                         <tr class="@if($k % 2 == 1)  odd   @else even  @endif">
                             <td class="">
                                 {{ $v['gid'] }}
@@ -136,6 +151,38 @@
 
                             </td>
                         </tr>
+=======
+                    <tr class="@if($k % 2 == 1)  odd   @else even  @endif">
+                        <td class="">
+                            {{$v['gid']}}
+                        </td>
+                        <td class=" ">
+                            {{$v['goods_cate']['cname']}}
+                        </td>
+                        <td class=" ">
+                            {{$v['gname']}}
+                        </td>
+
+                        <td class=" ">
+                            {{$v['abs']}}
+                        </td>
+                         <td class=" ">
+                            {{$v['updated_at']}}
+
+                        </td>                                                
+                        </td>
+
+                         <td class=" ">
+                         <a href="/admin/good/{{$v['gid']}}/edit"><button class="btn btn-danger">修改</button></a>
+                    <form action="/admin/good/{{$v['gid']}}" method="post" style="display: inline;">
+                    {{csrf_field()}}
+                    {{method_field('DELETE')}}
+                    <input id="ha" type="submit"  class="btn btn-danger" value="删除">
+                    </form>
+
+                        </td>
+                    </tr>
+>>>>>>> Stashed changes
 
                     @endforeach
 

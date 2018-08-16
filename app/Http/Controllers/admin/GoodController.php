@@ -57,6 +57,12 @@ class GoodController extends Controller
         $good = new Good;
         $good->gname = $request->input('gname');
         $good->id = $request->input('id');
+<<<<<<< Updated upstream
+=======
+        $good->abs = $request->input('abs');
+        // $good->status = $request->input('status');
+        // $good->gpic = $data['gpic'];
+>>>>>>> Stashed changes
         $good->content = $request->input('content');
         $res = $good->save();
         if ($res) {

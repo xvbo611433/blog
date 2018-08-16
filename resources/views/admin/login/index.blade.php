@@ -47,6 +47,7 @@
             <div>
             <img src="/code" style="float: right;" title="点击切换" onclick="rand_code(this)"><input type="text" name="code" lay-verify="required" placeholder="请输入验证码"  class="layui-input" style="width: 130px;">
             </div>
+            <hr class="hr15">
               <script type="text/javascript">
                     function rand_code(obj){
                         // console.log(obj.src)
