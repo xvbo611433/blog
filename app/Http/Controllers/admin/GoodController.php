@@ -57,6 +57,11 @@ class GoodController extends Controller
         $good = new Good;
         $good->gname = $request->input('gname');
         $good->id = $request->input('id');
+
+        $good->abs = $request->input('abs');
+
+        // $good->gpic = $data['gpic'];
+
         $good->content = $request->input('content');
         $res = $good->save();
         if ($res) {

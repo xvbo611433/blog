@@ -6,29 +6,38 @@
         <div class="mws-panel-header">
             <span>修改文章</span>
         </div>
-        <div class="mws-panel-body no-padding">
-            <form class="mws-form" action="/admin/good/{{$data['gid']}}" method="post" enctype="multipart/form-data">
-                {{csrf_field()}}
-                {{method_field('PUT')}}
-                <div class="mws-form-inline">
-                    <div class="mws-form-row">
-                        <label class="mws-form-label">请选择文章所属分类</label>
-                        <div class="mws-form-item">
-                            <select class="large" name="id">
-                                @foreach($cate_data as $value)
-                                    <option value="{{$value['id']}}"
-                                            @if($data['id'] == $value['id']) selected @endif>{{$value['cname']}}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="mws-form-row">
-                        <label class="mws-form-label">文章名称</label>
-                        <div class="mws-form-item">
-                            <input type="text" class="small" name="gname" value="{{$data['gname']}}">
-                        </div>
-                    </div>
+
+ 
+                    <div class="mws-panel-body no-padding">
+        	<form class="mws-form" action="/admin/good/{{$data['gid']}}" method="post" enctype="multipart/form-data">
+                                {{csrf_field()}}
+                                {{method_field('PUT')}}
+                    		<div class="mws-form-inline">
+                    			<div class="mws-form-row">
+                    				<label class="mws-form-label">请选择文章所属分类</label>
+                    				<div class="mws-form-item">
+                    					<select class="large" name="id">
+                              @foreach($cate_data as $value)
+                                     <option value="{{$value['id']}}" 
+                                          @if($data['id'] == $value['id']) selected @endif>{{$value['cname']}}
+                                     </option>
+                                     @endforeach
+                    					</select>
+                    				</div>
+                    			</div>                    		
+                    			<div class="mws-form-row">
+                    				<label class="mws-form-label">文章名称</label>
+                    				<div class="mws-form-item">
+                    					<input type="text" class="small" name="gname" value="{{$data['gname']}}">
+                    				</div>
+                    			</div>
+                                <div class="mws-form-row">
+                                    <label class="mws-form-label">文章简介</label>
+                                    <div class="mws-form-item">
+                                        <input style="height:60px" type="text" class="small" name="abs" value="{{$data['abs']}}">
+                                    </div>
+                                </div>                                
+
                     <div class="mws-form-row">
                         <label class="mws-form-label">文章内容</label>
                         <div class="mws-form-item">
