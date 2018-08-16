@@ -85,9 +85,9 @@
   <div class="blogsbox">
 @foreach($good as $k => $v)
     <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
-      <h3 class="blogtitle"><a href="/" target="_blank">{{$v['gname']}}页设计!</a></h3>
+      <h3 class="blogtitle"><a href="/" target="_blank">{{$v['gname']}}</a></h3>
       <span class="blogpic"><a href="/" title=""><img src="/home/images/toppic01.jpg" alt=""></a></span>
-      <p class="blogtext">{{!!$v['content']!!}} </p>
+      <p class="blogtext">{{!!$v['abs']!!}} </p>
       <div class="bloginfo">
         <ul>
           <li class="author"><a href="/">杨青</a></li>

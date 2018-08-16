@@ -26,6 +26,9 @@ Route::resource('/admin/user','admin\UserController');//后台用户控制器
 
 Route::resource('/admin/cate','admin\CateController');//后台类别控制器
 
+Route::get('admin/cate/childcate/{id}','admin\CateController@childcate');
+
+
 Route::resource('/admin/comment','admin\CommentController');//评论管理控制器
 
 Route::controller('/admin/image','admin\imageController');//轮番图管理控制器
@@ -39,3 +42,4 @@ Route::controller('/admin/recycle','admin\RecycleController');//回收站管理
 });
 //前台
 Route::get('/','home\IndexController@index');
+Route::get('/home/show','home\IndexController@show');//详情

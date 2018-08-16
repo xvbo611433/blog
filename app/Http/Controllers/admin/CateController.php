@@ -117,8 +117,8 @@ class CateController extends Controller
             return back()->with('error', '有子类不能删除');
         }
         
-
-        //
+        // 检测当前分类下是否有文章
+      
         $goods = Good::where('id','=',$id)->first();
         $data = $goods['id'];
         if($data == $id){
@@ -133,5 +133,21 @@ class CateController extends Controller
         } else {
             return back()->with('error', '删除失败');
         }
+    }
+        /**
+     * 执行添加子分类
+     * @return \Illuminate\Http\Response
+     */
+    public function childcate($id)
+    {   
+        $cate = new Cate();
+        $data = $cate::find($id);
+        // 获取显示分类详情
+        $cate_data = Cate::getDatecate();
+        // dump($data->id);
+        // dump($cate_data);
+        //显示到模板
+        return view('admin/cate/childcate',['cate_data'=>$cate_data,'data'=>$data,'title'=>'添加子分类']);
+      
     }
 }
