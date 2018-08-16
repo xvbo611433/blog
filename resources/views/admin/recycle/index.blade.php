@@ -28,9 +28,10 @@
                             <tr class="odd">
                                 <td class="  sorting_1">{{ $v['gid'] }}</td>
                                 <td class=" ">{{ $v['gname'] }}</td>
-                                <td class=" ">{{ $v['gpic'] }}</td>
-                                <td class=" ">{{ $v['gdes'] }}</td>
-                                <td class=" "><span class="badge badge-info">{{ $v['status'] }}</span></td>
+                                <td class=" ">{{ $v['id'] }}</td>
+
+                                <td class=" ">{{ $v['content'] }}</td>
+
                                 <td class=" ">
                                         <span class="btn-group">
 

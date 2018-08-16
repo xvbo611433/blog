@@ -107,7 +107,11 @@
                             {{$v['gname']}}
                         </td>
                         <td class=" ">
+<<<<<<< Updated upstream
                             {!!$v['content']!!}
+=======
+                            {!! $v['content'] !!}
+>>>>>>> Stashed changes
 
                         </td>
 
@@ -119,7 +123,7 @@
                         </td>
 
                          <td class=" ">
-                         <a href="/admin/good/{{$v['gid']}}/edit"><button class="btn btn-danger">修改</button></a>
+                         <a href="/admin/good/{{$v['gid']}}/edit"><button class="btn btn-warning">修改</button></a>
                     <form action="/admin/good/{{$v['gid']}}" method="post" style="display: inline;">
                     {{csrf_field()}}
                     {{method_field('DELETE')}}

@@ -39,7 +39,9 @@
                         <div class="mws-form-row">
                             <label class="mws-form-label">内容<span class="required">*</span></label>
                             <div class="mws-form-item">
-                                <script id="abc" name="comment" type="text/plain"></script>
+                                <script id="abc" name="comment" type="text/plain">
+
+                                </script>
                             </div>
                         </div>
                         <div class="mws-form-row">
@@ -53,6 +55,7 @@
                 </form>
             </div>
         </div>
+    </div>
         <!-- 实例化编辑器 -->
         <script type="text/javascript">
             var ue = UE.getEditor('abc',{

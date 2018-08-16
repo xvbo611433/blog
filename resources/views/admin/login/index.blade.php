@@ -15,7 +15,7 @@
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 
     <script type="text/javascript" src="/admin/js/xadmin.js"></script>
-      <script src="{{url()}}/sweetalert-master/docs/assets/sweetalert/sweetalert.min.js"></script> 
+      <script src="{{ url() }}/sweetalert-master/docs/assets/sweetalert/sweetalert.min.js"></script>
 
 </head>
 <body class="login-bg">
@@ -26,7 +26,7 @@
       <!-- 读取模版的提示信息 -->
        @if(session('success'))
         <script>
-            sweetAlert("{{session('error')}}");
+            sweetAlert("{{session('success')}}");
         </script>
         @endif        
         @if(session('error'))

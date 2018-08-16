@@ -245,6 +245,7 @@
             <div id="mws-user-functions">
 
                 <div id="mws-username">
+<<<<<<< Updated upstream
                <?php 
               
                 echo session('login');
@@ -253,6 +254,16 @@
                 <ul>
                     <li><a href="#">更改密码</a></li>
                     <li><a href="/login/outlogin">退出</a></li>
+=======
+                    Hello,{{ session('uname') }}
+                </div>
+                <ul>
+
+                    <li><a href="">更改密码</a></li>
+                    <li><a href="index.html">登录
+
+                        </a></li>
+>>>>>>> Stashed changes
                 </ul>
             </div>
         </div>

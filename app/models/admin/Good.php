@@ -15,7 +15,8 @@ class Good extends Model
 
     protected $primaryKey='gid';
 
-
+    use SoftDeletes;
+    protected $dates = ['deleted_at'];
 
     public function goods_cate()
     {
