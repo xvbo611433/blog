@@ -53,7 +53,7 @@ class UserController extends Controller
         // 向数据库插入用户信息
         $users = new User;
         $users -> uname = $request->input('uname');
-        $users -> upwd = Hash::make($request->input('upwd'));
+        $users -> upwd = $request->input('upwd');
         $users -> tel = $request->input('tel');
         $users -> email = $request->input('email');
         $users -> sex = $request->input('sex');
@@ -135,7 +135,7 @@ class UserController extends Controller
     {
         // 删除用户
         $res = User::destroy($id);
-
+        //判断
         if($res){
             return redirect('/admin/user')->with('success', '删除成功');
         }else{

@@ -107,7 +107,7 @@
                             {{$v['gname']}}
                         </td>
                         <td class=" ">
-                            {{!!$v['content']!!}}
+                            {!!$v['content']!!}
 
                         </td>
 

@@ -19,7 +19,7 @@ Route::get('/', function () {
 Route::get('/code','admin\CodeController@code');
 Route::controller('/login','admin\LoginController');//用户登录
 
-//Route::group(['middleware'=>'login'],function(){
+Route::group(['middleware'=>'login'],function(){
 Route::get('admin/index','admin\IndexController@index');
 Route::resource('/admin/user','admin\UserController');//后台用户控制器
 
@@ -34,4 +34,4 @@ Route::resource('/admin/good','admin\GoodController');//文章管理
 Route::resource('/admin/link','admin\LinkController');//友情链接管理
 Route::controller('/admin/recycle','admin\RecycleController');//回收站管理
 
-//});
+});

@@ -1,9 +1,11 @@
-@extends('layout.admin')
+@extends('admin.layout.index');
+
 
 @section('title','后台的首页')
 
-@section('content')
+@section('container')
 
-    <h1>这是后台的首页</h1>
+
+123465
 
 @endsection

@@ -29,7 +29,7 @@ class LoginController extends Controller
         //获取用户输入信息
         $data = $request->except('_token');
         $uname = $data['uname'];
-        $upwd = Hash::make($data['upwd']);
+        $upwd = $data['upwd'];
         //检验验证码是否正确
         if(session('code') != $request -> input('code')){
             return back()->with('error','验证码输入错误');
@@ -46,10 +46,18 @@ class LoginController extends Controller
             return back()->with('error','密码错误');
         }else{
             // //取值并给session赋值
-            $info = $tem['uname'];
-            session(['login' => $info,'all' => $tem]);
+        
+            // dump($info);die;
+          session::put(['login' => $tem['uname']]);
             return redirect('/admin/user');
         }
+    }
+
+        public function getOutlogin()
+    {
+      //清除session并跳转页面
+      session(['login' => null]);
+      return redirect('/login');
     }
 
 }
