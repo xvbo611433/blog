@@ -105,7 +105,7 @@
                         </td>
 
                         <td style="width: 165px">
-                         <img src="{{$v['LinkInfo']}}">
+                         {!!$v['LinkInfo']!!}
                         </td>
 
                          <td class=" ">

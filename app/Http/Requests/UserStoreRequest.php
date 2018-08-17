@@ -11,6 +11,7 @@ class UserStoreRequest extends Request
      *
      * @return bool
      */
+    //开启自动验证
     public function authorize()
     {
         return true;

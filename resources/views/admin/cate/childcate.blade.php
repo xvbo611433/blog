@@ -42,7 +42,7 @@
                      <div class="mws-form-row">
                         <label class="mws-form-label">分类名称</label>
                         <div class="mws-form-item">
-                            <input type="text" class="small" name="cname" placeholder="请输入">
+                            <input type="text" class="small" name="cname" placeholder="请输入要添加的子类">
                         </div>
                     </div>
                 </div>

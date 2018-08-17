@@ -17,10 +17,10 @@ class CateController extends Controller
      */
     public function index()
     {
-        $sql       = "select *,concat(path,',','id') as paths from cates order by paths asc";
+        //获取显示分类详情
         $cate_data = Cate::getDatecate();
         // dump($cate_data);die;
-
+        //显示到模板
         return view('admin/cate/index', ['title' => '类别列表', 'cate_data' => $cate_data]);
     }
 
@@ -33,6 +33,7 @@ class CateController extends Controller
     {
         // 获取显示分类详情
         $cate_data = Cate::getDatecate();
+        //显示到模板
         return view('admin/cate/create', ['title' => '类别添加', 'cate_data' => $cate_data]);
     }
 
@@ -58,8 +59,9 @@ class CateController extends Controller
             $data['path'] = $parent_data['path'] . ',' . $parent_data['id'];
 
         }
+        //添加到数据库
         $res = Cate::insert($data);
-
+        //处理结果
         if ($res) {
             return redirect('/admin/cate')->with('success', '添加成功');
         } else {
@@ -126,7 +128,7 @@ class CateController extends Controller
         }
       
 
-        //删除获得的数据
+        //处理数据
         $tmp = Cate::destroy($id);
         if ($tmp) {
             return redirect('/admin/cate')->with('success', '删除成功');
@@ -140,6 +142,7 @@ class CateController extends Controller
      */
     public function childcate($id)
     {   
+        //获取要添加的父类
         $cate = new Cate();
         $data = $cate::find($id);
         // 获取显示分类详情
