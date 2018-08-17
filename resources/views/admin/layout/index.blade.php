@@ -251,19 +251,10 @@
 
                 <div id="mws-username">
                     Welcome
-<<<<<<< Updated upstream
                     <?php
                         $data=session('login');
                         echo $data['uname'];
-=======
-                <?php
-                    $data = session('login');
-                    echo $data['uname'];
->>>>>>> Stashed changes
-                    ?>
-
-
-
+                        ?>
                 </div>
                 <ul>
                     <li><a href="/admin/index/edit">更改密码</a></li>

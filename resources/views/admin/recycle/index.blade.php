@@ -5,7 +5,7 @@
     <div class="mws-panel grid_8 mws-collapsible">
         <div class="mws-panel grid_8">
             <div class="mws-panel-header">
-                <span><i class="icon-pictures"></i>Image</span>
+                <span><i class="icon-pictures"></i>{{ $title }}</span>
             </div>
             <div class="mws-panel-inner-wrap">
 
@@ -49,11 +49,9 @@
                                 <span class="thumbnail"><img src="{{ $v['image'] }}" alt=""></span>
                                 <span class="mws-gallery-overlay">
 
-                            <a href="/admin/recycle/Rollback/{{  $v['id'] }}" class="mws-gallery-btn"><i
-                                        class="icon-repeat"></i></a>
+                            <a href="/admin/recycle/back/{{  $v['id'] }}" class="mws-gallery-btn"><i class="icon-repeat"></i></a>
 
-                            <a href="/admin/image/destroy/{{ $v['id'] }}" class="mws-gallery-btn"><i
-                                        class="icon-trash"></i></a>
+                            <a href="/admin/recycle/delete/{{ $v['id'] }}" class="mws-gallery-btn"><i class="icon-trash"></i></a>
                         </span>
                             </li>
                         @endforeach
