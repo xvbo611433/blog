@@ -6,24 +6,22 @@
         <div class="mws-panel-header">
             <span>类别列表</span>
         </div>
-        @if(session('success'))
+            @if(session('success'))
             <div class="mws-form-message success">
 
 
                 {{session('success')}}
             </div>
 
-        @endif
+            @else  
 
-        @if (count($errors) > 0)
             <div class="mws-form-message error">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
+
+
+                {{session('error')}}
+
             </div>
-        @endif
+            @endif
         <div class="mws-panel-body no-padding">
             <table class="mws-table">
                 <thead>

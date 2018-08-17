@@ -1,4 +1,5 @@
 @extends('admin.layout.index');
+@section('title', $title)
 @section('container')
 
 

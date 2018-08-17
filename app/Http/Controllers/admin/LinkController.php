@@ -27,7 +27,7 @@ class LinkController extends Controller
         }
 
         $data = $link->orderBy('id', 'asc')->paginate($page_count);
-        return view('admin/link/index', ['title' => '文章列表', 'data' => $data, 'search' => $request->all()]);
+        return view('admin/link/index', ['title' => '友情链接列表', 'data' => $data, 'search' => $request->all()]);
     }
 
     /**
