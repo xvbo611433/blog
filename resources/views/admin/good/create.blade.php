@@ -2,6 +2,7 @@
 
 @section('title',$title)
 @section('container')
+
     <div class="mws-panel grid_8">
         <div class="mws-panel-header">
             <span>添加文章</span>
@@ -28,6 +29,12 @@
                         </div>
                     </div>
                     <div class="mws-form-row">
+                        <label class="mws-form-label">文章摘要</label>
+                        <div class="mws-form-item">
+                            <textarea rows="" cols="" class="large" name="abs"></textarea>
+                        </div>
+                    </div>                    
+                    <div class="mws-form-row">
                         <label class="mws-form-label">文章内容</label>
                         <div class="mws-form-item">
                         <!-- 加载编辑器的容器 -->
@@ -41,9 +48,30 @@
                             var ue = UE.getEditor('container');
                         </script>
                         </div>
-                        <div class="mws-form-row">
-                            <input type="submit" value="提交" class="btn btn-success btn-block btn-amc-mse">
+
+                    </div>
+                    <div class="mws-form-row">
+                        <label class="mws-form-label">缩略图</label>
+                        <div class="mws-form-item">
+                            
+                                                    <!-- 加载编辑器的容器 -->
+                        <script id="gpic" name="gpic" type="text/plain">
+                           
+                        </script>
+                        <!-- 配置文件 -->
+
+                        <!-- 实例化编辑器 -->
+                        <script type="text/javascript" >
+                        
+                            var ue = UE.getEditor('gpic',{toolbars: [['simpleupload']  ]});
+        
+                  
+                        </script>
                         </div>
+                    </div>                    
+                     <div class="mws-form-row">
+                            <input type="submit" value="提交" class="btn btn-success btn-block btn-amc-mse">
+                        
                     </div>
 
 

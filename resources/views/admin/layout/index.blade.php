@@ -44,9 +44,10 @@
     <!-- 编辑器源码文件 -->
     <script type="text/javascript" src="/utf8-php/ueditor.all.js"></script>
      <link rel="stylesheet" href="/admin/style/css/ch-ui.admin.css">
-    <link rel="stylesheet" href="/admin/style/font/css/font-awesome.min.css}">
+    <link rel="stylesheet" href="/admin/style/font/css/font-awesome.min.css">
     <script type="text/javascript" src="/admin/style/js/jquery.js"></script>
     <script type="text/javascript" src="/admin/style/js/ch-ui.admin.js"></script>
+
     <title>@yield('title')</title>
 
 </head>

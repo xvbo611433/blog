@@ -75,9 +75,12 @@
                         </th>
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" style="width: 247px;" aria-label="Platform(s): activate to sort column ascending">
-                            文章简介
+                            缩略图
                         </th>                        
-
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
+                        rowspan="1" colspan="1" style="width: 247px;" aria-label="Platform(s): activate to sort column ascending">
+                            文章简介
+                        </th>  
 
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
 
@@ -106,10 +109,13 @@
                         <td class=" ">
                             {{$v['gname']}}
                         </td>
+                         <td class=" ">
+                            {!!$v['gpic']!!}
+                        </td>                       
                         <td class=" ">
                             {{$v['abs']}}
                         </td>                        
-
+                        
 
 
                          <td class=" ">
