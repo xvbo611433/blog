@@ -19,6 +19,7 @@ class IndexController extends Controller
     {
         $cate = Cate::getCate();
         $good = Good::get();
+
         $data = Image::all();
         // dump($cate);die;
         return view('home/index/index', ['title' => '前台首页', 'cate' => $cate,'good'=>$good,'data'=>$data]);
@@ -51,10 +52,15 @@ class IndexController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
+        
+         $cate = Cate::getCate();
+         $good = Good::get();
+         $essay = Good::find($id);
+         // dump($essay);die;
 
-        return view('/home/index/show');
+        return view('/home/index/show',['title'=>'文章详情','good'=>$good,'essay'=>$essay,'cate'=>$cate]);
     }
 
     /**
