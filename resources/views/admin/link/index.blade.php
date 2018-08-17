@@ -18,7 +18,7 @@
                 {{session('success')}}
 
             </div>
-            <form action="/admin/good" method='get'>
+            <form action="/admin/link" method='get'>
                 <div id="DataTables_Table_1_length" class="dataTables_length">
                     <label>
                         显示
@@ -67,24 +67,21 @@
                         </th>
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" style="width: 266px;" aria-label="Browser: activate to sort column ascending">
-                            文章所属类别
+                           友情链接名称
                         </th>
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" style="width: 247px;" aria-label="Platform(s): activate to sort column ascending">
-                            文章名称
+                            友情链接地址
                         </th>
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" style="width: 170px;" aria-label="Engine version: activate to sort column ascending">
-                            文章内容
+                            友情链接图片
 
                          </th>
-
-                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
-
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" style="width: 126px;" aria-label="CSS grade: activate to sort column ascending">
-                            更新时间
-                        </th>                                                                    
+                           友情链接说明
+                        </th>
 
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" style="width: 126px;" aria-label="CSS grade: activate to sort column ascending">
@@ -98,29 +95,27 @@
 
                     <tr class="@if($k % 2 == 1)  odd   @else even  @endif">
                         <td class="">
-                            {{$v['gid']}}
+                            {{$v['id']}}
                         </td>
                         <td class=" ">
-                            {{$v['goods_cate']['cname']}}
+                            {{$v['LinkName']}}
                         </td>
                         <td class=" ">
-                            {{$v['gname']}}
-                        </td>
-                        <td class=" ">
-                            {!!$v['content']!!}
-
+                            {{$v['LinkAddress']}}
                         </td>
 
+                        <td style="width: 165px">
+                         <img src="{{$v['LinkInfo']}}">
+                        </td>
 
                          <td class=" ">
-                            {{$v['updated_at']}}
-
+                            {{$v['Explain']}}
                         </td>                                                
-                        </td>
+ 
 
                          <td class=" ">
-                         <a href="/admin/good/{{$v['gid']}}/edit"><button class="btn btn-danger">修改</button></a>
-                    <form action="/admin/good/{{$v['gid']}}" method="post" style="display: inline;">
+                         <a href="/admin/link/{{$v['id']}}/edit"><button class="btn btn-danger">修改</button></a>
+                    <form action="/admin/link/{{$v['id']}}" method="post" style="display: inline;">
                     {{csrf_field()}}
                     {{method_field('DELETE')}}
                     <input id="ha" type="submit"  class="btn btn-danger" value="删除">

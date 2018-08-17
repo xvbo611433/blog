@@ -251,10 +251,11 @@
 
                 <div id="mws-username">
                     Welcome
-                <?php
-                    $data = session('login','uname');
-                    echo $data['uname'];
+                    <?php
+                        $data=session('login');
+                        echo $data['uname'];
                     ?>
+
 
 
                 </div>

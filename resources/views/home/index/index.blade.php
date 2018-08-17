@@ -1,4 +1,3 @@
-
 @extends('home.layout.index');
 @section('container')
     <article>
@@ -6,7 +5,7 @@
         <div class="picsbox">
             <div class="banner">
                 <div id="banner" class="fader">
-                    @foreach($data as $k=>$v)
+                    @foreach($data as $v)
                     <li class="slide"><a href="/" target="_blank"><img src="{{ $v['image'] }}"><span
                                     class="imginfo">{{ $v['describe'] }}</span></a></li>
                     @endforeach
@@ -31,16 +30,16 @@
         <div class="blank"></div>
         <!--blogsbox begin-->
         <div class="blogsbox">
-            @foreach($good as $k => $v)
+            @foreach($good as $v)
                 <div class="blogs" data-scroll-reveal="enter bottom over 1s">
-                    <h3 class="blogtitle"><a href="/" target="_blank">{{$v['gname']}}</a></h3>
-                    <span class="blogpic"><a href="/" title=""><img src="/home/images/toppic01.jpg" alt=""></a></span>
-                    <p class="blogtext">{!!$v['abs']!!} </p>
+                    <h3 class="blogtitle"><a href="/home/show/{{ $v['gid'] }}" target="_blank">{{$v['gname']}}</a></h3>
+                    <span class="blogpic"><a href="/" title="">{!!$v['gpic']!!}</a></span>
+                    <p class="blogtext">{{$v['abs']}} </p>
                     <div class="bloginfo">
                         <ul>
                             <li class="author"><a href="/">杨青</a></li>
-                            <li class="lmname"><a href="/">学无止境</a></li>
-                            <li class="timer">2018-5-13</li>
+                            <li class="lmname"><a href="/">{{$v['goods_cate']['cname']}}</a></li>
+                            <li class="timer">{{$v['updated_at']}}</li>
                             <li class="view"><span>34567</span>已阅读</li>
                             <li class="like">9999</li>
                         </ul>

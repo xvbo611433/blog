@@ -42,6 +42,6 @@ Route::controller('/admin/recycle','admin\RecycleController');//回收站管理
 });
 //前台
 Route::get('/','home\IndexController@index');
-Route::get('/home/show','home\IndexController@show');//详情
+Route::get('/home/show/{id}','home\IndexController@show');//详情
 
-Route::get('/home/image','home\ImageController@index');//详情
+Route::get('/home/image','home\ImageController@index');
