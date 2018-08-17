@@ -37,18 +37,34 @@
                                         <input style="height:60px" type="text" class="small" name="abs" value="{{$data['abs']}}">
                                     </div>
                                 </div>                                
-
                     <div class="mws-form-row">
-                        <label class="mws-form-label">文章内容</label>
+                        <label class="mws-form-label">缩略图</label>
                         <div class="mws-form-item">
                             <!-- 加载编辑器的容器 -->
-                            <script id="container" name="content" type="text/plain">
-                                {!! $data['content'] !!}
+                            <script id="gpic" name="gpic" type="text/plain" style="width:150px,height:150px">
+                              {!! $data['gpic'] !!}
                             </script>
                             <!-- 配置文件 -->
 
                             <!-- 实例化编辑器 -->
                             <script type="text/javascript">
+                                var ue = UE.getEditor('gpic',{toolbars: [['simpleupload']  ]});
+                            </script>
+                        </div>
+                    </div>
+                    <div class="mws-form-row">
+                        <label class="mws-form-label">文章内容</label>
+                        <div class="mws-form-item">
+                            <!-- 加载编辑器的容器 -->
+                            <script id="container" name="content" type="text/plain">
+                                
+                         {!!$data['content']!!}
+                            </script>
+                            <!-- 配置文件 -->
+
+                            <!-- 实例化编辑器 -->
+                            <script type="text/javascript">
+                            
                                 var ue = UE.getEditor('container');
                             </script>
                         </div>
