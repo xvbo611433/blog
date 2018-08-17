@@ -24,13 +24,25 @@
                             <input type="text" class="small" name="LinkAddress" value="{{$data['LinkAddress']}}">
                         </div>
                     </div>
-                    <div class="mws-form-row">
-                        <label class="mws-form-label">友情链接图片</label>
-                        <img width="100px" style="padding-left: 20px" src="{{$data['LinkInfo']}}">
+                        <div class="mws-form-row">
+                        <label class="mws-form-label">LOGO</label>
                         <div class="mws-form-item">
-                            <td><input id="" type="file" name="LinkInfo" value="{{$data['LinkInfo']}}"></td>
+                            
+                                                    <!-- 加载编辑器的容器 -->
+                        <script id="LinkInfo" name="LinkInfo" type="text/plain">
+                           {!!$data['LinkInfo']!!}
+                        </script>
+                        <!-- 配置文件 -->
+
+                        <!-- 实例化编辑器 -->
+                        <script type="text/javascript" >
+                        
+                            var ue = UE.getEditor('LinkInfo',{toolbars: [['simpleupload']  ]});
+        
+                  
+                        </script>
                         </div>
-                    </div>
+                    </div> 
 
                     <div class="mws-form-row">
                         <label class="mws-form-label">友情链接介绍</label>

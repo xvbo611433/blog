@@ -28,7 +28,7 @@
                     			<div class="mws-form-row">
                     				<label class="mws-form-label">文章名称</label>
                     				<div class="mws-form-item">
-                    					<input type="text" class="small" name="gname" value="{{$data['gname']}}">
+                    					<input type="text" class="small" name="gname" value="{{$data['gname']}}" >
                     				</div>
                     			</div>
                                 <div class="mws-form-row">

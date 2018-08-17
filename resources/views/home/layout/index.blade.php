@@ -9,9 +9,7 @@
     <link href="/home/css/base.css" rel="stylesheet">
     <link href="/home/css/index.css" rel="stylesheet">
     <link href="/home/css/m.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/admin/bootstrap/css/bootstrap.min.css" media="screen">
     <script src="/home/js/jquery.min.js" type="text/javascript"></script>
-    <script src="/admin/bootstrap/js/bootstrap.min.js"></script>
     <script src="/home/js/jquery.easyfader.min.js"></script>
     <script src="/home/js/scrollReveal.js"></script>
     <script src="/home/js/common.js"></script>

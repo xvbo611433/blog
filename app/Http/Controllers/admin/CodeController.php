@@ -12,9 +12,9 @@ class CodeController extends Controller
 {
      public function code()
     {
-       //生成验证码图片的Builder对象，配置相应属性
+       //生成验证码图片
         $builder = new CaptchaBuilder;
-        //可以设置图片宽高及字体
+        //设置图片宽高及字体
         $builder->build($width = 200, $height = 50, $font = null);
         //获取验证码的内容
         $phrase = $builder->getPhrase();
