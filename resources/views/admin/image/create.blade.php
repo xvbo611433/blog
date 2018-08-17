@@ -15,9 +15,15 @@
 
                     <legend class="wizard-label" style="display: none;"><i class="icol-accept"></i></legend>
                     <div class="mws-form-row">
+                        <label class="mws-form-label">描述<span class="required">*</span></label>
+                        <div class="mws-form-item">
+                            <input type="text" name="describe"  class="required email large">
+                        </div>
+                    </div>
+                    <div class="mws-form-row">
                         <label class="mws-form-label">轮番图<span class="required">*</span></label>
                         <div class="mws-form-item">
-                            <input type="file" name="image" multiple class="required email large">
+                            <input type="file" name="image"  class="required email large">
                         </div>
                     </div>
                     <div class="mws-form-row">
@@ -28,12 +34,8 @@
                     </div>
 
                 </form>
+
             </div>
-        </div>
-    </div>
-    <div class="mws-panel grid_8">
-        <div class="mws-panel-header">
-            <span><i class="icon-pictures"></i> {{ $image }}</span>
         </div>
         <div class="mws-panel-body">
             <ul class="thumbnails mws-gallery">
@@ -51,6 +53,10 @@
             </ul>
         </div>
     </div>
+
+
+
+
 
 
 

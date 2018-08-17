@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\home;
 
-use App\Http\Controllers\Controller;
-use App\Models\admin\Cate;
-use App\Models\admin\Good;
 use Illuminate\Http\Request;
+
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
 use App\Models\admin\Image;
 
-class IndexController extends Controller
+class ImageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,11 +17,9 @@ class IndexController extends Controller
      */
     public function index()
     {
-        $cate = Cate::getCate();
-        $good = Good::get();
-        $data = Image::all();
-        // dump($cate);die;
-        return view('home/index/index', ['title' => '前台首页', 'cate' => $cate,'good'=>$good,'data'=>$data]);
+//        $data = Image::all();
+////        dd($data);
+//        return view('home.index.index',['data'=>$data]);
     }
 
     /**
@@ -51,10 +49,9 @@ class IndexController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-
-        return view('/home/index/show');
+        //
     }
 
     /**

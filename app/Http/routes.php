@@ -20,7 +20,7 @@ Route::get('/code','admin\CodeController@code');//验证码
 Route::controller('/login','admin\LoginController');//用户登录
 
 Route::group(['middleware'=>'login'],function(){
-// Route::get('admin/index','admin\IndexController@index');
+
 
 Route::resource('/admin/user','admin\UserController');//后台用户控制器
 
@@ -43,3 +43,5 @@ Route::controller('/admin/recycle','admin\RecycleController');//回收站管理
 //前台
 Route::get('/','home\IndexController@index');
 Route::get('/home/show','home\IndexController@show');//详情
+
+Route::get('/home/image','home\ImageController@index');//详情

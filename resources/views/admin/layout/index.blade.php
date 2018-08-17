@@ -43,10 +43,12 @@
     <script type="text/javascript" src="/utf8-php/ueditor.config.js"></script>
     <!-- 编辑器源码文件 -->
     <script type="text/javascript" src="/utf8-php/ueditor.all.js"></script>
+
      <link rel="stylesheet" href="/admin/style/css/ch-ui.admin.css">
     <link rel="stylesheet" href="/admin/style/font/css/font-awesome.min.css}">
     <script type="text/javascript" src="/admin/style/js/jquery.js"></script>
     <script type="text/javascript" src="/admin/style/js/ch-ui.admin.js"></script>
+
     <title>@yield('title')</title>
 
 </head>
@@ -248,8 +250,13 @@
             <div id="mws-user-functions">
 
                 <div id="mws-username">
+                    Welcome
+                <?php
+                    $data = session('login','uname');
+                    echo $data['uname'];
+                    ?>
 
-                    Hello,{{ session('login') }}
+
                 </div>
                 <ul>
                     <li><a href="/admin/index/edit">更改密码</a></li>
@@ -326,7 +333,7 @@
                     <a href="#"><i class="icon-picture"></i>轮番图管理</a>
                     <ul class='closed'>
                         <li class="icon-add-contact"><a href="/admin/image/create">添加轮番图</a></li>
-                        <li><a href="/admin/image">浏览轮番图</a></li>
+
 
                     </ul>
                 </li>
@@ -338,11 +345,7 @@
                     </ul>
                 </li>
                 <li class="active">
-                    <a href="#"><i class="icon-trash"></i>回收站</a>
-                    <ul class='closed'>
-                        <li><a href="/admin/recycle/index">回收列表</a></li>
-                        <li><a href="/admin/recycle"></a></li>
-                    </ul>
+                    <a href="/admin/recycle/index"><i class="icon-trash"></i>回收站</a>
                 </li>
             </ul>
 

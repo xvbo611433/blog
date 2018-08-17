@@ -27,7 +27,7 @@ class LoginController extends Controller
     public function postGologin(Request $request)
     {
         //获取用户输入信息
-        $data = $request->except('_token');
+        $data = $request->except('_token','s');
         $uname = $data['uname'];
         $upwd = $data['upwd'];
         //检验验证码是否正确
@@ -35,21 +35,15 @@ class LoginController extends Controller
             return back()->with('error', '验证码输入错误');
         }
         //查询数据库是否存在用户
-        $tem = user::where('uname', $uname)->first();
+        $tem = user::where('uname', $uname)->where('upwd',$upwd)->first();
 
-        // //验证用户名是否存在
-        if (empty($tem)) {
-            return back()->with('error', '用户名不存在');
-        }
-        // //验证密码
-        if ($upwd != $tem['upwd']) {
-            return back()->with('error', '密码错误');
-        } else {
-            // //取值并给session赋值
-
-            // dump($info);die;
-            session::put(['login' => $tem['uname']]);
+        // 验证密码
+        if ($tem) {
+        // 取值并给session赋值
+            session(['login' => $tem]);
             return redirect('/admin/user');
+            } else {
+            return back()->with('error', '密码错误');
         }
     }
 
@@ -59,5 +53,6 @@ class LoginController extends Controller
         session(['login' => null]);
         return redirect('/login');
     }
+
 
 }

@@ -58,6 +58,7 @@ class ImageController extends Controller
         // 添加数据库
         $image = new Image;
         $image->image = $data['image'];
+        $image->describe = $request->input('describe');
         $res = $image->save();
         if ($res) {
             // 成功返回列表页

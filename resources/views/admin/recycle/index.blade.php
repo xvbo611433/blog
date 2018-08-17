@@ -17,12 +17,12 @@
                                    aria-describedby="DataTables_Table_0_info">
                                 <tbody role="alert" aria-live="polite" aria-relevant="all">
                                 @foreach($data as $k=>$v)
-                                    <tr class="odd">
+                                    <tr class="odd" >
                                         <td class="  sorting_1">{{ $v['gid'] }}</td>
-                                        <td class=" ">{{ $v['gname'] }}</td>
+                                        <td class=" " style="width: 300px;height: 50px;overflow:hidden">{{ $v['gname'] }}</td>
                                         <td class=" ">{{ $v['id'] }}</td>
 
-                                        <td class=" ">{{ $v['content'] }}</td>
+                                        <td class=" " >{!! $v['content'] !!}</td>
 
                                         <td class=" ">
                                         <span class="btn-group">

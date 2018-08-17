@@ -12,6 +12,12 @@
                       method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     {{ method_field('PUT') }}
+                    <div class="mws-form-row">
+                        <label class="mws-form-label">描述<span class="required">*</span></label>
+                        <div class="mws-form-item">
+                            <input type="text" name="describe" value="{{ $data['describe'] }}" class="required email large">
+                        </div>
+                    </div>
 
                     <div class="mws-form-row">
                         <label class="mws-form-label">轮番图<span class="required">*</span></label>
