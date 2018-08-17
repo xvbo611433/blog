@@ -1,4 +1,5 @@
 @extends('home.layout.index');
+<<<<<<< Updated upstream
 @section('title',$title)
 @section('container')
 
@@ -249,4 +250,8 @@
 
 
 </body>
+=======
+@section('container')
+
+>>>>>>> Stashed changes
 @endsection

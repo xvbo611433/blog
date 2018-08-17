@@ -5,9 +5,18 @@
         <div class="picsbox">
             <div class="banner">
                 <div id="banner" class="fader">
+<<<<<<< Updated upstream
                     @foreach($data as $v)
                     <li class="slide"><a href="/" target="_blank"><img src="{{ $v['image'] }}"><span
                                     class="imginfo">{{ $v['describe'] }}</span></a></li>
+=======
+                    @foreach($data as $k=>$v)
+                    <li class="slide">
+                        <a href="#" target="_blank"><img src="{{ $v['image'] }}">
+                            <span class="imginfo">{{ $v['describe'] }}</span>
+                        </a>
+                    </li>
+>>>>>>> Stashed changes
                     @endforeach
                     <div class="fader_controls">
                         <div class="page prev" data-target="prev">&lsaquo;</div>
@@ -32,9 +41,15 @@
         <div class="blogsbox">
             @foreach($good as $v)
                 <div class="blogs" data-scroll-reveal="enter bottom over 1s">
+<<<<<<< Updated upstream
                     <h3 class="blogtitle"><a href="/home/show/{{ $v['gid'] }}" target="_blank">{{$v['gname']}}</a></h3>
                     <span class="blogpic"><a href="/" title="">{!!$v['gpic']!!}</a></span>
                     <p class="blogtext">{{$v['abs']}} </p>
+=======
+                    <h3 class="blogtitle"><a href="/" target="_blank">{{$v['gname']}}</a></h3>
+                    <span class="blogpic"><a href="/" title=""><img src="{!! $v['gpic'] !!}" alt=""></a></span>
+                    <p class="blogtext">{!!$v['abs']!!} </p>
+>>>>>>> Stashed changes
                     <div class="bloginfo">
                         <ul>
                             <li class="author"><a href="/">杨青</a></li>

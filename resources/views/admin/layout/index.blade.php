@@ -251,9 +251,15 @@
 
                 <div id="mws-username">
                     Welcome
+<<<<<<< Updated upstream
                     <?php
                         $data=session('login');
                         echo $data['uname'];
+=======
+                <?php
+                    $data = session('login');
+                    echo $data['uname'];
+>>>>>>> Stashed changes
                     ?>
 
 

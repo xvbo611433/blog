@@ -37,10 +37,13 @@ class RecycleController extends Controller
         //单条恢复
         $res = Good::withTrashed()->where('id', $id)->restore();
         $image = Image::withTrashed()->where('id', $id)->restore();
-        if ($res || $image) {
+        if ($res) {
             // 成功返回列表页
-            return redirect('/admin/recycle')->with('success', '恢复成功');
-        } else {
+            return redirect('/admin/good')->with('success', '恢复成功');
+        } else if($image) {
+            // 成功返回列表页
+            return redirect('/admin/create')->with('success', '恢复成功');
+        }else{
             // 失败返回
             return back()->with('error','恢复失败');
         }
@@ -57,10 +60,12 @@ class RecycleController extends Controller
         //恢复全部
         $res = Good::withTrashed()->restore();
         $image = Image::withTrashed()->restore();
-        if ($res || $image) {
+        if ($res) {
             // 成功返回列表页
-            return redirect('/admin/recycle')->with('success', '恢复成功');
-        } else {
+            return redirect('/admin/good')->with('success', '恢复成功');
+        } else if($image) {
+            return redirect('/admin/create')->with('success', '恢复成功');
+        }else{
             // 失败返回
             return back()->with('error','恢复失败');
         }
@@ -77,12 +82,14 @@ class RecycleController extends Controller
 
         $res = Good::withTrashed()->where('id',$id)->forceDelete();
         $image = Image::withTrashed()->where('id',$id)->forceDelete();
-        if ($res || $image) {
+        if ($res) {
             // 成功返回列表页
-            return redirect('/admin/index')->with('success', '删除成功');
-        } else {
+            return redirect('/admin/good')->with('success', '恢复成功');
+        } else if($image) {
+            return redirect('/admin/create')->with('success', '恢复成功');
+        }else{
             // 失败返回
-            return back()->with('error','删除失败');
+            return back()->with('error','恢复失败');
         }
     }
 
@@ -96,12 +103,14 @@ class RecycleController extends Controller
     {
         $res = Good::withTrashed()->where('deleted_at','>',1)->forceDelete();
         $image = Image::withTrashed()->where('deleted_at','>',1)->forceDelete();
-        if ($res || $image) {
+        if ($res) {
             // 成功返回列表页
-            return redirect('/admin/index')->with('success', '删除成功');
-        } else {
+            return redirect('/admin/good')->with('success', '恢复成功');
+        } else if($image) {
+            return redirect('/admin/create')->with('success', '恢复成功');
+        }else{
             // 失败返回
-            return back()->with('error','删除失败');
+            return back()->with('error','恢复失败');
         }
     }
 

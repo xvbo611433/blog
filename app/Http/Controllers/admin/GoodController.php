@@ -24,7 +24,7 @@ class GoodController extends Controller
         $page_count = $request->input('page_count', 5);
         $goods = new Good(); //创建数据对象
         if (isset($search) && !empty($search)) {
-            $goods = $goods->where('gname', 'like', '%' . $search . '%');
+            $goods = $goods->where('gname', 'like', '%' . $search . '%')->where(O);
         }
 
         $cate_data = Cate::get();
