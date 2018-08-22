@@ -49,6 +49,12 @@
                         <input type="text" name='search' aria-controls="DataTables_Table_1">
                     </label>
 
+                    <select name="id" lay-filter="aihao">
+                        <option value="0">---商品分类---</option>
+                        @foreach($cate_data as $value)
+                        <option  value="{{$value['id']}}" >{{$value['cname']}}</option>
+                        @endforeach
+                    </select>
                     <button class='btn btn-info'>搜索</button>
                 </div>
             </form>

@@ -133,7 +133,7 @@
 
 
 
-        <div id="pages">{!! $data->appends($search)->render() !!}</div>
+        <div id="page_page">{!! $data->appends($search)->render() !!}</div>
 
 
     </div>

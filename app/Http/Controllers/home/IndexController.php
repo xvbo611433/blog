@@ -20,9 +20,9 @@ class IndexController extends Controller
     public function index(request $request)
     {
 
-        $count = $request->input('count', 10);
+        
         // dump($count);die;
-        $good = Good::orderBy('created_at', 'desc')->paginate($count);
+        $good = Good::orderBy('created_at', 'desc')->paginate(7);
 
         $link = Link::get();
         // dd($link);

@@ -19,7 +19,8 @@ class GoodController extends Controller
     public function index(request $request)
     {
         $search = $request->input('search', ''); //接受文章名称
-
+        //获取类别信息
+        $cate_data = Cate::getDatecate();
         $count = Good::count(); //获取数量
         // dump($count);die;;
         $page_count = $request->input('page_count', 5); //显示的页数
@@ -29,7 +30,7 @@ class GoodController extends Controller
 
         $goods = $goods->where('gname', 'like', '%' . $search . '%');
 
-        $cate_data = Cate::get();
+       
         // dump($cate_data);die;
         //分页
         $data = $goods->paginate($page_count);
@@ -60,17 +61,7 @@ class GoodController extends Controller
     {
         $data = $request->except('_token', '_method', 's');
         // dump($data);die;
-/*        if ($request->hasFile('gpic') == true) {
-            $pic       = $request->file('gpic');
-            $temp_name = time() + rand(10000, 99999);
-            $hz        = $pic->getClientOriginalExtension();
-            $file      = $temp_name . '.' . $hz;
-            $dir       = './upload/' . date('Ymd', time());
-            $filename  = ltrim($dir . '/' . $file, '.');
-            $j         = $pic->move($dir, $filename); //执行上传
 
-            $data['gpic'] = '/upload/' . date('Ymd', time()) . '/' . $temp_name . '.' . $hz;
-        }*/
 
         //添加到数据库
         $good        = new Good;
