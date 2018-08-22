@@ -140,9 +140,6 @@
                 </tbody>
             </table>
 
-            <div class="dataTables_info" id="DataTables_Table_1_info">
-                
-            </div>
 
 
 

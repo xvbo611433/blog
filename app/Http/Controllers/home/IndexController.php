@@ -5,8 +5,10 @@ namespace App\Http\Controllers\home;
 use App\Http\Controllers\Controller;
 use App\Models\admin\Cate;
 use App\Models\admin\Good;
-use Illuminate\Http\Request;
 use App\Models\admin\Image;
+use App\Models\admin\Link;
+use Illuminate\Http\Request;
+use App\Http\Controllers\ShmilyThreePresenter;
 
 class IndexController extends Controller
 {
@@ -15,36 +17,23 @@ class IndexController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(request $request)
     {
-        $cate = Cate::getCate();
-        $good = Good::get();
+
+        $count = $request->input('count', 10);
+        // dump($count);die;
+        $good = Good::orderBy('created_at', 'desc')->paginate($count);
+
+        $link = Link::get();
+        // dd($link);
+
 
         $data = Image::all();
         // dump($cate);die;
-        return view('home/index/index', ['title' => '前台首页', 'cate' => $cate,'good'=>$good,'data'=>$data]);
+        return view('home/index/index', ['title' => '前台首页', 'good' => $good, 'data' => $data, 'link' => $link]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
@@ -52,39 +41,23 @@ class IndexController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        
-         $cate = Cate::getCate();
-         $good = Good::get();
-         $essay = Good::find($id);
-         // dump($essay);die;
-
-        return view('/home/index/show',['title'=>'文章详情','good'=>$good,'essay'=>$essay,'cate'=>$cate]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function show($gid)
     {
         //
+
+        $essay = Good::find($gid);
+        $good = Good::orderBy('created_at', 'desc')->get();
+        // dump($essay);die;
+        $cid = $essay->id;
+        $cate_name = Cate::find($cid)->cname;
+     
+       // dump($cate_name);die;
+
+
+        return view('/home/index/show', ['title' => '文章详情',  'essay' => $essay, 'cate_name' => $cate_name,'good'=>$good]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+
 
     /**
      * Remove the specified resource from storage.
@@ -92,8 +65,16 @@ class IndexController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    function list(Request $request, $id) 
     {
-        //
+        //获取相应类别下文章
+        $good = Good::where('id', $id)->paginate(7);
+        //获取当前分类 名称
+        $cname = Cate::find($id)->cname;
+
+        return view('home/index/list', ['title' => '列表页', 'good' => $good, 'cname' => $cname]);
     }
+
+
+
 }

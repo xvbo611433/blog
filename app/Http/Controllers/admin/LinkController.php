@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\admin\Link;
 use Illuminate\Http\Request;
+use App\Http\Requests\LinkRequest;
 use DB;
 
 class LinkController extends Controller
@@ -20,7 +21,7 @@ class LinkController extends Controller
         $id = $request->input('id', ''); //接收商品类
         $count = Link::count();
         // dd($count);
-        $page_count = $request->input('page_count', 5);
+        $page_count = $request->input('page_count', 2);
         $link = new Link(); //创建数据对象
         if (isset($search) && !empty($search)) {
             $link = $link->where('LinkName', 'like', '%' . $search . '%');
@@ -46,22 +47,14 @@ class LinkController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(LinkRequest $request)
     {
         $data = $request->except('_token', 's');//获取请求
         // dd($data);
-        if ($request->hasFile('LinkInfo') == true) {
-            $pic = $request->file('LinkInfo');
-            $temp_name = time() + rand(10000, 99999);
-            $hz = $pic->getClientOriginalExtension();//后缀名
-            $file = $temp_name . '.' . $hz;
-            $dir = 'link/' . date('Ymd', time());
-            $filename = ltrim($dir . '/' . $file, '.');
-            $j = $pic->move($dir, $filename); //执行上传图片
 
-            $data['LinkInfo'] = '/link/' . date('Ymd', time()) . '/' . $temp_name . '.' . $hz;//存入数据库
-        }
-
+       // if(!$request->hasFile('LinkInfo')) {
+       //  return " ";
+       // }
         $res = Link::insert($data);
         if ($res) {
             return redirect('admin/link')->with('success', '添加成功');
@@ -100,19 +93,11 @@ class LinkController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(LinkRequest $request, $id)
     {
+        //获取请求
         $data = $request->except('_token', '_method', 's');
-        if ($request->hasFile('LinkInfo') == true) {
-            $pic = $request->file('LinkInfo');
-            $temp_name = time() + rand(10000, 99999);
-            $hz = $pic->getClientOriginalExtension();
-            $file = $temp_name . '.' . $hz;
-            $dir = 'link/' . date('Ymd', time());
-            $filename = ltrim($dir . '/' . $file, '.');
-            $pic->move($dir, $filename); //执行上传
 
-            $data['LinkInfo'] = '/link/' . date('Ymd', time()) . '/' . $temp_name . '.' . $hz;
 
             $res = DB::table('blog_links')->where('id', $id)->update($data);
             //做判断
@@ -125,7 +110,7 @@ class LinkController extends Controller
                 return back()->with('error', '修改失败');
 
             }
-        }
+        
     }
 
     /**
@@ -141,7 +126,7 @@ class LinkController extends Controller
         $res = $user->delete();
         // 返回结果
         if ($res) {
-            return redirect('admin/link')->with('success', '删除成功');
+            return redirect($_SERVER['HTTP_REFERER'])->with('success', '删除成功');
         } else {
             return back()->with('error', '删除失败');
         }

@@ -1,29 +1,66 @@
-@extends('home.layout.index');
-@section('title',$title)
-@section('container')
-
+<!doctype html>
+<html>
+<head>
+    <meta charset="gbk">
+    <title>{{$title}}</title>
+   <meta name="keywords" content="个人博客,杨青个人博客,个人博客模板,杨青" />
+    <meta name="description" content="杨青个人博客，是一个站在web前端设计之路的女程序员个人网站，提供个人博客模板免费资源下载的个人原创网站。" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/home/css/base.css" rel="stylesheet">
+    <link href="/home/css/index.css" rel="stylesheet">
+    <link href="/home/css/m.css" rel="stylesheet">
+    <script src="/home/js/jquery.min.js" type="text/javascript"></script>
+    <script src="/home/js/jquery.easyfader.min.js"></script>
+    <script src="/home/js/scrollReveal.js"></script>
+    <script src="/home/js/common.js"></script>
+    <!--[if lt IE 9]>
+    <script src="js/modernizr.js"></script>
+    <![endif]-->
+</head>
 <body>
 
-      <!--search begin-->
-      <div id="search_bar" class="search_bar">
-        <form id="searchform" action="[!--news.url--]e/search/index.php" method="post" name="searchform">
-          <input class="input" placeholder="想搜点什么呢..." type="text" name="keyboard" id="keyboard">
-          <input type="hidden" name="show" value="title">
-          <input type="hidden" name="tempid" value="1">
-          <input type="hidden" name="tbname" value="news">
-          <input type="hidden" name="Submit" value="搜索">
-          <span class="search_ico"></span>
-        </form>
-      </div>
-      <!--search end--> 
-    </nav>
-  </div>
-  <!--menu end--> 
+ <a name="top"></a>
+<header>
+    <!--menu begin-->
+    <div class="menu">
+        <nav class="nav" id="topnav">
+            <h1 class="logo"><a href="http://www.yangqq.com">微博客</a></h1>
+            <li><a href="/">网站首页</a></li>
+
+
+                        <?php $cate = \App\Models\admin\Cate::getcates();?>
+
+
+            @foreach($cate as $v)
+
+                <li><a href="/home/list/{{$v->id}}">{{$v->cname}}</a>
+                    <ul class="sub-nav">
+                        @foreach($v->child_cate as $vv)
+                            <li><a href="/home/list/{{$vv->id}}">{{$vv->cname}}</a></li>
+                        @endforeach
+
+                    </ul>
+                @endforeach
+                <!--search begin-->
+                    <div id="search_bar" class="search_bar">
+                        <form id="searchform" action="[!--news.url--]e/search/index.php" method="post"
+                              name="searchform">
+                            <input class="input" placeholder="想搜点什么呢..." type="text" name="keyboard" id="keyboard">
+                            <input type="hidden" name="show" value="title"/>
+                            <input type="hidden" name="tempid" value="1"/>
+                            <input type="hidden" name="tbname" value="news">
+                            <input type="hidden" name="Submit" value="搜索"/>
+                            <span class="search_ico"></span>
+                        </form>
+                    </div>
+                    <!--search end-->
+        </nav>
+    </div>
   <!--mnav begin-->
   <div id="mnav">
-    <h2><a href="http://www.yangqq.com" class="mlogo">杨青博客</a><span class="navicon"></span></h2>
+    <h2><a href="http://www.yangqq.com" class="mlogo">微博客</a><span class="navicon"></span></h2>
     <dl class="list_dl">
-      <dt class="list_dt"> <a href="/">网站首页</a> </dt>
+      <dt class="list_dt"> <a href="index.html">网站首页</a> </dt>
       <dt class="list_dt"> <a href="about.html">关于我</a> </dt>
       <dt class="list_dt"> <a href="#">模板分享</a> </dt>
       <dd class="list_dd">
@@ -32,51 +69,34 @@
           <li><a href="share.html">国外Html5模板</a></li>
           <li><a href="share.html">企业网站模板</a></li>
         </ul>
-      </dd>
-      <dt class="list_dt"> <a href="#">学无止境</a> </dt>
-      <dd class="list_dd">
-        <ul>
-          <li><a href="list.html">心得笔记</a></li>
-          <li><a href="list.html">CSS3|Html5</a></li>
-          <li><a href="list.html">网站建设</a></li>
-          <li><a href="list.html">推荐工具</a></li>
-          <li><a href="list.html">JS实例索引</a></li>
-        </ul>
-      </dd>
-      <dt class="list_dt"> <a href="#">慢生活</a> </dt>
-      <dd class="list_dd">
-        <ul>
-          <li><a href="life.html">日记</a></li>
-          <li><a href="life.html">欣赏</a></li>
-          <li><a href="life.html">程序人生</a></li>
-          <li><a href="life.html">经典语录</a></li>
-        </ul>
-      </dd>
+
       <dt class="list_dt"> <a href="time.html">时间轴</a> </dt>
       <dt class="list_dt"> <a href="gbook.html">留言</a> </dt>
     </dl>
   </div>
-  <!--mnav end--> 
+  <!--mnav end-->
+
 </header>
+
+
 <article>
-  <h1 class="t_nav"><span>您现在的位置是：首页 &gt; 慢生活 &gt; 程序人生</span><a href="/" class="n1">网站首页</a><a href="/" class="n2">慢生活</a></h1>
+  <h1 class="t_nav"><span>不要轻易放弃。学习成长的路上，我们长路漫漫，只因学无止境。 </span><a href="/" class="n1">网站首页</a><a href="/" class="n2">{{$cate_name}}</a></h1>
   <div class="infosbox">
     <div class="newsview">
 
       <h3 class="news_title">{{$essay['gname']}}</h3>
       <div class="bloginfo">
         <ul>
-          <li class="author"><a href="/">杨青</a></li>
-          <!-- <li class="lmname"><a href="/">{{$essay['goods_cate']['cname']}}</a></li> -->
+
+          <li class="lmname"><a href="/">{{$essay['goods_cate']['cname']}}</a></li>
           <li class="timer">{{$essay['updated_at']}}</li>
-          <li class="view">4567已阅读</li>
-          <li class="like">8888888</li>
+
         </ul>
-      </div> 
+      </div>
 
       <div class="tags"><a href="/" target="_blank">个人博客</a> &nbsp; <a href="/" target="_blank">小世界</a></div>
       <div class="news_about"><strong>简介</strong>{{$essay['abs']}}</div>
-      <div class="news_con"> 本文很长，记录了我博客建站初到现在的过程，还有我从毕业到现在的一个状态，感谢您的阅读，如果你还是学生，也许你能从此文中，找到我们曾经相似的地方。如果你已经工作，有自己的博客，我想，你并没有忘记当初建立个人博客的初衷吧！<br>
+      <div class="news_con">
 {!!$essay['content']!!} </div>
     </div>
     <div class="share">
@@ -106,7 +126,7 @@
       $(".hide_box").fadeToggle();
       $(".shang_box").fadeToggle();
     }
-    </script> 
+    </script>
       </div>
     </div>
     <div class="nextinfo">
@@ -136,62 +156,19 @@
     </div>
   </div>
   <div class="sidebar">
-    <div class="zhuanti">
-      <h2 class="hometitle">特别推荐</h2>
-      <ul>
-        <li> <i><img src="images/banner03.jpg"></i>
-          <p>帝国cms调用方法 <span><a href="/">阅读</a></span> </p>
-        </li>
-        <li> <i><img src="images/b04.jpg"></i>
-          <p>5.20 我想对你说 <span><a href="/">阅读</a></span></p>
-        </li>
-        <li> <i><img src="images/b05.jpg"></i>
-          <p>个人博客，属于我的小世界！ <span><a href="/">阅读</a></span></p>
-        </li>
-      </ul>
-    </div>
-    <div class="tuijian">
-      <h2 class="hometitle">推荐文章</h2>
-      <ul class="tjpic">
-        <i><img src="images/toppic01.jpg"></i>
-        <p><a href="/">别让这些闹心的套路，毁了你的网页设计</a></p>
-      </ul>
-      <ul class="sidenews">
-        <li> <i><img src="images/toppic01.jpg"></i>
-          <p><a href="/">别让这些闹心的套路，毁了你的网页设计</a></p>
-          <span>2018-05-13</span> </li>
-        <li> <i><img src="images/toppic02.jpg"></i>
-          <p><a href="/">给我模板PSD源文件，我给你设计HTML！</a></p>
-          <span>2018-05-13</span> </li>
-        <li> <i><img src="images/v1.jpg"></i>
-          <p><a href="/">别让这些闹心的套路，毁了你的网页设计</a></p>
-          <span>2018-05-13</span> </li>
-        <li> <i><img src="images/v2.jpg"></i>
-          <p><a href="/">给我模板PSD源文件，我给你设计HTML！</a></p>
-          <span>2018-05-13</span> </li>
-      </ul>
-    </div>
-    <div class="tuijian">
-      <h2 class="hometitle">点击排行</h2>
-      <ul class="tjpic">
-        <i><img src="images/toppic01.jpg"></i>
-        <p><a href="/">别让这些闹心的套路，毁了你的网页设计</a></p>
-      </ul>
-      <ul class="sidenews">
-        <li> <i><img src="images/toppic01.jpg"></i>
-          <p><a href="/">别让这些闹心的套路</a></p>
-          <span>2018-05-13</span> </li>
-        <li> <i><img src="images/toppic02.jpg"></i>
-          <p><a href="/">给我模板PSD源文件，我给你设计HTML！</a></p>
-          <span>2018-05-13</span> </li>
-        <li> <i><img src="images/v1.jpg"></i>
-          <p><a href="/">别让这些闹心的套路，毁了你的网页设计</a></p>
-          <span>2018-05-13</span> </li>
-        <li> <i><img src="images/v2.jpg"></i>
-          <p><a href="/">给我模板PSD源文件，我给你设计HTML！</a></p>
-          <span>2018-05-13</span> </li>
-      </ul>
-    </div>
+
+            <div class="tuijian">
+                <h2 class="hometitle">推荐文章</h2>
+                <ul class="tjpic">
+                 @foreach($good as $v)
+                    <i>{!!$v['gpic']!!}</i>
+                    <p><a href="/home/show/{{ $v['gid'] }}">{{$v['abs']}}</a></p>
+
+                    @endforeach
+                </ul>
+
+            </div>
+
     <div class="cloud">
       <h2 class="hometitle">标签云</h2>
       <ul>
@@ -201,21 +178,20 @@
     <div class="guanzhu" id="follow-us">
       <h2 class="hometitle">关注我们 么么哒！</h2>
       <ul>
-        <li class="sina"><a href="/" target="_blank"><span>新浪微博</span>杨青博客</a></li>
-        <li class="tencent"><a href="/" target="_blank"><span>腾讯微博</span>杨青博客</a></li>
-        <li class="qq"><a href="/" target="_blank"><span>QQ号</span>476847113</a></li>
-        <li class="email"><a href="/" target="_blank"><span>邮箱帐号</span>dancesmiling@qq.com</a></li>
-        <li class="wxgzh"><a href="/" target="_blank"><span>微信号</span>yangqq_1987</a></li>
-        <li class="wx"><img src="images/wx.jpg"></li>
+        <li class="sina"><a href="/" target="_blank"><span>新浪微博</span>微博客</a></li>
+        <li class="tencent"><a href="/" target="_blank"><span>腾讯微博</span>微博客</a></li>
+        <li class="qq"><a href="/" target="_blank"><span>QQ号</span></a></li>
+        <li class="email"><a href="/" target="_blank"><span>邮箱帐号</span></a></li>
+        <li class="wxgzh"><a href="/" target="_blank"><span>微信号</span> </a></li>
+        <li class="wx"><img src="/home/images/wx.jpg"></li>
       </ul>
     </div>
   </div>
 </article>
 <footer>
-  <p>Design by <a href="http://www.yangqq.com" target="_blank">杨青个人博客</a> <a href="/">蜀ICP备11002373号-1</a></p>
+    <p>Design by <a href="http://www.blog.com" target="_blank">微博客</a> <a href="/">蜀ICP备11002373号-1</a></p>
 </footer>
-<a href="#" class="cd-top">Top</a>
-
+<a href="#top" class="cd-top">Top</a>
 
 </body>
-@endsection
+</html>

@@ -129,15 +129,11 @@
                 </tbody>
             </table>
 
-            <div class="dataTables_info" id="DataTables_Table_1_info">
-                Showing 1 to 10 of 57 entries
-            </div>
 
 
 
 
-
-        <div id="page_page">{!! $data->appends($search)->render() !!}</div>
+        <div id="pages">{!! $data->appends($search)->render() !!}</div>
 
 
     </div>

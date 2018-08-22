@@ -162,7 +162,7 @@ class GoodController extends Controller
         $res = $good->delete();
         // 返回结果
         if ($res) {
-            return redirect('admin/good')->with('success', '删除成功');
+            return redirect($_SERVER['HTTP_REFERER'])->with('success', '删除成功');
         } else {
             return back()->with('error', '删除失败');
         }

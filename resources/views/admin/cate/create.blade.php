@@ -28,7 +28,7 @@
                     <div class="mws-form-row">
                         <label class="mws-form-label">分类名称</label>
                         <div class="mws-form-item">
-                            <input type="text" class="small" name="cname" placeholder="请输入要添加的子类">
+                            <input type="text" class="small" name="cname" placeholder="请输入要添加的分类">
                         </div>
                     </div>
 
@@ -36,7 +36,7 @@
                         <label class="mws-form-label">所属类别</label>
                         <div class="mws-form-item">
                         <select class="small" name="pid">
-                              <option value="0">--请选择--</option>
+                              <option value="0">--顶级分类--</option>
 
                             @foreach($cate_data as $value)
                               <option value="{{$value['id']}}">{{$value['cname']}}</option>

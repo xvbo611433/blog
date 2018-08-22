@@ -13,7 +13,7 @@ class GoodRequest extends Request
      */
     public function authorize()
     {
-        return true;
+        return true;//开启自动验证
     }
 
     /**
@@ -23,12 +23,13 @@ class GoodRequest extends Request
      */
     public function rules()
     {
+        //设置条件
         return [
        
             'abs' => 'required',
             'gname' => 'required',
             'content' => 'required',
-            'gpic' => 'required',
+            // 'gpic' => 'required',
         ];
     }
 
@@ -39,6 +40,7 @@ class GoodRequest extends Request
      */
     public function messages()
     {
+        
         return [
             'abs.required'=>'摘要不能问空',
 
