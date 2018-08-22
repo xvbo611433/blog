@@ -28,6 +28,9 @@ Route::resource('/admin/cate','admin\CateController');//后台类别控制器
 
 Route::get('admin/cate/childcate/{id}','admin\CateController@childcate');
 
+Route::get('/home/comment/{id}','home\CommentController@index');//评论
+Route::post('/home/comment/store','home\CommentController@test');//评论
+Route::post('/home/comment/destory','home\CommentController@destroy');//删除评论
 
 Route::resource('/admin/comment','admin\CommentController');//评论管理控制器
 
@@ -43,4 +46,12 @@ Route::controller('/admin/recycle','admin\RecycleController');//回收站管理
 //前台
 Route::get('/','home\IndexController@index');
 Route::get('/home/show/{id}','home\IndexController@show');//详情
+
+
+Route::get('/register','home\LoginController@create');//注册
+Route::get('/login','home\LoginController@index');//登陆页面
+Route::post('/info','home\LoginController@info');//验证登陆
+
+Route::post('/home/login/store','home\LoginController@store');
+
 

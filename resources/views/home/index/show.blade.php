@@ -92,53 +92,13 @@
             </div>
             <div class="news_pl">
                 <h2>文章评论</h2>
-                <ul>
-                    <div class="gbko">
-                        <!-- 配置文件 -->
-                        <script type="text/javascript" src="/editor/ueditor.config.js"></script>
-                        <!-- 编辑器源码文件 -->
-                        <script type="text/javascript" src="/editor/ueditor.all.js"></script>
-                        <form action="/admin/comment" method="post" enctype="multipart/form-data">
-                            {{ csrf_field() }}
-                            <input type="hidden" name="gid" class="required large" value="{{ $essay['gid'] }}">
-                            <div class="mws-form-row">
-                                <label class="mws-form-label">内容<span class="required">*</span></label>
-                                <div class="mws-form-item">
-                                    <script id="abc" name="comment" type="text/plain">
-
-                                    </script>
-                                </div>
-                            </div>
-
-                            <input type="submit" value="提交" class="btn btn-success">
-                            <input type="reset" value="重置" class="btn btn-success">
-
-
-                            </fieldset>
-
-                        </form>
+                <div class="container">
+                    <div class="commentbox">
+                        <textarea style="width: 750px;height: 100px;" placeholder="请先登陆......" class="mytextarea" readonly="" id="content"></textarea><br>
+                        <a href="/home/comment/{{ $essay['gid'] }}" class=".btn"><span style="width: 50px;height: 45px;border:1px solid grey;padding: 10px;border-radius: 5px;background:orange">评论</span></a>
 
                     </div>
-                    <!-- 实例化编辑器 -->
-                    <script type="text/javascript">
-                        var ue = UE.getEditor('abc', {
-                            toolbars: [
-                                [
-                                    'undo', //撤销
-                                    'selectall', //全选
-                                    'fontfamily', //字体
-                                    'fontsize', //字号
-                                    'simpleupload', //单图上传
-                                    'emotion', //表情
-                                    'spechars', //特殊字符
-                                    'forecolor', //字体颜色
-
-                                ]
-                            ]
-                        });
-                    </script>
-
-                </ul>
+                </div>
             </div>
         </div>
         <div class="sidebar">
