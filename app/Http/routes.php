@@ -44,7 +44,7 @@ Route::get('/','home\IndexController@index');
 Route::get('/home/show/{id}','home\IndexController@show');//详情
 Route::get('/home/list/{id}','home\IndexController@list');//列表
 Route::get('/register','home\LoginController@create');//注册
-Route::get('/login','home\LoginController@index');//登陆页面
+//Route::get('/login','home\LoginController@index');//登陆页面
 Route::post('/info','home\LoginController@info');//验证登陆
 Route::post('/home/login/store','home\LoginController@store');
 
@@ -54,6 +54,15 @@ Route::post('/home/comment/destroy/{id}','home\CommentController@destroy');//评
 Route::post('/home/comment/store','home\CommentController@test');//评论
 Route::post('/home/comment/destory','home\CommentController@destroy');//删除评论
 
+Route::get('/home/cmt','home\Cmtcontroller@index');
+Route::post('/home/cm','home\Cmtcontroller@store');
+
+Route::get('/home/time','home\TextController@time');
+
 });
 
 
+
+
+
+				

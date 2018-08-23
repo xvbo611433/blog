@@ -32,6 +32,7 @@ class GoodController extends Controller
 
 =======
         //获取类别信息
+         $id = $request -> input('id','');
         $cate_data = Cate::getDatecate();
 >>>>>>> 976cd2cc8f16838c384486e343546346c4fe3c7e
         $count = Good::count(); //获取数量
@@ -41,11 +42,19 @@ class GoodController extends Controller
         
         //搜索条件
 
+<<<<<<< HEAD
         $goods = $goods->where('gname', 'like', '%' . $search . '%');
 >>>>>>> 7b6bfaef0ebd2967131c37ec24027a5ecd273bac
+=======
+        if(isset($search) && !empty($search)){
+          $goods =  $goods::where('gname','like','%'.$search.'%');
+        } 
+        if(isset($id) && !empty($id)){
+          $goods =  $goods->where('id','like','%'.$id.'%');
+        }
 
-       
-        // dump($cate_data);die;
+>>>>>>> d4998680950df6a81c794be5b8eeed76a48cae66
+
         //分页
         $data = $goods->paginate($page_count);
             // 显示到模板

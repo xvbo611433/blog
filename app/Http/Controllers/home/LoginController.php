@@ -76,9 +76,7 @@ class LoginController extends Controller
         $user->password = $request->input('password');
         $user->tel = $request->input('tel');
         $res = $user->save();
-
         if($res){
-            // 成功跳入列表页
             return redirect('/login')->with('success','添加成功');
         }else{
             // 失败返回

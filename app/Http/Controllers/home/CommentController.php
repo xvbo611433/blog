@@ -23,7 +23,7 @@ class CommentController extends Controller
         $user = $request->all();
         // 类别信息
         $essay = Good::find($id);
-        $cate = Cate::getCates();
+        $cate = Cate::getCate();
         return view('home.comment.index',['cate'=>$cate,'user'=>$user,'essay'=>$essay,'title'=>'评论详情页']);
     }
 

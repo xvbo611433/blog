@@ -3,8 +3,8 @@
 <head>
     <meta charset="gbk">
     <title>{{$title}}</title>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="/home/css/base.css" rel="stylesheet">
     <link href="/home/css/index.css" rel="stylesheet">
     <link href="/home/css/m.css" rel="stylesheet">
@@ -12,24 +12,23 @@
     <script src="/home/js/jquery.easyfader.min.js"></script>
     <script src="/home/js/scrollReveal.js"></script>
     <script src="/home/js/common.js"></script>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="/home/bootstrap.min.css">
+    <link rel="stylesheet" href="/home/bs/css/bootstrap-theme.min.css">
+    <script type="text/javascript" src="/home/bs/js/bootstrap.min.js"></script>
     {{--<link rel="stylesheet" href="/home/bs/css/bootstrap-theme.min.css">--}}
     {{--<script type="text/javascript" src="/home/bs/js/bootstrap.min.js"></script>--}}
     <!--[if lt IE 9]>
-   <script src="/home/js/modernizr.js"></script>
+    <script src="/home/js/modernizr.js"></script>
     <![endif]-->
 </head>
 <body>
-
-<a name="top"></a>
 <header>
     <!--menu begin-->
     <div class="menu">
         <nav class="nav" id="topnav">
             <h1 class="logo"><a href="http://www.yangqq.com">微博客</a></h1>
             <li><a href="/">网站首页</a></li>
-            <?php $cate = \App\Models\admin\Cate::getcates();?>
+            <?php $cate = \App\Models\admin\Cate::getCate(0);?>
             @foreach($cate as $v)
                 <li><a href="/home/list/{{$v->id}}">{{$v->cname}}</a>
                     <ul class="sub-nav">
@@ -37,8 +36,9 @@
                             <li><a href="/home/list/{{$vv->id}}">{{$vv->cname}}</a></li>
                         @endforeach
                     </ul>
-            @endforeach
+                @endforeach
                 <!--search begin-->
+                <li><a href="/home/time">时间轴</a></li>
                 <li>
                     <div id="search_bar" class="search_bar">
                         <form id="searchform" action="[!--news.url--]e/search/index.php" method="post"
@@ -52,6 +52,7 @@
                         </form>
                     </div>
                 </li>
+
                 <!--search end-->
         </nav>
     </div>
@@ -95,22 +96,14 @@
                 <p class="blogtext">{{$v['abs']}} </p>
                 <div class="bloginfo">
                     <ul>
-
                         <li class="lmname"><a href="/">{{$v['goods_cate']['cname']}}</a></li>
                         <li class="timer">{{$v['updated_at']}}</li>
-
-
                     </ul>
                 </div>
 
             </div>
         @endforeach
-
-
-
         {!! $good->render() !!}
-
-
     </div>
     <!--blogsbox end-->
     <div class="sidebar">
@@ -157,15 +150,11 @@
             </ul>
         </div>
     </div>
-
-
 </article>
 <footer>
     <p>Design by <a href="http://www.blog.com" target="_blank">微博客</a> <a href="/">蜀ICP备11002373号-1</a></p>
 </footer>
-<a href="#top" class="cd-top">Top</a>
+
 
 </body>
 </html>
-
-

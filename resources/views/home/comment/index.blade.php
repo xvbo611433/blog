@@ -3,7 +3,6 @@
 <head>
     <meta charset="gbk">
     <title>{{$title}}</title>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/home/css/base.css" rel="stylesheet">
     <link href="/home/comment/css/comment.css" rel="stylesheet">
@@ -31,7 +30,7 @@
         <nav class="nav" id="topnav">
             <h1 class="logo"><a href="http://www.yangqq.com">微博客</a></h1>
             <li><a href="/">网站首页</a></li>
-            <?php $cate = \App\Models\admin\Cate::getcates();?>
+
             @foreach($cate as $v)
                 <li><a href="/home/list/{{$v->id}}">{{$v->cname}}</a>
                     <ul class="sub-nav">
@@ -253,21 +252,7 @@
                 <script type="text/javascript">
                     $('.commentAll').on('click', '.removeBlock', function () {
                         var comment = $('.comment-show').find('span').first().val();
-                        // $.ajax({
-                        //     url: '/home/comment/destroy',
-                        //     type:'post',
-                        //     data:{'content':oSize},
-                        //     headers: {
-                        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        //     },
-                        //     success: function(msg){
-                        //         if(msg == 1){
-                        //             alert('评论成功');
-                        //         }
-                        //     },
-                        //     dataType:'json',
-                        //     async:true
-                        // });
+
 
                         var oT = $(this).parents('.date-dz-right').parents('.date-dz').parents('.all-pl-con');
                         if (oT.siblings('.all-pl-con').length >= 1) {

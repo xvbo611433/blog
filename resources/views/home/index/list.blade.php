@@ -27,7 +27,7 @@
             <li><a href="/">网站首页</a></li>
 
 
-                        <?php $cate = \App\Models\admin\Cate::getcates();?>
+                        <?php $cate = \App\Models\admin\Cate::getCate();?>
 
 
             @foreach($cate as $v)
@@ -40,6 +40,7 @@
 
                     </ul>
                 @endforeach
+                                <li><a href="/home/time">时间轴</a></li> 
                 <!--search begin-->
                     <div id="search_bar" class="search_bar">
                         <form id="searchform" action="[!--news.url--]e/search/index.php" method="post"

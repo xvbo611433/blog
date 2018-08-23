@@ -18,9 +18,11 @@ class IndexController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(request $request)
+    public function index()
     {
-        $good = Good::orderBy('created_at', 'desc')->paginate(7);
+        //获取文章按时间排序,分页
+        $good = Good::orderBy('created_at', 'desc')->paginate(8);
+        //获取链接
 
         $link = Link::get();
 
@@ -28,8 +30,6 @@ class IndexController extends Controller
 
         return view('home/index/index', ['title' => '前台首页', 'good' => $good, 'data' => $data, 'link' => $link]);
     }
-
-
 
     /**
      * Display the specified resource.
