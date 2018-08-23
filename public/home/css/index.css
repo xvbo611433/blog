@@ -163,11 +163,11 @@ h1.t_nav { border-bottom: #bfbfbf 1px solid; font-size: 14px; font-weight: norma
 .timebox { position: relative; overflow: hidden }
 .timebox li { overflow: hidden; font-size: 16px; margin: 10px 0; line-height: 44px; }
 .timebox li a { background: #FFF; display: block; float: left; padding: 0 30px; position: relative; -webkit-box-shadow: 0 5px 10px 0 rgba(146, 146, 146, .1); -moz-box-shadow: 0 5px 10px 0 rgba(146, 146, 146, .1); box-shadow: 0 5px 10px 0 rgba(146, 146, 146, .1); -webkit-transition: all .5s ease; -moz-transition: all .5s ease; -ms-transition: all .5s ease; -o-transition: all .5s ease; transition: all .5s ease; }
-.timebox li span { margin-right: 90px; display: block; float: left; background: #f7f7f7; height: 44px; color: #999; -webkit-transition: all .5s ease; -moz-transition: all .5s ease; -ms-transition: all .5s ease; -o-transition: all .5s ease; transition: all .5s ease; }
-.timebox:before { content: ''; position: absolute; top: 0; bottom: 0; width: 3px; background: #ccc; left: 141px; margin-left: -10px; }
+.timebox li span { margin-right: 225px; display: block; float: left; background: #f7f7f7; height: 44px; color: #999; -webkit-transition: all .5s ease; -moz-transition: all .5s ease; -ms-transition: all .5s ease; -o-transition: all .5s ease; transition: all .5s ease; }
+.timebox:before { content: ''; position: absolute; top: 0; bottom: 0; width: 3px; background: #ccc; left: 250px; margin-left: -10px; }
 .timebox li a:before { right: 100%; border: solid transparent; content: " "; height: 0; width: 0; position: absolute; border-right-color: #fff; border-width: 10px; top: 10px; }
 .timebox li a:after { right: 100%; /* border: solid transparent; */ content: " "; height: 5px; width: 5px; border: 2px solid #cccaca; background: #8e9baf; position: absolute; top: 16px; left: -51px; border-radius: 50%; -webkit-transition: all .5s ease; -moz-transition: all .5s ease; -ms-transition: all .5s ease; -o-transition: all .5s ease; transition: all .5s ease; }
-#list, #list2 { overflow: hidden; clear: both }
+#list, #list2 { clear: both }
 .timebox li:hover a { padding-right: 60px }
 .timebox li:hover a:after { background: #3a6ab5 }
 .timebox li:hover span { color: #000 }

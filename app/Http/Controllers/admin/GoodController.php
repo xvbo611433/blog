@@ -20,6 +20,7 @@ class GoodController extends Controller
     {
         $search = $request->input('search', ''); //接受文章名称
         //获取类别信息
+         $id = $request -> input('id','');
         $cate_data = Cate::getDatecate();
         $count = Good::count(); //获取数量
         // dump($count);die;;
@@ -28,10 +29,14 @@ class GoodController extends Controller
         
         //搜索条件
 
-        $goods = $goods->where('gname', 'like', '%' . $search . '%');
+        if(isset($search) && !empty($search)){
+          $goods =  $goods::where('gname','like','%'.$search.'%');
+        } 
+        if(isset($id) && !empty($id)){
+          $goods =  $goods->where('id','like','%'.$id.'%');
+        }
 
-       
-        // dump($cate_data);die;
+
         //分页
         $data = $goods->paginate($page_count);
             // 显示到模板

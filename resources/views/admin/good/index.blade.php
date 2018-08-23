@@ -52,7 +52,7 @@
                     <select name="id" lay-filter="aihao">
                         <option value="0">---商品分类---</option>
                         @foreach($cate_data as $value)
-                        <option  value="{{$value['id']}}" >{{$value['cname']}}</option>
+                       <option  value="{{$value['id'] or ''}}" >{{$value['cname']}}</option>
                         @endforeach
                     </select>
                     <button class='btn btn-info'>搜索</button>

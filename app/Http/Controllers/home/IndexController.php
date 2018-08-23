@@ -17,13 +17,14 @@ class IndexController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(request $request)
+    public function index()
     {
 
         
         // dump($count);die;
-        $good = Good::orderBy('created_at', 'desc')->paginate(7);
-
+        //获取文章按时间排序,分页
+        $good = Good::orderBy('created_at', 'desc')->paginate(8);
+        //获取链接
         $link = Link::get();
         // dd($link);
 

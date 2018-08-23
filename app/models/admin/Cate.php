@@ -41,22 +41,17 @@ class Cate extends Model
 
 
             //递归遍历 所有分类
-      public static function getCates($cates=[],$pid =0)
+      public static function getCate($pid =0)
             {
-                if(empty($cates)){
-                    $cates=self::all();
-                }
+                $cate =Cate::where('pid',$pid)->get();
                 $goods_cate = [];
-                    foreach ($cates as $key => $value) {   
-                        if($value->pid==$pid){
-                         $value->child_cate =self::getCates($cates,$value->id);
-                       
+                    foreach ($cate as $key => $value) {   
+                         $value->child_cate =self::getCate($value->id);
                         //查询所有的二级分类
                         // dump($value);
                         $goods_cate[] = $value;
-                         }
                     }
-                return $goods_cate;
+                return($cate);
             }
             //和类别模型建立关联
     public function goods()

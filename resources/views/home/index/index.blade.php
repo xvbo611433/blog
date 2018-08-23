@@ -15,13 +15,14 @@
     <link rel="stylesheet" href="/home/bs/css/bootstrap.min.css">
     <link rel="stylesheet" href="/home/bs/css/bootstrap-theme.min.css">
     <script type="text/javascript" src="/home/bs/js/bootstrap.min.js"></script>
+
+
     <!--[if lt IE 9]>
     <script src="js/modernizr.js"></script>
     <![endif]-->
 </head>
 <body>
 
-<a name="top"></a>
 <header>
     <!--menu begin-->
     <div class="menu">
@@ -30,7 +31,7 @@
             <li><a href="/">网站首页</a></li>
 
 
-            <?php $cate = \App\Models\admin\Cate::getcates();?>
+            <?php $cate = \App\Models\admin\Cate::getCate(0);?>
 
 
             @foreach($cate as $v)
@@ -44,6 +45,7 @@
                     </ul>
                 @endforeach
                 <!--search begin-->
+                <li><a href="/home/time">时间轴</a></li> 
                 <li>
                     <div id="search_bar" class="search_bar">
                         <form id="searchform" action="[!--news.url--]e/search/index.php" method="post"
@@ -57,6 +59,7 @@
                         </form>
                     </div>
                 </li>
+
                 <!--search end-->
         </nav>
     </div>
@@ -162,15 +165,11 @@
             </ul>
         </div>
     </div>
-
-
 </article>
 <footer>
     <p>Design by <a href="http://www.blog.com" target="_blank">微博客</a> <a href="/">蜀ICP备11002373号-1</a></p>
 </footer>
-<a href="#top" class="cd-top">Top</a>
+
 
 </body>
 </html>
-
-
