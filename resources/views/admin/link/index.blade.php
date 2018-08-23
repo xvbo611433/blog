@@ -222,8 +222,15 @@
 
                     @endforeach
 
+<<<<<<< HEAD
                     </tbody>
                 </table>
+=======
+                </tbody>
+            </table>
+
+
+>>>>>>> 976cd2cc8f16838c384486e343546346c4fe3c7e
 
                 <div class="dataTables_info" id="DataTables_Table_1_info">
                     Showing 1 to 10 of 57 entries

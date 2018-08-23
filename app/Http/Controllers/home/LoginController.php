@@ -20,7 +20,6 @@ class LoginController extends Controller
     {
         // 显示登陆页面
         return view('home.login.login');
-
     }
 
     /**
@@ -39,12 +38,13 @@ class LoginController extends Controller
 //        if (session('code') != $request->input('code')) {
 //            return back()->with('error', '验证码输入错误');
 //        }
+        $arr = session('goods_url');
         //查询数据库是否存在用户
         $tem = Register::where('username', $uname)->where('password',$upwd)->first();
         if($tem){
             // 取值并给session赋值
             session(['login' => $tem['username']]);
-            return redirect('/');
+            return redirect($arr);
         } else {
             return back()->with('error', '密码错误');
         }
@@ -75,7 +75,6 @@ class LoginController extends Controller
         $user->email = $request->input('email');
         $user->password = $request->input('password');
         $user->tel = $request->input('tel');
-        die;
         $res = $user->save();
 
         if($res){

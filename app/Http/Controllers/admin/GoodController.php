@@ -20,6 +20,7 @@ class GoodController extends Controller
     {
         $search = $request->input('search', ''); //接受文章名称
 <<<<<<< HEAD
+<<<<<<< HEAD
         // $id = $request->input('id', ''); //接收文章类
         $count = Good::count();
         $page_count = $request->input('page_count', 5);
@@ -29,6 +30,10 @@ class GoodController extends Controller
         }
 =======
 
+=======
+        //获取类别信息
+        $cate_data = Cate::getDatecate();
+>>>>>>> 976cd2cc8f16838c384486e343546346c4fe3c7e
         $count = Good::count(); //获取数量
         // dump($count);die;;
         $page_count = $request->input('page_count', 5); //显示的页数
@@ -39,7 +44,7 @@ class GoodController extends Controller
         $goods = $goods->where('gname', 'like', '%' . $search . '%');
 >>>>>>> 7b6bfaef0ebd2967131c37ec24027a5ecd273bac
 
-        $cate_data = Cate::get();
+       
         // dump($cate_data);die;
         //分页
         $data = $goods->paginate($page_count);
@@ -70,17 +75,7 @@ class GoodController extends Controller
     {
         $data = $request->except('_token', '_method', 's');
         // dump($data);die;
-/*        if ($request->hasFile('gpic') == true) {
-            $pic       = $request->file('gpic');
-            $temp_name = time() + rand(10000, 99999);
-            $hz        = $pic->getClientOriginalExtension();
-            $file      = $temp_name . '.' . $hz;
-            $dir       = './upload/' . date('Ymd', time());
-            $filename  = ltrim($dir . '/' . $file, '.');
-            $j         = $pic->move($dir, $filename); //执行上传
 
-            $data['gpic'] = '/upload/' . date('Ymd', time()) . '/' . $temp_name . '.' . $hz;
-        }*/
 
         //添加到数据库
         $good        = new Good;
@@ -172,7 +167,7 @@ class GoodController extends Controller
         $res = $good->delete();
         // 返回结果
         if ($res) {
-            return redirect('admin/good')->with('success', '删除成功');
+            return redirect($_SERVER['HTTP_REFERER'])->with('success', '删除成功');
         } else {
             return back()->with('error', '删除失败');
         }

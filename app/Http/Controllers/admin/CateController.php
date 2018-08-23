@@ -131,7 +131,7 @@ class CateController extends Controller
         //处理数据
         $tmp = Cate::destroy($id);
         if ($tmp) {
-            return redirect('/admin/cate')->with('success', '删除成功');
+            return redirect($_SERVER['HTTP_REFERER'])->with('success', '删除成功');
         } else {
             return back()->with('error', '删除失败');
         }

@@ -13,7 +13,7 @@ class LinkRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;//开启自动验证
     }
 
     /**
@@ -24,10 +24,28 @@ class LinkRequest extends Request
     public function rules()
     {
         return [
-            'abs' => 'required',
-            'gname' => 'required',
-            'content' => 'required',
-            'gpic' => 'required',
+            'LinkName' => 'required',
+            'LinkAddress' => 'required',
+            // 'LinkInfo' => 'required',
+            'Explain' => 'required',
+        ];
+    }
+
+            /**
+     * 获取已定义验证规则的错误消息。
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'LinkName.required'=>'链接名称不能问空',
+
+            'LinkAddress.required'=>'链接地址不能为空',
+
+            'LinkInfo.required'=>'链接logo不能为空',
+            'Explain.required'=>'链接介绍不能为空',
+
         ];
     }
 }

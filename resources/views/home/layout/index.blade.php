@@ -3,8 +3,8 @@
 <head>
     <meta charset="gbk">
     <title>@yield('title')</title>
-    <meta name="keywords" content="个人博客,杨青个人博客,个人博客模板,杨青"/>
-    <meta name="description" content="杨青个人博客，是一个站在web前端设计之路的女程序员个人网站，提供个人博客模板免费资源下载的个人原创网站。"/>
+   <meta name="keywords" content="个人博客,杨青个人博客,个人博客模板,杨青" />
+    <meta name="description" content="杨青个人博客，是一个站在web前端设计之路的女程序员个人网站，提供个人博客模板免费资源下载的个人原创网站。" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="/home/css/base.css" rel="stylesheet">
@@ -23,19 +23,25 @@
 
 </head>
 <body>
+
+ <a name="top"></a>
 <header>
     <!--menu begin-->
     <div class="menu">
         <nav class="nav" id="topnav">
-            <h1 class="logo"><a href="http://www.yangqq.com">杨青博客</a></h1>
-            <li><a href="index.html">网站首页</a></li>
+            <h1 class="logo"><a href="http://www.yangqq.com">微博客</a></h1>
+            <li><a href="/">网站首页</a></li>
+
+
+                        <?php $cate = \App\Models\admin\Cate::getcates();?>
+
 
             @foreach($cate as $v)
 
-                <li><a href="share.html">{{$v->cname}}</a>
+                <li><a href="/home/list/{{$v->id}}">{{$v->cname}}</a>
                     <ul class="sub-nav">
                         @foreach($v->child_cate as $vv)
-                            <li><a href="/home/good_list?id={{$vv->id}}">{{$vv->cname}}</a></li>
+                            <li><a href="/home/list/{{$vv->id}}">{{$vv->cname}}</a></li>
                         @endforeach
 
                     </ul>
@@ -60,11 +66,12 @@
 @section('container')
 
 
-
 @show
+
 <footer>
-    <p>Design by <a href="http://www.yangqq.com" target="_blank">杨青个人博客</a> <a href="/">蜀ICP备11002373号-1</a></p>
+    <p>Design by <a href="http://www.blog.com" target="_blank">微博客</a> <a href="/">蜀ICP备11002373号-1</a></p>
 </footer>
-<a href="#" class="cd-top">Top</a>
+<a href="#top" class="cd-top">Top</a>
+
 </body>
 </html>

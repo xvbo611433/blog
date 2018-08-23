@@ -90,7 +90,7 @@ class CommentController extends Controller
         $res = Comment::destroy($id);
         if ($res) {
             // 成功返回列表页
-            return redirect('/admin/comment')->with('success', '删除成功');
+            return redirect($_SERVER['HTTP_REFERER'])->with('success', '删除成功');
         } else {
             // 失败返回添加页
             return back()->with('error', '删除失败');

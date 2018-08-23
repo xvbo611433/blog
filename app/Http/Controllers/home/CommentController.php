@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\admin\Cate;
 use App\Models\admin\Good;
 use App\Models\admin\Comment;
-
+use DB;
 class CommentController extends Controller
 {
     /**
@@ -23,8 +23,8 @@ class CommentController extends Controller
         $user = $request->all();
         // 类别信息
         $essay = Good::find($id);
-        $cate = Cate::getCate();
-        return view('home.comment.index',['cate'=>$cate,'user'=>$user,'essay'=>$essay]);
+        $cate = Cate::getCates();
+        return view('home.comment.index',['cate'=>$cate,'user'=>$user,'essay'=>$essay,'title'=>'评论详情页']);
     }
 
     /**
@@ -34,8 +34,7 @@ class CommentController extends Controller
      */
     public function create()
     {
-        $comment = Comment::get();
-        dd($comment);
+
     }
 
     /**
@@ -54,13 +53,15 @@ class CommentController extends Controller
         $comment->profile = $request->input('profile');
         $comment->comment = $request->input('content');
         $comment->time = $request->input('time');
+//        $comment = json_encode($comment);
         // 写入数据库
         $res = $comment->save();
         if($res){
-            echo 'success';
+            $arr = ['comment'=>$comment];
         }else{
-            echo 'error';
+            $arr = ['comment'=>'error'];
         }
+        return $arr;
         }
     /**
      * Display the specified resource.
@@ -102,8 +103,16 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
-    }
+        // 接收要删除的id
+        $id = $request->input('id');
+        // 删除并返回结果
+        $res = Comment::destroy($id);
+        if($res) {
+            echo 'success';
+            } else {
+            echo 'error';
+            }
+        }
 }
