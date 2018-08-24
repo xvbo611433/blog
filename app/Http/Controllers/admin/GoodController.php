@@ -19,45 +19,36 @@ class GoodController extends Controller
     public function index(request $request)
     {
         $search = $request->input('search', ''); //接受文章名称
-<<<<<<< HEAD
-<<<<<<< HEAD
-        // $id = $request->input('id', ''); //接收文章类
-        $count = Good::count();
-        $page_count = $request->input('page_count', 5);
-        $goods = new Good(); //创建数据对象
-        if (isset($search) && !empty($search)) {
-            $goods = $goods->where('gname', 'like', '%' . $search . '%')->where(O);
-        }
-=======
 
-=======
-        //获取类别信息
+//
+//        // $id = $request->input('id', ''); //接收文章类
+//        $count = Good::count();
+//        $page_count = $request->input('page_count', 5);
+//        $goods = new Good(); //创建数据对象
+//        if (isset($search) && !empty($search)) {
+//            $goods = $goods->where('gname', 'like', '%' . $search . '%')->where(O);
+//        }
+
+
+
+        // 获取类别信息
          $id = $request -> input('id','');
-        $cate_data = Cate::getDatecate();
->>>>>>> 976cd2cc8f16838c384486e343546346c4fe3c7e
-        $count = Good::count(); //获取数量
-        // dump($count);die;;
-        $page_count = $request->input('page_count', 5); //显示的页数
-        $goods      = new Good(); //创建数据对象
-        
-        //搜索条件
+         $cate_data = Cate::getDatecate();
 
-<<<<<<< HEAD
-        $goods = $goods->where('gname', 'like', '%' . $search . '%');
->>>>>>> 7b6bfaef0ebd2967131c37ec24027a5ecd273bac
-=======
-        if(isset($search) && !empty($search)){
-          $goods =  $goods::where('gname','like','%'.$search.'%');
-        } 
-        if(isset($id) && !empty($id)){
-          $goods =  $goods->where('id','like','%'.$id.'%');
-        }
+         $count = Good::count(); //获取数量
+         $page_count = $request->input('page_count', 5); //显示的页数
+         $goods      = new Good(); //创建数据对象
 
->>>>>>> d4998680950df6a81c794be5b8eeed76a48cae66
-
-        //分页
+         // 搜索条件
+         if(isset($search) && !empty($search)){
+            $goods =  $goods::where('gname','like','%'.$search.'%');
+         }
+         if(isset($id) && !empty($id)){
+            $goods =  $goods->where('id','like','%'.$id.'%');
+         }
+        // 分页
         $data = $goods->paginate($page_count);
-            // 显示到模板
+        // 显示到模板
         return view('admin/good/index', ['title' => '文章列表', 'data' => $data, 'cate_data' => $cate_data, 'search' => $request->all()]);
     }
 

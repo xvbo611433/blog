@@ -33,13 +33,9 @@
             <input type="text" Name="username" placeholder="用户名" ><br><br>
             <input type="password" Name="password" placeholder="密码" ><br><br>
             <div class="send-button w3layouts agileits">
-                <input type="submit" value="登 录">
+                <input type="submit" value="登 录"><a href="/register" class="login-register">注册</a>
             </div>
         </form>
-        <div class="send-button w3layouts agileits">
-
-            <a href="/register" class="login-register">注册</a>
-        </div>
         <div class="clear"></div>
     </div><div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div>
 

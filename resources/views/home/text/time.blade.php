@@ -3,7 +3,7 @@
 <head>
     <meta charset="gbk">
     <title>{{$title}}</title>
-   
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/base.css" rel="stylesheet">
     <link href="css/index.css" rel="stylesheet">
@@ -41,7 +41,7 @@
 
                     </ul>
                 @endforeach
-                                <li><a href="/home/time">时间轴</a></li> 
+                                <li><a href="/home/time">时间轴</a></li>
                 <!--search begin-->
                     <div id="search_bar" class="search_bar">
                         <form id="searchform" action="[!--news.url--]e/search/index.php" method="post"
@@ -91,7 +91,7 @@
   </ul>
   <ul id="list2">
   </ul>
-  <script src="js/page2.js"></script> 
+  <script src="js/page2.js"></script>
   </div>
 </div>
 <footer>

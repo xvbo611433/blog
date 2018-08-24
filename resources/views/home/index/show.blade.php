@@ -67,7 +67,7 @@
 
 
 <article>
-    <h1 class="t_nav"><span>不要轻易放弃。学习成长的路上，我们长路漫漫，只因学无止境。 </span><a href="/" class="n1">网站首页</a><a href="/"
+    <h1 class="t_nav"><span>您现在的位置是：首页 > 慢生活 > 程序人生</span><a href="/" class="n1">网站首页</a><a href="/"
                                                                                                    class="n2">{{$cate_name}}</a>
     </h1>
     <div class="infosbox">
@@ -164,7 +164,7 @@
                             </div>
                             <div class="comment-show-con-list pull-left clearfix">
                                 <div class="pl-text clearfix">
-                                    <a href="#" class="comment-size-name">{{ $v['cname'] }} </a>
+                                    <a href="#" class="comment-size-name">{{ $v['uname'] }} </a>
                                     <span class="my-pl-con">&nbsp;{{ $v['comment'] }}</span>
                                 </div>
                                 <div class="date-dz">

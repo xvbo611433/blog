@@ -40,6 +40,7 @@
                     </ul>
                 @endforeach
                 <!--search begin-->
+                <li><a href="/home/time">时间轴</a></li>
                 <li>
                     <div id="search_bar" class="search_bar">
                         <form id="searchform" action="[!--news.url--]e/search/index.php" method="post"
@@ -69,31 +70,41 @@
                         <textarea class="content comment-input" placeholder="Please enter a comment&hellip;" onkeyup="keyUP(this)"></textarea>
                         <a href="javascript:;" class="plBtn">评论</a>
                     </div>
-                    <div class="comment-show">
-                        <div class="comment-show-con clearfix">
-                            <div class="comment-show-con-img pull-left">
-                                <img src="/home/comment/images/header-img-comment_03.png" alt="">
-                            </div>
-                            <div class="comment-show-con-list pull-left clearfix">
-                                <div class="pl-text clearfix">
-                                    <a href="#" class="comment-size-name">zhangsan : </a>
-                                    <span class="my-pl-con">&nbsp;来啊 造作啊!</span>
-                                </div>
-                                <div class="date-dz">
-                                    <span class="date-dz-left pull-left comment-time">2017-5-2 11:11:39</span>
-                                    <div class="date-dz-right pull-right comment-pl-block">
-                                        <a href="javascript:;" class="removeBlock">删除</a>
-                                        <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a>
-                                        <span class="pull-left date-dz-line">|</span>
-                                        <a href="javascript:;" class="date-dz-z pull-left"><i
-                                                    class="date-dz-z-click-red"></i>赞 (<i class="z-num">666</i>)</a>
+                    @foreach($comment as $k=>$v)
+                                <div class="comment-show">
+                                    <div class="comment-show-con clearfix">
+                                        <div class="comment-show-con-img pull-left">
+                                            @if( !empty($v['profile']) )
+                                                <img src="{{ $v['profile'] }}" alt="">
+                                            @else
+                                                <img src="/home/comment/images/header-img-comment_03.png" alt="">
+                                            @endif
+                                        </div>
+                                        <div class="comment-show-con-list pull-left clearfix">
+                                            <div class="pl-text clearfix">
+                                                <a href="#" class="comment-size-name">{{ $v['uname'] }} </a>
+                                                <span class="my-pl-con">&nbsp;{{ $v['comment'] }}</span>
+                                            </div>
+                                            <div class="date-dz">
+                                                <span class="date-dz-left pull-left comment-time">2017-5-2 11:11:39</span>
+                                                <div class="date-dz-right pull-right comment-pl-block">
+                                                    <a href="/home/comment/destory/{{ $v['id'] }}" onclick="return false"
+                                                       class="removeBlock">删除</a>
+                                                    <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a>
+                                                    <span class="pull-left date-dz-line">|</span>
+                                                    <a href="javascript:;" class="date-dz-z pull-left"><i
+                                                                class="date-dz-z-click-red"></i>赞 (<i class="z-num">666</i>)</a>
+                                                </div>
+                                            </div>
+                                            <div class="hf-list-con"></div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="hf-list-con"></div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
+
                 <script type="text/javascript" src="/home/comment/js/jquery-1.12.0.min.js"></script>
                 <script type="text/javascript" src="/home/comment/js/jquery.flexText.js"></script>
                 <!--textarea高度自适应-->
@@ -128,45 +139,66 @@
                         var s = myDate.getSeconds();
                         if (s < 10) s = '0' + s;
                         var now = year + '-' + month + "-" + date + " " + h + ':' + m + ":" + s;
-
+                        // 文章id
                         var gid = '{{ $essay['gid'] }}';
-
+                        // 用户头像
                         var user = '{{ session('login') }}';
 
                         var profile = $('.comment-show-con-img').find('img').first().attr('src');
 
                         //获取输入内容
                         var oSize = $(this).siblings('.flex-text-wrap').find('.comment-input').val();
-                        //动态创建评论模块
-                        {{--oHtml = '<div class="comment-show-con clearfix"><div class="comment-show-con-img pull-left"><img src="/home/comment/images/header-img-comment_03.png" alt=""></div><div class="comment-show-con-list pull-left clearfix"><div class="pl-text clearfix"> <a href="#" class="comment-size-name">{{ session('login') }}: </a> <span class="my-pl-con">&nbsp;' + oSize + '</span> </div> <div class="date-dz"> <span class="date-dz-left pull-left comment-time">' + now + '</span> <div class="date-dz-right pull-right comment-pl-block"><a href="javascript:;" class="removeBlock">删除</a> <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a> <span class="pull-left date-dz-line">|</span> <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">666</i>)</a> </div> </div><div class="hf-list-con"></div></div> </div>';--}}
-                        $.ajax({
+                          //动态创建评论模块
+                         $.ajax({
                             url: '/home/comment/store',
                             type:'post',
                             data:{'gid':gid,'profile':profile,'user':user,'time':now,'content':oSize},
-
-                        headers: {
+                         headers: {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             },
                             success: function(data){
+                                var oHtml = '';
                                 $.each(data, function (n, value) {
-                                    oHtml = '<div class="comment-show"><div class="comment-show-con clearfix"><div class="comment-show-con-img pull-left"><img src="' + value.profile + '" alt=""></div><div class="comment-show-con-list pull-left clearfix"><div class="pl-text clearfix"><a href="#" class="comment-size-name">' + value.cname + ' : </a><span class="my-pl-con">&nbsp;' + value.comment + '</span></div><div class="date-dz"><span class="date-dz-left pull-left comment-time">' + value.time + '</span><div class="date-dz-right pull-right comment-pl-block"><a href="/home/comment/destroy/' + value.id + '" onclick="return false" class="removeBlock">删除</a><a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a><span class="pull-left date-dz-line">|</span><a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">666</i>)</a></div></div><div class="hf-list-con"></div></div></div></div>';
+                                    oHtml += '<div class="comment-show"><div class="comment-show-con clearfix"><div class="comment-show-con-img pull-left"><img src="' + value.profile + '" alt=""></div><div class="comment-show-con-list pull-left clearfix"><div class="pl-text clearfix"><a href="#" class="comment-size-name">'+value.uname+': </a><span class="my-pl-con">&nbsp;' + value.comment + '</span></div><div class="date-dz"><span class="date-dz-left pull-left comment-time">' + value.time + '</span><div class="date-dz-right pull-right comment-pl-block"><a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a><span class="pull-left date-dz-line">|</span><a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">666</i>)</a></div></div><div class="hf-list-con"></div></div></div></div>';
+
                                 });
                                 $('.comment-show').first().prepend(oHtml);
-
+                                $('.flex-text-wrap').find('.comment-input').val('');
 
                             },
                             dataType:'json',
                             async:true
                         });
-                        // if (oSize.replace(/(^\s*)|(\s*$)/g, "") != '') {
-                        //     $('.comment-show').first().prepend(oHtml);
-                        //     $('.flex-text-wrap').find('.comment-input').prop('value', '').siblings('pre').find('span').text('');
-                        // }else{
-                        //     alert('评论失败');
-                        // }
-
                     });
                 </script>
+        <!--删除评论块-->
+        <script type="text/javascript">
+            $('.commentAll').on('click', '.removeBlock', function () {
+                var comment = $('.comment-show').find('span').first().val();
+                var id = $('.comment-pl-block').find('a').first('.removeBlock').attr('href');
+                var gid = id.substr(22);
+                var oT = $(this).parents('.date-dz-right').parents('.date-dz').parents('.comment-show-con-list').parents('.comment-show-con').parents('.comment-show');
+                // 发送ajax
+                $.ajax({
+                    url: '/home/comment/destroy/{id}',
+                    type: 'post',
+                    data: {'id': gid},
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function (msg) {
+                        // alert(msg);
+                        if (msg == 'success') {
+                            oT.remove();
+                        }
+                    },
+                    dataType: 'html',
+                    async: true
+                });
+
+
+            })
+        </script>
                 <!--点击回复动态创建回复块-->
                 <script type="text/javascript">
                     $('.comment-show').on('click', '.pl-hf', function () {
@@ -248,23 +280,8 @@
                         }
                     });
                 </script>
-                <!--删除评论块-->
-                <script type="text/javascript">
-                    $('.commentAll').on('click', '.removeBlock', function () {
-                        var comment = $('.comment-show').find('span').first().val();
 
 
-                        var oT = $(this).parents('.date-dz-right').parents('.date-dz').parents('.all-pl-con');
-                        if (oT.siblings('.all-pl-con').length >= 1) {
-                            oT.remove();
-                        } else {
-                            $(this).parents('.date-dz-right').parents('.date-dz').parents('.all-pl-con').parents('.hf-list-con').css('display', 'none')
-                            oT.remove();
-                        }
-                        $(this).parents('.date-dz-right').parents('.date-dz').parents('.comment-show-con-list').parents('.comment-show-con').remove();
-
-                    })
-                </script>
                 <!--点赞-->
                 <script type="text/javascript">
                     $('.comment-show').on('click', '.date-dz-z', function () {

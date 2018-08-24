@@ -38,13 +38,16 @@ class LoginController extends Controller
 //        if (session('code') != $request->input('code')) {
 //            return back()->with('error', '验证码输入错误');
 //        }
-        $arr = session('goods_url');
+        $str = session('goods_url');
+        $arr = explode('/', $str);
+        $id = array_pop($arr);
+
         //查询数据库是否存在用户
         $tem = Register::where('username', $uname)->where('password',$upwd)->first();
         if($tem){
             // 取值并给session赋值
             session(['login' => $tem['username']]);
-            return redirect($arr);
+            return redirect('/home/comment/'.$id);
         } else {
             return back()->with('error', '密码错误');
         }

@@ -24,7 +24,9 @@ class CommentController extends Controller
         // 类别信息
         $essay = Good::find($id);
         $cate = Cate::getCate();
-        return view('home.comment.index',['cate'=>$cate,'user'=>$user,'essay'=>$essay,'title'=>'评论详情页']);
+        // 获取文章详情
+        $comment = Comment::orderBy('time','desc')->get();
+        return view('home.comment.index',['cate'=>$cate,'user'=>$user,'essay'=>$essay,'title'=>'评论详情页','comment'=>$comment]);
     }
 
     /**
@@ -49,11 +51,10 @@ class CommentController extends Controller
         $comment = new Comment;
         // 接收ajax数据
         $comment->gid = $request->input('gid');
-        $comment->cname = $request->input('user');
+        $comment->uname = $request->input('user');
         $comment->profile = $request->input('profile');
         $comment->comment = $request->input('content');
         $comment->time = $request->input('time');
-//        $comment = json_encode($comment);
         // 写入数据库
         $res = $comment->save();
         if($res){
