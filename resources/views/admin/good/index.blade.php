@@ -116,7 +116,7 @@
                             {{$v['gname']}}
                         </td>
                          <td class=" ">
-                            {!!$v['gpic']!!}
+                            {!! $v['gpic'] !!}
                         </td>                       
                         <td class=" ">
                             {{$v['abs']}}

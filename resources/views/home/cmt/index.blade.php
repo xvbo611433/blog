@@ -37,7 +37,7 @@
 </body>
 </html>
 
-//    *首先引入jquery文件
+
     <script src="/home/js/jquery.min.js" type="text/javascript"></script>
 <script>    // *获取提交按钮,给点击事件
     $('#subleave').on('click',function (){

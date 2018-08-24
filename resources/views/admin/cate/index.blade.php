@@ -8,18 +8,11 @@
         </div>
             @if(session('success'))
             <div class="mws-form-message success">
-
-
                 {{session('success')}}
             </div>
-
-            @else  
-
+            @else
             <div class="mws-form-message error">
-
-
                 {{session('error')}}
-
             </div>
             @endif
         <div class="mws-panel-body no-padding">

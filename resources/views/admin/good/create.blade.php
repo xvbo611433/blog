@@ -1,5 +1,4 @@
 @extends('admin.layout.index')
-
 @section('title',$title)
 @section('container')
     @if (count($errors) > 0)
@@ -46,9 +45,7 @@
                         <label class="mws-form-label">文章内容</label>
                         <div class="mws-form-item">
                         <!-- 加载编辑器的容器 -->
-                        <script id="container" name="content" type="text/plain" >
-                           
-                        </script>
+                        <script id="container" name="content" type="text/plain" ></script>
                         <!-- 配置文件 -->
 
                         <!-- 实例化编辑器 -->
@@ -63,9 +60,7 @@
                         <div class="mws-form-item">
                             
                                                     <!-- 加载编辑器的容器 -->
-                        <script id="gpic" name="gpic" type="text/plain">
-                           
-                        </script>
+                        <script id="gpic" name="gpic" type="text/plain"></script>
                         <!-- 配置文件 -->
 
                         <!-- 实例化编辑器 -->
@@ -81,10 +76,6 @@
                             <input type="submit" value="提交" class="btn btn-success btn-block btn-amc-mse">
                         
                     </div>
-
-
-
-
             </form>
         </div>
     </div>

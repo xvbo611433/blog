@@ -256,10 +256,7 @@
                     <?php
                         $data=session('login');
                         echo $data['uname'];
-                    ?>
-
-
-
+                        ?>
                 </div>
                 <ul>
                     <li><a href="/admin/index/edit">更改密码</a></li>

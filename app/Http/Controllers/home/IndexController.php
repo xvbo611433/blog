@@ -8,6 +8,7 @@ use App\Models\admin\Good;
 use App\Models\admin\Image;
 use App\Models\admin\Link;
 use Illuminate\Http\Request;
+use App\Models\admin\Comment;
 use App\Http\Controllers\ShmilyThreePresenter;
 
 class IndexController extends Controller
@@ -19,22 +20,16 @@ class IndexController extends Controller
      */
     public function index()
     {
-
-        
-        // dump($count);die;
         //获取文章按时间排序,分页
         $good = Good::orderBy('created_at', 'desc')->paginate(8);
         //获取链接
-        $link = Link::get();
-        // dd($link);
 
+        $link = Link::get();
 
         $data = Image::all();
-        // dump($cate);die;
+
         return view('home/index/index', ['title' => '前台首页', 'good' => $good, 'data' => $data, 'link' => $link]);
     }
-
-
 
     /**
      * Display the specified resource.
@@ -42,20 +37,22 @@ class IndexController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($gid)
+    public function show(Request $request,$gid)
     {
-        //
-
+        $arr = $request->url();
+        session(['goods_url'=>$arr]);
+        // 文章详情
         $essay = Good::find($gid);
+        // 根据时间倒叙排序 获取所有文章
         $good = Good::orderBy('created_at', 'desc')->get();
-        // dump($essay);die;
+        // 获取文章详情
+        $good_comment = Good::find($gid);
+        // 获取文章评论信息
+        $comment = $good_comment->goods_comment;
         $cid = $essay->id;
+        // 类别
         $cate_name = Cate::find($cid)->cname;
-     
-       // dump($cate_name);die;
-
-
-        return view('/home/index/show', ['title' => '文章详情',  'essay' => $essay, 'cate_name' => $cate_name,'good'=>$good]);
+        return view('/home/index/show', ['title' => '文章详情',  'essay' => $essay, 'cate_name' => $cate_name,'good'=>$good,'comment'=>$comment]);
     }
 
 
@@ -66,7 +63,7 @@ class IndexController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    function list(Request $request, $id) 
+    function list(Request $request, $id)
     {
         //获取相应类别下文章
         $good = Good::where('id', $id)->paginate(7);
@@ -75,7 +72,4 @@ class IndexController extends Controller
 
         return view('home/index/list', ['title' => '列表页', 'good' => $good, 'cname' => $cname]);
     }
-
-
-
 }

@@ -3,8 +3,8 @@
 <head>
     <meta charset="gbk">
     <title>{{$title}}</title>
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="/home/css/base.css" rel="stylesheet">
     <link href="/home/css/index.css" rel="stylesheet">
     <link href="/home/css/m.css" rel="stylesheet">
@@ -12,41 +12,38 @@
     <script src="/home/js/jquery.easyfader.min.js"></script>
     <script src="/home/js/scrollReveal.js"></script>
     <script src="/home/js/common.js"></script>
-    <link rel="stylesheet" href="/home/bs/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/home/bootstrap.min.css">
     <link rel="stylesheet" href="/home/bs/css/bootstrap-theme.min.css">
     <script type="text/javascript" src="/home/bs/js/bootstrap.min.js"></script>
-
-
+    {{--<link rel="stylesheet" href="/home/bs/css/bootstrap-theme.min.css">--}}
+    {{--<script type="text/javascript" src="/home/bs/js/bootstrap.min.js"></script>--}}
     <!--[if lt IE 9]>
-    <script src="js/modernizr.js"></script>
+    <script src="/home/js/modernizr.js"></script>
     <![endif]-->
 </head>
 <body>
-
 <header>
     <!--menu begin-->
     <div class="menu">
         <nav class="nav" id="topnav">
             <h1 class="logo"><a href="http://www.yangqq.com">微博客</a></h1>
             <li><a href="/">网站首页</a></li>
-
-
             <?php $cate = \App\Models\admin\Cate::getCate(0);?>
-
-
             @foreach($cate as $v)
-
                 <li><a href="/home/list/{{$v->id}}">{{$v->cname}}</a>
                     <ul class="sub-nav">
                         @foreach($v->child_cate as $vv)
                             <li><a href="/home/list/{{$vv->id}}">{{$vv->cname}}</a></li>
                         @endforeach
-
                     </ul>
                 @endforeach
                 <!--search begin-->
+<<<<<<< HEAD
                 <li><a href="/home/time">时间轴</a></li> 
                 <li><a href="/home/about">关于我</a></li> 
+=======
+                <li><a href="/home/time">时间轴</a></li>
+>>>>>>> 0ab886dc7c39e99ab8117d26dfbfa7c49f2776a0
                 <li>
                     <div id="search_bar" class="search_bar">
                         <form id="searchform" action="[!--news.url--]e/search/index.php" method="post"
@@ -104,22 +101,14 @@
                 <p class="blogtext">{{$v['abs']}} </p>
                 <div class="bloginfo">
                     <ul>
-
                         <li class="lmname"><a href="/">{{$v['goods_cate']['cname']}}</a></li>
                         <li class="timer">{{$v['updated_at']}}</li>
-
-
                     </ul>
                 </div>
 
             </div>
         @endforeach
-
-
-
         {!! $good->render() !!}
-
-
     </div>
     <!--blogsbox end-->
     <div class="sidebar">

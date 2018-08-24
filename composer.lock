@@ -2443,12 +2443,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/weboAp/Visitor.git",
-                "reference": "f8ba976ccd8deff018b8591f4e74f7b39698aff9"
+                "reference": "d8bc4a9f058d91907ce9613bc9b03bf7d8069e38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/weboAp/Visitor/zipball/f8ba976ccd8deff018b8591f4e74f7b39698aff9",
-                "reference": "f8ba976ccd8deff018b8591f4e74f7b39698aff9",
+                "url": "https://api.github.com/repos/weboAp/Visitor/zipball/d8bc4a9f058d91907ce9613bc9b03bf7d8069e38",
+                "reference": "d8bc4a9f058d91907ce9613bc9b03bf7d8069e38",
                 "shasum": ""
             },
             "require": {
@@ -2493,7 +2493,7 @@
                 "log",
                 "visitors"
             ],
-            "time": "2017-09-02T04:48:04+00:00"
+            "time": "2018-08-04T21:15:16+00:00"
         },
         {
             "name": "xrstf/ip-utils",
