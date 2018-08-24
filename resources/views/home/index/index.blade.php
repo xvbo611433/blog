@@ -46,6 +46,7 @@
                 @endforeach
                 <!--search begin-->
                 <li><a href="/home/time">时间轴</a></li> 
+                <li><a href="/home/about">关于我</a></li> 
                 <li>
                     <div id="search_bar" class="search_bar">
                         <form id="searchform" action="[!--news.url--]e/search/index.php" method="post"
@@ -165,6 +166,7 @@
             </ul>
         </div>
     </div>
+    <embed src="/home/images/flash6407.swf" >
 </article>
 <footer>
     <p>Design by <a href="http://www.blog.com" target="_blank">微博客</a> <a href="/">蜀ICP备11002373号-1</a></p>

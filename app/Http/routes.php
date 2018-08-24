@@ -38,6 +38,7 @@ Route::controller('/admin/index','admin\IndexController');//首页
 
 Route::resource('/admin/link','admin\LinkController');//友情链接管理
 Route::controller('/admin/recycle','admin\RecycleController');//回收站管理
+Route::resource('/admin/photo','admin\PhotoController');//后台用户控制器
 
 });
 //前台
@@ -45,10 +46,11 @@ Route::get('/','home\IndexController@index');
 Route::get('/home/show/{id}','home\IndexController@show');//详情
 Route::get('/home/list/{id}','home\IndexController@list');//列表
 
-Route::get('/home/image','home\ImageController@index');
+
 
 Route::get('/home/cmt','home\Cmtcontroller@index');
 Route::post('/home/cm','home\Cmtcontroller@store');
 
-Route::get('/home/time','home\TextController@time');
+Route::get('/home/time','home\TextController@time');//时间轴
+Route::get('/home/about','home\TextController@about');//关于我
 				

@@ -41,6 +41,7 @@
                     </ul>
                 @endforeach
                                 <li><a href="/home/time">时间轴</a></li> 
+                                <li><a href="/home/about">关于我</a></li> 
                 <!--search begin-->
                     <div id="search_bar" class="search_bar">
                         <form id="searchform" action="[!--news.url--]e/search/index.php" method="post"
