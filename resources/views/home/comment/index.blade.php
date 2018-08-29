@@ -14,9 +14,6 @@
     <script src="/home/js/scrollReveal.js"></script>
     <script src="/home/js/common.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="/home/bootstrap.min.css">
-    {{--<link rel="stylesheet" href="/home/bs/css/bootstrap-theme.min.css">--}}
-    {{--<script type="text/javascript" src="/home/bs/js/bootstrap.min.js"></script>--}}
     <!--[if lt IE 9]>
     <script src="/home/js/modernizr.js"></script>
     <![endif]-->

@@ -120,7 +120,7 @@
         <li class="qq"><a href="/" target="_blank"><span>QQ号</span>476847113</a></li>
         <li class="email"><a href="/" target="_blank"><span>邮箱帐号</span>dancesmiling@qq.com</a></li>
         <li class="wxgzh"><a href="/" target="_blank"><span>微信号</span>yangqq_1987</a></li>
-        <li class="wx"><img src="/home/images/wx.jpg"></li>
+        <li class="wx"><img src="/home/images/mmqrcode1535504449800.png"></li>
       </ul>
     </div>
   </div>

@@ -58,13 +58,36 @@ Route::post('/home/comment/destory','home\CommentController@destroy');//删除�
 
 });
 
+
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Route::get('/home/time','home\TextController@time');// 时间轴
-
-
-
-
 Route::get('/home/about','home\TextController@about');//关于我
 Route::get('/home/picture','home\PictureCOntroller@index');//相册
 Route::get('/home/photo/{photo_id}','home\PictureCOntroller@photo');//图片
-				
-
