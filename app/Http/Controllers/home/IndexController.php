@@ -8,8 +8,6 @@ use App\Models\admin\Good;
 use App\Models\admin\Image;
 use App\Models\admin\Link;
 use Illuminate\Http\Request;
-use App\Models\admin\Comment;
-use App\Http\Controllers\ShmilyThreePresenter;
 
 class IndexController extends Controller
 {
@@ -37,23 +35,22 @@ class IndexController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request,$gid)
+    public function show(Request $request, $gid)
     {
         $arr = $request->url();
-        session(['goods_url'=>$arr]);
+        session(['goods_url' => $arr]);
         // 文章详情
         $essay = Good::find($gid);
         // 根据时间倒叙排序 获取所有文章
         $good = Good::orderBy('created_at', 'desc')->get();
         // 获取文章评论信息
         $comment = $essay->goods_comment;
-        $cid = $essay->id;
+        $cid     = $essay->id;
         // 类别
         $cate_name = Cate::find($cid)->cname;
-        return view('/home/index/show', ['title' => '文章详情',  'essay' => $essay, 'cate_name' => $cate_name,'good'=>$good,'comment'=>$comment]);
+        return view('/home/index/show', ['title'    => '文章详情','essay'=>$essay,'cate_name'=>$cate_name, 'comment'   => $comment, 'good'=> $good,]);
+
     }
-
-
 
     /**
      * Remove the specified resource from storage.
@@ -61,8 +58,7 @@ class IndexController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    function list(Request $request, $id)
-    {
+    function list(Request $request, $id) {
         //获取相应类别下文章
         $good = Good::where('id', $id)->paginate(7);
         //获取当前分类 名称

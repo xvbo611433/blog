@@ -18,8 +18,9 @@ class PictureCOntroller extends Controller
      */
     public function index()
     {
-        $link = Link::get();
+        //获取相册信息
         $phototype =Phototype::get();
+        //渲染到模板
         return view('home/picture/index', ['title' => '相册','link'=>$link,'phototype'=>$phototype]);
     }
 
@@ -30,10 +31,10 @@ class PictureCOntroller extends Controller
      */
     public function photo($photo_id)
     {
-        // echo $photo_id;
-        $link = Link::get();
+
+        //获取相册中的图片信息
         $photo =Photo::where('photo_id', $photo_id)->get();
-        // dd($phototype);
+        // 渲染到模板
         return view('home/picture/show',['title' => '图片','link'=>$link,'photo'=>$photo]);
     }
 

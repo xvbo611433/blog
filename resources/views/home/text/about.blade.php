@@ -99,7 +99,7 @@
     <div class="weixin">
       <h2 class="hometitle">微信关注</h2>
       <ul>
-        <img src="images/wx.jpg">
+        <img src="/home/images/mmqrcode1535504449800.png">
       </ul>
     </div>
   </div>

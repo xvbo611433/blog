@@ -24,7 +24,7 @@
     <!--menu begin-->
     <div class="menu">
         <nav class="nav" id="topnav">
-            <h1 class="logo"><a href="http://www.yangqq.com">微博客</a></h1>
+            <h1 class="logo"><a href="http://www.blog.com">微博客</a></h1>
             <li><a href="/">网站首页</a></li>
 
 

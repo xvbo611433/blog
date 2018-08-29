@@ -3,8 +3,6 @@
 <head>
     <meta charset="gbk">
     <title>{{$title}}</title>
-   
-    meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="/home/css/base.css" rel="stylesheet">
     <link href="/home/css/index.css" rel="stylesheet">
@@ -14,9 +12,7 @@
     <script src="/home/js/jquery.min.js" type="text/javascript"></script>
     <script src="/home/js/jquery.easyfader.min.js"></script>
     <script src="/home/js/scrollReveal.js"></script>
-    {{--<script type="text/javascript" src="/home/comment/js/jquery-1.12.0.min.js"></script>--}}
-    {{--<script type="text/javascript" src="/home/comment/js/jquery.flexText.js"></script>--}}
-
+    <script src="/home/js/common.js"></script>
 </head>
 <body>
 
@@ -215,6 +211,7 @@
         <a href="/">陌上花开</a> <a href="/">校园生活</a> <a href="/">html5</a> <a href="/">SumSung</a> <a href="/">青春</a> <a href="/">温暖</a> <a href="/">阳光</a> <a href="/">三星</a><a href="/">索尼</a> <a href="/">华维荣耀</a> <a href="/">三星</a> <a href="/">索尼</a>
       </ul>
     </div>
+
     <div class="guanzhu gd" id="follow-us">
       <h2 class="hometitle">关注我们 么么哒！</h2>
       <ul>
@@ -226,6 +223,7 @@
         <li class="wx"><img src="/home/images/mmqrcode1535504449800.png"></li>
       </ul>
     </div>
+
   </div>
 </article>
 <footer>

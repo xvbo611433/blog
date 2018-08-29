@@ -23,7 +23,7 @@
     <!--menu begin-->
     <div class="menu">
         <nav class="nav" id="topnav">
-            <h1 class="logo"><a href="http://www.yangqq.com">微博客</a></h1>
+            <h1 class="logo"><a href="http://www.blog.com">微博客</a></h1>
             <li><a href="/">网站首页</a></li>
 
 
@@ -112,17 +112,17 @@
       </ul>
     </div>
 
-    <div class="guanzhu" id="follow-us">
-      <h2 class="hometitle">关注我们 么么哒！</h2>
-      <ul>
-        <li class="sina"><a href="/" target="_blank"><span>新浪微博</span>杨青博客</a></li>
-        <li class="tencent"><a href="/" target="_blank"><span>腾讯微博</span>杨青博客</a></li>
-        <li class="qq"><a href="/" target="_blank"><span>QQ号</span>476847113</a></li>
-        <li class="email"><a href="/" target="_blank"><span>邮箱帐号</span>dancesmiling@qq.com</a></li>
-        <li class="wxgzh"><a href="/" target="_blank"><span>微信号</span>yangqq_1987</a></li>
-        <li class="wx"><img src="/home/images/mmqrcode1535504449800.png"></li>
-      </ul>
-    </div>
+        <div class="guanzhu" id="follow-us">
+            <h2 class="hometitle">关注我们 么么哒！</h2>
+            <ul>
+                <li class="sina"><a href="/" target="_blank"><span>新浪微博</span></a></li>
+                <li class="tencent"><a href="/" target="_blank"><span>腾讯微博</span></a></li>
+                <li class="qq"><a href="/" target="_blank"><span>QQ号</span></a></li>
+                <li class="email"><a href="/" target="_blank"><span>邮箱帐号</span></a></li>
+                <li class="wxgzh"><a href="/" target="_blank"><span>微信号</span></a></li>
+                <li class="wx"><img src="/home/images/mmqrcode1535504449800.png"></li>
+            </ul>
+        </div>
   </div>
 </div>
 

@@ -44,7 +44,7 @@ class LoginController extends Controller
         if ($tem) {
             // 取值并给session赋值
             session(['comment' => $tem['uname']]);
-            return redirect('/home/comment/' . $id);
+            return redirect('/home/comment/'.$id);
         } else {
             return back()->with('error', '密码错误');
         }
