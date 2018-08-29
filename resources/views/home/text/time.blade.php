@@ -41,7 +41,10 @@
 
                     </ul>
                 @endforeach
-                                <li><a href="/home/time">时间轴</a></li>
+                            <li><a href="/home/picture">相册</a></li> 
+                            <li><a href="/home/time">时间轴</a></li>
+                            <li><a href="/home/about">关于我</a></li>  
+
                 <!--search begin-->
                     <div id="search_bar" class="search_bar">
                         <form id="searchform" action="[!--news.url--]e/search/index.php" method="post"
@@ -57,25 +60,7 @@
                     <!--search end-->
         </nav>
     </div>
-  <!--mnav begin-->
-  <div id="mnav">
-    <h2><a href="http://www.yangqq.com" class="mlogo">微博客</a><span class="navicon"></span></h2>
-    <dl class="list_dl">
-      <dt class="list_dt"> <a href="index.html">网站首页</a> </dt>
-      <dt class="list_dt"> <a href="about.html">关于我</a> </dt>
-      <dt class="list_dt"> <a href="#">模板分享</a> </dt>
-      <dd class="list_dd">
-        <ul>
-          <li><a href="share.html">个人博客模板</a></li>
-          <li><a href="share.html">国外Html5模板</a></li>
-          <li><a href="share.html">企业网站模板</a></li>
-        </ul>
 
-      <dt class="list_dt"> <a href="time.html">时间轴</a> </dt>
-      <dt class="list_dt"> <a href="gbook.html">留言</a> </dt>
-    </dl>
-  </div>
-  <!--mnav end-->
 
 </header>
 <div class="pagebg timer"> </div>

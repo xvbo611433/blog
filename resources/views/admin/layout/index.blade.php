@@ -115,8 +115,10 @@
 
         <!-- Logo Wrapper, images put within this wrapper will always be vertically centered -->
         <div id="mws-logo-wrap">
-            <img src="/admin/images/mws-logo.png" alt="mws admin">
-        </div>
+          <a href="/admin/index">  <h3>微博客</h3> </a> 
+       
+
+        </div>   
     </div>
 
     <!-- User Tools (notifications, logout, profile, change password) -->
@@ -285,12 +287,7 @@
         </div>
 
         <!-- Searchbox -->
-        <div id="mws-searchbox" class="mws-inset">
-            <form action="typography.html">
-                <input type="text" class="mws-search-input" placeholder="Search...">
-                <button type="submit" class="mws-search-submit"><i class="icon-search"></i></button>
-            </form>
-        </div>
+
 
         <!-- Main Navigation -->
         <div id="mws-navigation">
@@ -319,6 +316,13 @@
                         <li><a href="/admin/good">浏览文章</a></li>
                     </ul>
                 </li>
+                <li class="active">
+                    <a href="#"><i class="icon-edit"></i>相册管理</a>
+                    <ul class='closed'>
+                        <li><a href="/admin/photo/create">我的照片</a></li>
+
+                    </ul>
+                </li>                
                 <li class="active">
                     <a href="#"><i class="icon-comments"></i>评论管理</a>
                     <ul class='closed'>
@@ -352,7 +356,7 @@
     </div>
 
     <!-- Main Container Start -->
-    <div id="mws-container" class="clearfix">
+    <div id="mws-container" class="clearfix" style="height:900px;">
 
         <!-- 内容开始 -->
         <div class="container">

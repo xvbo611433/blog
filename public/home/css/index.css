@@ -1,4 +1,4 @@
-@charset "gb2312";
+ @charset "gb2312";
 .picsbox { width: 100%; overflow: hidden; position: relative; }
 /*banner*/
 .banner { width: 66%; overflow: hidden; float: left }
@@ -106,7 +106,7 @@
 .cloud ul a:hover { border-radius: 0; text-shadow: #000 1px 1px 1px }
 /*links*/
 .links ul { overflow: hidden }
-.links ul li { line-height: 24px; margin: 0 10px 10px 0; display: block; float: left }
+.links ul li { line-height: 24px; margin: 0 10px 10px 0; display: block; float: left absolute}
 .links ul a:hover { text-decoration: underline; color: #000 }
 /*guanzhu*/
 .guanzhu ul li { font-size: 12px; margin-bottom: 10px; background: #fff; color: #525252; line-height: 40px; padding: 0 0 0 34px; border: 1px solid #DDD; border-radius: 2px; position: relative; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }
@@ -127,7 +127,7 @@
 .guanzhu ul li:hover span { width: 120px; }
 /*gd*/
 .gd { width: 300px; top: 100px; z-index: 999; position: fixed; _position: absolute; _top:expression(documentElement.scrollTop + 0 + "px");
-    _margin-top: 100px; }
+_margin-top: 100px; }
 /*content*/
 .news_infos { float: left; margin-bottom: 20px; width: 66%; background: #fff; -webkit-box-shadow: 0 2px 5px 0 rgba(146, 146, 146, .1); -moz-box-shadow: 0 2px 5px 0 rgba(146, 146, 146, .1); box-shadow: 0 2px 5px 0 rgba(146, 146, 146, .1); }
 .news_infos ul { padding: 30px 40px; text-align: justify; line-height: 1.8; font-size: 16px; }
@@ -163,11 +163,11 @@ h1.t_nav { border-bottom: #bfbfbf 1px solid; font-size: 14px; font-weight: norma
 .timebox { position: relative; overflow: hidden }
 .timebox li { overflow: hidden; font-size: 16px; margin: 10px 0; line-height: 44px; }
 .timebox li a { background: #FFF; display: block; float: left; padding: 0 30px; position: relative; -webkit-box-shadow: 0 5px 10px 0 rgba(146, 146, 146, .1); -moz-box-shadow: 0 5px 10px 0 rgba(146, 146, 146, .1); box-shadow: 0 5px 10px 0 rgba(146, 146, 146, .1); -webkit-transition: all .5s ease; -moz-transition: all .5s ease; -ms-transition: all .5s ease; -o-transition: all .5s ease; transition: all .5s ease; }
-.timebox li span { margin-right: 90px; display: block; float: left; background: #f7f7f7; height: 44px; color: #999; -webkit-transition: all .5s ease; -moz-transition: all .5s ease; -ms-transition: all .5s ease; -o-transition: all .5s ease; transition: all .5s ease; }
-.timebox:before { content: ''; position: absolute; top: 0; bottom: 0; width: 3px; background: #ccc; left: 209px; margin-left: -10px; }
+.timebox li span { margin-right: 225px; display: block; float: left; background: #f7f7f7; height: 44px; color: #999; -webkit-transition: all .5s ease; -moz-transition: all .5s ease; -ms-transition: all .5s ease; -o-transition: all .5s ease; transition: all .5s ease; }
+.timebox:before { content: ''; position: absolute; top: 0; bottom: 0; width: 3px; background: #ccc; left: 250px; margin-left: -10px; }
 .timebox li a:before { right: 100%; border: solid transparent; content: " "; height: 0; width: 0; position: absolute; border-right-color: #fff; border-width: 10px; top: 10px; }
 .timebox li a:after { right: 100%; /* border: solid transparent; */ content: " "; height: 5px; width: 5px; border: 2px solid #cccaca; background: #8e9baf; position: absolute; top: 16px; left: -51px; border-radius: 50%; -webkit-transition: all .5s ease; -moz-transition: all .5s ease; -ms-transition: all .5s ease; -o-transition: all .5s ease; transition: all .5s ease; }
-#list, #list2 { overflow: hidden; clear: both }
+#list, #list2 { clear: both }
 .timebox li:hover a { padding-right: 60px }
 .timebox li:hover a:after { background: #3a6ab5 }
 .timebox li:hover span { color: #000 }
@@ -225,12 +225,12 @@ h1.t_nav { border-bottom: #bfbfbf 1px solid; font-size: 14px; font-weight: norma
 .meandblog li a:hover { color: #000 }
 /*money*/
 .dasbox{ width:130px; float:left; margin-left:40px;background: url(../images/dsbz.jpg) no-repeat left 20px center #E2523A ;
-
+    
     box-shadow: 1px 2px 6px 0px rgba(0,0,0,.2);
     border-radius: 3px;
     line-height: 40px; padding-left:10px;
-    text-align: center;
-}
+    text-align: center; 
+   }
 .hide_box { z-index: 999; filter: alpha(opacity=50); background: #666; opacity: 0.5; -moz-opacity: 0.5; left: 0; top: 0; height: 99%; width: 100%; position: fixed; display: none; }
 .shang_box { width: 430px; padding: 40px 10px; background: #fff url(../images/tbg.jpg) no-repeat left top 30px; ; border-radius: 10px; position: fixed; z-index: 1000; left: 50%; top: 50%; margin-left: -280px; margin-top: -280px; border: 1px dotted #dedede; display: none; }
 .shang_box img { border: none; border-width: 0; }
