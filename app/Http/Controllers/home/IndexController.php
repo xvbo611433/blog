@@ -21,7 +21,7 @@ class IndexController extends Controller
     public function index()
     {
         //获取文章按时间排序,分页
-        $good = Good::orderBy('created_at', 'desc')->paginate(8);
+        $good = Good::orderBy('created_at', 'desc')->paginate(5);
         //获取链接
 
         $link = Link::get();

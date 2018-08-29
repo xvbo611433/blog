@@ -20,7 +20,7 @@ class LoginMiddleware
             return $next($request);//继续执行下一次请求
         }else{
             // 登录页面
-            return redirect('./login');
+            return redirect('admin/login');
         }
     }
     

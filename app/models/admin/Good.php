@@ -24,7 +24,7 @@ class Good extends Model
     // 多个文章对一个类别
     public function goods_cate()
     {
-   	return $this->belongsTo('App\Models\admin\Cate','id');
+   	return $this->belongsTo('App\models\admin\Cate','id');
     }
 
     // 一个文章对多个评论

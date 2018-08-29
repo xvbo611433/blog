@@ -34,7 +34,7 @@
     </div><div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div>
     <div class="register w3layouts agileits">
         <h2>注 册</h2>
-        <form action="/comment" method="post">
+        <form action="/home/login/store" method="post">
             {{ csrf_field() }}
             用户名：<input type="text" name="username" placeholder="账号" required=""><br><br>
             邮  箱：<input type="text" name="email" placeholder="邮箱" required=""><br><br>

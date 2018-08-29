@@ -37,42 +37,34 @@ Route::controller('/admin/index','admin\IndexController');//首页
 
 Route::resource('/admin/link','admin\LinkController');//友情链接管理
 Route::controller('/admin/recycle','admin\RecycleController');//回收站管理
-Route::resource('/admin/photo','admin\PhotoController');//后台用户控制器
+Route::controller('/admin/photo','admin\PhotoController');//后台相册控制器
 
 });
 //前台
 Route::get('/','home\IndexController@index');
 Route::get('/home/show/{id}','home\IndexController@show');//详情
 Route::get('/home/list/{id}','home\IndexController@list');//列表
-<<<<<<< HEAD
-
-
-
-=======
 Route::get('/register','home\LoginController@create');//注册
 Route::get('/login','home\LoginController@index');//登陆页面
 Route::post('/info','home\LoginController@info');//验证登陆
 Route::post('/home/login/store','home\LoginController@store');
->>>>>>> 0ab886dc7c39e99ab8117d26dfbfa7c49f2776a0
-Route::get('/home/cmt','home\Cmtcontroller@index');
-Route::post('/home/cm','home\Cmtcontroller@store');
-Route::group(['middleware'=>'login'],function(){
+Route::get('/home/login/sendMobileCode','home\LoginController@sendMobileCode');
+Route::group(['middleware'=>'comment'],function(){
 Route::get('/home/comment/{id}','home\CommentController@index');//评论
 Route::post('/home/comment/destroy/{id}','home\CommentController@destroy');//评论
 Route::post('/home/comment/store','home\CommentController@test');//评论
 Route::post('/home/comment/destory','home\CommentController@destroy');//删除评论
-Route::get('/home/time','home\TextController@time');// 时间轴
+
 
 });
 
+Route::get('/home/time','home\TextController@time');// 时间轴
 
 
 
 
-<<<<<<< HEAD
-Route::get('/home/time','home\TextController@time');//时间轴
 Route::get('/home/about','home\TextController@about');//关于我
+Route::get('/home/picture','home\PictureCOntroller@index');//相册
+Route::get('/home/photo/{photo_id}','home\PictureCOntroller@photo');//图片
 				
-=======
-				
->>>>>>> 0ab886dc7c39e99ab8117d26dfbfa7c49f2776a0
+

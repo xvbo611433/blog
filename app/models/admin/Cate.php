@@ -56,7 +56,7 @@ class Cate extends Model
     }
 
     //和类别模型建立关联
-    public function goods()
+    public function goods_cate()
     {
         return $this->hasMany('Goods', 'id', 'gid');
     }

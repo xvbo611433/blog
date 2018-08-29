@@ -11,6 +11,12 @@
             </ul>
         </div>
     @endif
+                <div class="mws-form-message success">
+
+
+                {{session('success')}}
+
+            </div>
     <div class="mws-panel grid_8">
         <div class="mws-panel-header">
             <span><i class="icon-table"></i>{{ $title }}</span>

@@ -319,8 +319,8 @@
                 <li class="active">
                     <a href="#"><i class="icon-edit"></i>相册管理</a>
                     <ul class='closed'>
-                        <li><a href="/admin/photo/create">添加照片</a></li>
-                        <li><a href="/admin/photo">浏览照片</a></li>
+                        <li><a href="/admin/photo/create">我的照片</a></li>
+
                     </ul>
                 </li>                
                 <li class="active">
@@ -356,7 +356,7 @@
     </div>
 
     <!-- Main Container Start -->
-    <div id="mws-container" class="clearfix">
+    <div id="mws-container" class="clearfix" style="height:900px;">
 
         <!-- 内容开始 -->
         <div class="container">
