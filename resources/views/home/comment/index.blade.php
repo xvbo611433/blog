@@ -139,7 +139,7 @@
                         // 文章id
                         var gid = '{{ $essay['gid'] }}';
                         // 用户头像
-                        var user = '{{ session('login') }}';
+                        var user = '{{ session('comment') }}';
 
                         var profile = $('.comment-show-con-img').find('img').first().attr('src');
 

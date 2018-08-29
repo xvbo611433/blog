@@ -45,10 +45,8 @@ class IndexController extends Controller
         $essay = Good::find($gid);
         // 根据时间倒叙排序 获取所有文章
         $good = Good::orderBy('created_at', 'desc')->get();
-        // 获取文章详情
-        $good_comment = Good::find($gid);
         // 获取文章评论信息
-        $comment = $good_comment->goods_comment;
+        $comment = $essay->goods_comment;
         $cid = $essay->id;
         // 类别
         $cate_name = Cate::find($cid)->cname;

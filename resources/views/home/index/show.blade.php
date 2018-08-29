@@ -14,13 +14,9 @@
     <script src="/home/js/jquery.min.js" type="text/javascript"></script>
     <script src="/home/js/jquery.easyfader.min.js"></script>
     <script src="/home/js/scrollReveal.js"></script>
-    <script src="/home/js/common.js"></script>
-    <script type="text/javascript" src="/home/comment/js/jquery-1.12.0.min.js"></script>
-    <script type="text/javascript" src="/home/comment/js/jquery.flexText.js"></script>
-    <!--[if lt IE 9]>
-    <!--[if lt IE 9]>
-    <script src="js/modernizr.js"></script>
-    <![endif]-->
+    {{--<script type="text/javascript" src="/home/comment/js/jquery-1.12.0.min.js"></script>--}}
+    {{--<script type="text/javascript" src="/home/comment/js/jquery.flexText.js"></script>--}}
+
 </head>
 <body>
 
@@ -31,19 +27,13 @@
         <nav class="nav" id="topnav">
             <h1 class="logo"><a href="http://www.yangqq.com">微博客</a></h1>
             <li><a href="/">网站首页</a></li>
-
-
-                        <?php $cate = \App\Models\admin\Cate::getCate(0);?>
-
-
+            <?php $cate = \App\Models\admin\Cate::getCate(0);?>
             @foreach($cate as $v)
-
                 <li><a href="/home/list/{{$v->id}}">{{$v->cname}}</a>
                     <ul class="sub-nav">
                         @foreach($v->child_cate as $vv)
                             <li><a href="/home/list/{{$vv->id}}">{{$vv->cname}}</a></li>
                         @endforeach
-
                     </ul>
                 @endforeach
                                 <li><a href="/home/picture">相册</a></li> 
@@ -90,8 +80,8 @@
 {!!$essay['content']!!} </div>
     </div>
     <div class="share">
-      <p class="diggit"><a href="JavaScript:makeRequest('/e/public/digg/?classid=3&amp;id=19&amp;dotop=1&amp;doajax=1&amp;ajaxarea=diggnum','EchoReturnedText','GET','');"> 很赞哦！ </a>(<b id="diggnum"><script type="text/javascript" src="/e/public/ViewClick/?classid=2&amp;id=20&amp;down=5"></script>13</b>)</p>
-      <p class="dasbox"><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">打赏本站</a></p>
+      {{--<p class="diggit"><a href="JavaScript:makeRequest('/e/public/digg/?classid=3&amp;id=19&amp;dotop=1&amp;doajax=1&amp;ajaxarea=diggnum','EchoReturnedText','GET','');"> 很赞哦！ </a>(<b id="diggnum"><script type="text/javascript" src="/e/public/ViewClick/?classid=2&amp;id=20&amp;down=5"></script>13</b>)</p>--}}
+      {{--<p class="dasbox"><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">打赏本站</a></p>--}}
       <div class="hide_box"></div>
       <div class="shang_box"> <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()" title="关闭">关闭</a>
         <div class="shang_tit">
@@ -225,7 +215,7 @@
         <a href="/">陌上花开</a> <a href="/">校园生活</a> <a href="/">html5</a> <a href="/">SumSung</a> <a href="/">青春</a> <a href="/">温暖</a> <a href="/">阳光</a> <a href="/">三星</a><a href="/">索尼</a> <a href="/">华维荣耀</a> <a href="/">三星</a> <a href="/">索尼</a>
       </ul>
     </div>
-    <div class="guanzhu" id="follow-us">
+    <div class="guanzhu gd" id="follow-us">
       <h2 class="hometitle">关注我们 么么哒！</h2>
       <ul>
         <li class="sina"><a href="/" target="_blank"><span>新浪微博</span>微博客</a></li>

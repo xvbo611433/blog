@@ -40,10 +40,10 @@ class LoginController extends Controller
         $id  = array_pop($arr);
 
         //查询数据库是否存在用户
-        $tem = Register::where('username', $uname)->where('password', $upwd)->first();
+        $tem = Register::where('uname', $uname)->where('password', $upwd)->first();
         if ($tem) {
             // 取值并给session赋值
-            session(['comment' => $tem['username']]);
+            session(['comment' => $tem['uname']]);
             return redirect('/home/comment/' . $id);
         } else {
             return back()->with('error', '密码错误');

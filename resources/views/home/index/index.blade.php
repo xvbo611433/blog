@@ -11,8 +11,6 @@
     <script src="/home/js/jquery.min.js" type="text/javascript"></script>
     <script src="/home/js/jquery.easyfader.min.js"></script>
     <script src="/home/js/scrollReveal.js"></script>
-    <script src="/home/js/common.js"></script>
- 
     <script type="text/javascript" src="/home/bs/js/bootstrap.min.js"></script>
 
 
@@ -128,9 +126,11 @@
         #pull_right{
             text-align:center;
         }
-        .pull-right {
-            /*float: left!important;*/
+        .pull_right{
+            margin: 100px auto;
+            text-align:center;
         }
+
         .pagination {
             display: inline-block;
             padding-left: 0;
@@ -203,7 +203,7 @@
        
 
  <div id="pull_right">
-       <div class="pull-right">
+       <div class="pull-right" style="margin: 100px auto">
            {!! $good->render() !!}
        </div>
  </div>
