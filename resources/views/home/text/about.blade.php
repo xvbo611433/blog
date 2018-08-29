@@ -105,7 +105,7 @@
   </div>
 </div>
 <footer>
-  <p>Design by <a href="http://www.yangqq.com" target="_blank">杨青个人博客</a> <a href="/">蜀ICP备11002373号-1</a></p>
+  <p>Design by <a href="http://www.blog.com" target="_blank">微博客</a> <a href="/">蜀ICP备11002373号-1</a></p>
 </footer>
 <a href="#" class="cd-top">Top</a>
 </body>

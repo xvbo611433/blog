@@ -71,9 +71,9 @@
 <ul>
   @foreach($photo as $v)
 
- <li> <div class="shareli"><a href="/" target="_blank"> <i>{!!$v['photo']!!}</i>
+ <li> <div class="shareli"><i>{!!$v['photo']!!}</i>
       <h2><b>{{$v['photoname']}}</b></h2>
-      <span>喜欢 | 190</span> </a></div> </li>
+      <span>喜欢 | 190</span> </div> </li>
      @endforeach
 </ul>
 </div>

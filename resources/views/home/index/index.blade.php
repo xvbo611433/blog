@@ -54,6 +54,7 @@
                     </ul>
                 @endforeach
                 <!--search begin-->
+                <li><a href="/home/picture">相册</a></li> 
                 <li><a href="/home/time">时间轴</a></li> 
                 <li><a href="/home/about">关于我</a></li> 
                 <li>
@@ -123,12 +124,89 @@
 
             </div>
         @endforeach
+<style type="text/css">
+        #pull_right{
+            text-align:center;
+        }
+        .pull-right {
+            /*float: left!important;*/
+        }
+        .pagination {
+            display: inline-block;
+            padding-left: 0;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .pagination > li {
+            display: inline;
+        }
+        .pagination > li > a,
+        .pagination > li > span {
+            position: relative;
+            float: left;
+            padding: 6px 12px;
+            margin-left: -1px;
+            line-height: 1.42857143;
+            color: #428bca;
+            text-decoration: none;
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
+        .pagination > li:first-child > a,
+        .pagination > li:first-child > span {
+            margin-left: 0;
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+        }
+        .pagination > li:last-child > a,
+        .pagination > li:last-child > span {
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+        .pagination > li > a:hover,
+        .pagination > li > span:hover,
+        .pagination > li > a:focus,
+        .pagination > li > span:focus {
+            color: #2a6496;
+            background-color: #eee;
+            border-color: #ddd;
+        }
+        .pagination > .active > a,
+        .pagination > .active > span,
+        .pagination > .active > a:hover,
+        .pagination > .active > span:hover,
+        .pagination > .active > a:focus,
+        .pagination > .active > span:focus {
+            z-index: 2;
+            color: #fff;
+            cursor: default;
+            background-color: #428bca;
+            border-color: #428bca;
+        }
+        .pagination > .disabled > span,
+        .pagination > .disabled > span:hover,
+        .pagination > .disabled > span:focus,
+        .pagination > .disabled > a,
+        .pagination > .disabled > a:hover,
+        .pagination > .disabled > a:focus {
+            color: #777;
+            cursor: not-allowed;
+            background-color: #fff;
+            border-color: #ddd;
+        }
+        .clear{
+            clear: both;
+        }
+    </style>
 
 
+       
 
-        {!! $good->render() !!}
-
-
+ <div id="pull_right">
+       <div class="pull-right">
+           {!! $good->render() !!}
+       </div>
+ </div>
     </div>
     <!--blogsbox end-->
     <div class="sidebar">
@@ -170,8 +248,8 @@
                 <li class="tencent"><a href="/" target="_blank"><span>腾讯微博</span></a></li>
                 <li class="qq"><a href="/" target="_blank"><span>QQ号</span></a></li>
                 <li class="email"><a href="/" target="_blank"><span>邮箱帐号</span></a></li>
-                <li class="wxgzh"><a href="/" target="_blank"><span>微信号</span>yangqq_1987</a></li>
-                <li class="wx"><img src="/home/images/wx.jpg"></li>
+                <li class="wxgzh"><a href="/" target="_blank"><span>微信号</span></a></li>
+                <li class="wx"><img src="/home/images/mmqrcode1535504449800.png"></li>
             </ul>
         </div>
     </div>
