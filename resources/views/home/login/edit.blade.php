@@ -7,17 +7,14 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="/home/css/base.css" rel="stylesheet">
     <link href="/home/css/index.css" rel="stylesheet">
-    <link href="/layui/layui/css/layui.css" rel="stylesheet">
-    <script src="/layui/layui/layui.js"></script>
+    <link href="/layui/css/layui.css" rel="stylesheet">
+    <script src="/layui/layui.js"></script>
     <link href="/home/css/m.css" rel="stylesheet">
-    <script src="/home/js/jquery.min.js" type="text/javascript"></script>
-    <script src="/home/js/jquery.easyfader.min.js"></script>
+
     <script src="/home/js/scrollReveal.js"></script>
-    <script src="/home/js/common.js"></script>
     <link rel="stylesheet" href="/home/bootstrap.min.css">
-    <link rel="stylesheet" href="/home/bs/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="/home/bs/css/bootstrap.css">
-    <script type="text/javascript" src="/home/bs/js/bootstrap.min.js"></script>
+    <script src="/home/js/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="/home/bs/js/bootstrap.js"></script>
 
     <style type="text/css">
@@ -103,7 +100,7 @@
             </div>
             <div class="user_info">
                 <ul class="list-group">
-                    <li class="layui-icon layui-icon-set-sm"><a href="/home/userinfo">个人信息</a></li>
+                    <li class="layui-icon layui-icon-set-sm"><a href="/home/create/{{ session('id') }}">个人信息</a></li>
                     <li class="layui-icon layui-icon-password"><a href="/home/edit">修改密码</a></li>
                 </ul>
             </div>

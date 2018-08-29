@@ -9,15 +9,12 @@
     <link href="/layui/css/layui.css" rel="stylesheet">
     <script src="/layui/layui.js"></script>
     <link href="/home/css/m.css" rel="stylesheet">
-    <script src="/home/js/jquery.min.js" type="text/javascript"></script>
-    <script src="/home/js/jquery.easyfader.min.js"></script>
     <script src="/home/js/scrollReveal.js"></script>
     <link rel="stylesheet" href="/home/bootstrap.min.css">
-    <link rel="stylesheet" href="/home/bs/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="/home/bs/css/bootstrap.css">
-    <script type="text/javascript" src="/home/bs/js/bootstrap.min.js"></script>
+    <script src="/home/js/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="/home/bs/js/bootstrap.js"></script>
-    <link rel="stylesheet" href="/home/bs/css/bootstrap-theme.min.css">
+
     <style type="text/css">
         .user_info_content{width: 100%;float: left;}
         .user_info{width: 25%;font-size: 20px;margin-top: 20px;text-align: center;line-height: 42px;border:1px solid #0f9e92;}
@@ -30,18 +27,19 @@
         /*.btn-file input {position: absolute;top: 0;left: 0;width: 100px;height: 100px;opacity: 0;filter: alpha(opacity: 0);cursor: pointer;}*/
         .img-file{position: absolute;width: 100px;height: 100px;border-radius: 50%;}
     </style>
+    <script>
+        //一般直接写在一个js文件中
+        layui.use(['layer', 'form'], function(){
+            var layer = layui.layer
+                ,form = layui.form;
+        });
+    </script>
 </head>
-<script>
-    //一般直接写在一个js文件中
-    layui.use(['layer', 'form'], function(){
-        var layer = layui.layer
-            ,form = layui.form;
-    });
-</script>
 <body>
 <header>
     <!--menu begin-->
     <div class="menu">
+
         <nav class="nav" id="topnav">
             <h1 class="logo"><a href="http://www.yangqq.com">微博客</a></h1>
             <li><a href="/">网站首页</a></li>
@@ -77,6 +75,15 @@
 </header>
 <article>
 <div class="container">
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="user_info_content">
         <div class="container edit_info">
             <h3><span class="glyphicon glyphicon-cog" aria-hidden="true"> 完善个人信息</span></h3>
@@ -100,7 +107,7 @@
                             ,field:'profile'
                             ,done: function(res){
                                 // 修改当前头像
-                                $("img").first('.img-file').attr("src",res.tep);
+                                $("img").first('.img-file').attr('src',res.tep);
                             }
 
                         });
@@ -108,7 +115,7 @@
                 </script>
 
             </div>
-            <form action="/home/store/info" method="post" enctype="multipart/form-data" class="form-horizontal" style="width:77%;margin-top: 100px;">
+            <form action="/home/store/info" method="post" class="form-horizontal" style="width:77%;margin-top: 100px;">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="inputPassword3" class="col-sm-2 control-label"></label>

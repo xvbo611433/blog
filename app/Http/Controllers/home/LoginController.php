@@ -69,50 +69,42 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        //  $tel_code = $request -> all();
-        //  if(session('mobile_code') != $tel_code['tel_code']){
-        //     echo '验证码错误';
-        // }else{
-                // 将注册信息插入数据库
-                        $user = new Register;
-            $user->username = $request->input('username');
-            // $user->email = $request->input('email');
-            $user->password = $request->input('password');
-            // $user->tel = $request->input('tel');
-            $res = $user->save();
-            if($res){
-            return redirect('/')->with('success','添加成功');
-            }else{
+        // 将注册信息插入数据库
+        $user = new Register;
+        $user->uname = $request->input('username');
+        $user->password = $request->input('password');
+        // $user->tel = $request->input('tel');
+        $res = $user->save();
+        $id = $user->id;
+        session(['info'=>$user,'uname'=>$user['uname'],'password'=>$user['password']]);
+        if ($res) {
+            return redirect('/home/create/'.$id)->with('success', '添加成功');
+        } else {
             // 失败返回
-            return back()->with('error','添加失败');
-            }           
+            return back()->with('error', '添加失败');
+        }
 
-                  
-
-
-
-     
     }
 
 
-    // public function sendMobileCode(Request $request)
-    // {
-    //     // echo '1231';
-    //     $phone = $request->input('phone');
-    //     // echo $phone;
-    //     $mobile_code = rand(1000, 9999);
-    //     session(['mobile_code' => $mobile_code]);
-    //     //短信接口地址
-    //     $target = "http://106.ihuyi.cn/webservice/sms.php?method=Submit";
-    //     //参数
-    //     $target .= "&format=json&account=C84648339&password=48a4059a1e557352184e46c788b8104b&mobile=" . $phone . "&content=" . rawurlencode("您的验证码是：" . $mobile_code . "。请不要把验证码泄露给其他人。");
+     public function sendMobileCode(Request $request)
+     {
+         // echo '1231';
+         $phone = $request->input('phone');
+         // echo $phone;
+         $mobile_code = rand(1000, 9999);
+         session(['mobile_code' => $mobile_code]);
+         //短信接口地址
+         $target = "http://106.ihuyi.cn/webservice/sms.php?method=Submit";
+         //参数
+         $target .= "&format=json&account=C84648339&password=48a4059a1e557352184e46c788b8104b&mobile=" . $phone . "&content=" . rawurlencode("您的验证码是：" . $mobile_code . "。请不要把验证码泄露给其他人。");
 
-    //     $ch = curl_init();
-    //     curl_setopt($ch, CURLOPT_URL, $target);
-    //     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    //     curl_setopt($ch, CURLOPT_HEADER, 0);
-    //     $res = curl_exec($ch);
-    //     curl_close($ch);
-    //     echo $res;
-    // }
+         $ch = curl_init();
+         curl_setopt($ch, CURLOPT_URL, $target);
+         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+         curl_setopt($ch, CURLOPT_HEADER, 0);
+         $res = curl_exec($ch);
+         curl_close($ch);
+         echo $res;
+     }
 }

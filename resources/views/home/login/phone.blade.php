@@ -33,8 +33,6 @@
                             </ul>
 
                             <div class="am-tabs-bd">
-
-
                                 <div class="am-tab-panel">
                                         <form method="post" action="/home/login/store">
                                         <input type="hidden" name="method" value="phone">
@@ -72,28 +70,28 @@
                                     <hr>
                                 </div>
                                 <script type="text/javascript">
-                                // function sendMobileCode(){
-                                //    var phone = $('#phone').val();
-                                //    console.log(phone);
+                                function sendMobileCode(){
+                                   var phone = $('#phone').val();
+                                   console.log(phone);
 
 
-                                //     $.ajax({
-                                //         url:'/home/login/sendMobileCode',
-                                //         data:{'phone':vphone},
-                                //         datatype:'json',
-                                //         async:true,
-                                //         success:function(msg){
-                                //             if(msg.code == 2){
-                                //              alert('发送成功');   
-                                //             }else{
-                                //                 alert(msg.msg);
-                                //             }
-                                //         }
-                                //     });
-                                //     // $.get('/home/login/sendMobileCode',{'phone':vphone},function(msg){
-                                //     //     alert(msg);
-                                //     // },'json');
-                                // }
+                                    $.ajax({
+                                        url:'/home/login/sendMobileCode',
+                                        data:{'phone':vphone},
+                                        datatype:'json',
+                                        async:true,
+                                        success:function(msg){
+                                            if(msg.code == 2){
+                                             alert('发送成功');
+                                            }else{
+                                                alert(msg.msg);
+                                            }
+                                        }
+                                    });
+                                    $.get('/home/login/sendMobileCode',{'phone':vphone},function(msg){
+                                        alert(msg);
+                                    },'json');
+                                }
 
 
                                 </script>

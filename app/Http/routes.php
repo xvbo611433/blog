@@ -48,6 +48,11 @@ Route::post('/home/comment/store','home\CommentController@test');//评论
 Route::post('/home/comment/destory','home\CommentController@destroy');//删除评论
 });
 
+Route::post('/home/store/info','home\UserInfoController@store');//处理个人信息
+Route::get('/home/create/{id}','home\UserInfoController@create');//完善个人信息
+Route::post('/home/showInfo','home\UserInfoController@showInfo');//完善个人信息
+Route::get('/home/edit','home\UserInfoController@edit');//修改密码
+Route::post('/home/editPwd','home\UserInfoController@editPwd');//修改密码
 
 				
 

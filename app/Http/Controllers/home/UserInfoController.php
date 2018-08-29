@@ -43,6 +43,7 @@ class UserInfoController extends Controller
      */
     public function store(UserInfoRequest $request)
     {
+
         // 接收数据 存入数据库
         $user = new UserInfo;
         $user->uid = $request->input('uid');
@@ -55,11 +56,11 @@ class UserInfoController extends Controller
         $user->wname = $request->input('wname');
         $user->baddress = $request->input('baddress');
         $res = $user->save();
-    if($res){
-            return redirect('/')->with('success','注册成功');
-        }else{
-            return redirect('/')->with('success','注册成功');
-        }
+        if($res){
+                return redirect('/')->with('success','注册成功');
+            }else{
+                return back()->with('error','注册成功');
+            }
     }
 
     /**
@@ -72,14 +73,14 @@ class UserInfoController extends Controller
     {
         if($request->hasFile('profile')){
             // 接收头像信息
-            $profile = $request->file('profile');
+        $profile = $request->file('profile');
             // 为防止文件信息重复随机文件名
             $temp_name = str_random(6);
             // 获取文件后缀名
             $ext = $profile->getClientOriginalExtension();
             // 重整文件名
             $name = $temp_name.'.'.$ext;
-            //为避免存入的文件信息混乱 不好查找 建立新目录
+            // 建立新目录
             $dir = './uploads/'.date('Ymd',time());
             // 将文件移动到指定位置
             $profile->move($dir,$name);
@@ -104,9 +105,10 @@ class UserInfoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+        // 显示修改密码页面
+        return view('home.login.edit',['title'=>'修改密码']);
     }
 
     /**
@@ -116,9 +118,39 @@ class UserInfoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function editPwd(Request $request)
     {
-        //
+        $this->validate($request, [
+            'pwd' => 'required',
+            'repwd' => 'required',
+            'upwd' => 'required',
+        ],[
+            'pwd.required'=>'原密码不能为空',
+            'repwd.required'=>'确认密码不能为空',
+            'upwd.required'=>'新密码不能为空',
+        ]);
+        $arr = $request->except('s','_token');
+        // 获取提交信息
+        $pwd = $arr['pwd'];
+        $repwd = $arr['repwd'];
+        $upwd = $arr['upwd'];
+        // 判断两次密码是否一致
+        if($repwd != $upwd){
+            return back()->with('error','两次密码不一致');
+        }
+        // 获取session用户信息
+        $data = session('password');
+        $id = session('id');
+        Hash::check($pwd, $data);
+        //密码加密
+        $password = Hash::make($upwd);
+        // 更新到数据库
+        $res =  DB::table('blog_user')->where('id', $id)->update(['password'=>$password]);
+        if($res){
+            return redirect('/login')->with('success','您的密码有更改,请重新登录');
+        }else{
+            return back()->with('error','修改失败');
+        }
     }
 
     /**
