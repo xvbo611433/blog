@@ -12,31 +12,32 @@
     <script src="/home/js/jquery.easyfader.min.js"></script>
     <script src="/home/js/scrollReveal.js"></script>
     <script src="/home/js/common.js"></script>
- 
+
     <script type="text/javascript" src="/home/bs/js/bootstrap.min.js"></script>
 
 
     <!--[if lt IE 9]>
     <script src="js/modernizr.js"></script>
     <![endif]-->
-        
+
 </head>
 <body>
-    <style>
-        .nav li{
-            float: left;
-            
-        }
-       nav li:hover{
-            display: block;
-            overflow: hidden;
-        }
-    </style>
+<style>
+    .nav li {
+        float: left;
+
+    }
+
+    nav li:hover {
+        display: block;
+        overflow: hidden;
+    }
+</style>
 <header>
     <!--menu begin-->
     <div class="menu">
-        <nav class="nav" >
-            <h1 class="logo"><a href="http://www.yangqq.com">微博客</a></h1>
+        <nav class="nav">
+            <h1 class="logo"><a href="http://www.blog.com">微博客</a></h1>
             <li><a href="/">网站首页</a></li>
 
 
@@ -54,9 +55,9 @@
                     </ul>
                 @endforeach
                 <!--search begin-->
-                <li><a href="/home/picture">相册</a></li> 
-                <li><a href="/home/time">时间轴</a></li> 
-                <li><a href="/home/about">关于我</a></li> 
+                <li><a href="/home/picture">相册</a></li>
+                <li><a href="/home/time">时间轴</a></li>
+                <li><a href="/home/about">关于我</a></li>
                 <li>
                     <div id="search_bar" class="search_bar">
                         <form id="searchform" action="[!--news.url--]e/search/index.php" method="post"
@@ -124,89 +125,93 @@
 
             </div>
         @endforeach
-<style type="text/css">
-        #pull_right{
-            text-align:center;
-        }
-        .pull-right {
-            /*float: left!important;*/
-        }
-        .pagination {
-            display: inline-block;
-            padding-left: 0;
-            margin: 20px 0;
-            border-radius: 4px;
-        }
-        .pagination > li {
-            display: inline;
-        }
-        .pagination > li > a,
-        .pagination > li > span {
-            position: relative;
-            float: left;
-            padding: 6px 12px;
-            margin-left: -1px;
-            line-height: 1.42857143;
-            color: #428bca;
-            text-decoration: none;
-            background-color: #fff;
-            border: 1px solid #ddd;
-        }
-        .pagination > li:first-child > a,
-        .pagination > li:first-child > span {
-            margin-left: 0;
-            border-top-left-radius: 4px;
-            border-bottom-left-radius: 4px;
-        }
-        .pagination > li:last-child > a,
-        .pagination > li:last-child > span {
-            border-top-right-radius: 4px;
-            border-bottom-right-radius: 4px;
-        }
-        .pagination > li > a:hover,
-        .pagination > li > span:hover,
-        .pagination > li > a:focus,
-        .pagination > li > span:focus {
-            color: #2a6496;
-            background-color: #eee;
-            border-color: #ddd;
-        }
-        .pagination > .active > a,
-        .pagination > .active > span,
-        .pagination > .active > a:hover,
-        .pagination > .active > span:hover,
-        .pagination > .active > a:focus,
-        .pagination > .active > span:focus {
-            z-index: 2;
-            color: #fff;
-            cursor: default;
-            background-color: #428bca;
-            border-color: #428bca;
-        }
-        .pagination > .disabled > span,
-        .pagination > .disabled > span:hover,
-        .pagination > .disabled > span:focus,
-        .pagination > .disabled > a,
-        .pagination > .disabled > a:hover,
-        .pagination > .disabled > a:focus {
-            color: #777;
-            cursor: not-allowed;
-            background-color: #fff;
-            border-color: #ddd;
-        }
-        .clear{
-            clear: both;
-        }
-    </style>
+        <style type="text/css">
+            #pull_right {
+                text-align: center;
+            }
+
+            .pagination {
+                display: inline-block;
+                padding-left: 0;
+                margin: 20px 0;
+                border-radius: 4px;
+            }
+
+            .pagination > li {
+                display: inline;
+            }
+
+            .pagination > li > a,
+            .pagination > li > span {
+                position: relative;
+                float: left;
+                padding: 6px 12px;
+                margin-left: -1px;
+                line-height: 1.42857143;
+                color: #428bca;
+                text-decoration: none;
+                background-color: #fff;
+                border: 1px solid #ddd;
+            }
+
+            .pagination > li:first-child > a,
+            .pagination > li:first-child > span {
+                margin-left: 0;
+                border-top-left-radius: 4px;
+                border-bottom-left-radius: 4px;
+            }
+
+            .pagination > li:last-child > a,
+            .pagination > li:last-child > span {
+                border-top-right-radius: 4px;
+                border-bottom-right-radius: 4px;
+            }
+
+            .pagination > li > a:hover,
+            .pagination > li > span:hover,
+            .pagination > li > a:focus,
+            .pagination > li > span:focus {
+                color: #2a6496;
+                background-color: #eee;
+                border-color: #ddd;
+            }
+
+            .pagination > .active > a,
+            .pagination > .active > span,
+            .pagination > .active > a:hover,
+            .pagination > .active > span:hover,
+            .pagination > .active > a:focus,
+            .pagination > .active > span:focus {
+                z-index: 2;
+                color: #fff;
+                cursor: default;
+                background-color: #428bca;
+                border-color: #428bca;
+            }
+
+            .pagination > .disabled > span,
+            .pagination > .disabled > span:hover,
+            .pagination > .disabled > span:focus,
+            .pagination > .disabled > a,
+            .pagination > .disabled > a:hover,
+            .pagination > .disabled > a:focus {
+                color: #777;
+                cursor: not-allowed;
+                background-color: #fff;
+                border-color: #ddd;
+            }
+
+            .clear {
+                clear: both;
+            }
+        </style>
 
 
-       
-
- <div id="pull_right">
-       <div class="pull-right">
-           {!! $good->render() !!}
-       </div>
- </div>
+        <div id="pull_right">
+            <div class="pull-right">
+                {!! $good->render() !!}
+            </div>
+        </div>
     </div>
     <!--blogsbox end-->
     <div class="sidebar">
@@ -253,7 +258,7 @@
             </ul>
         </div>
     </div>
-    <embed src="/home/images/flash6407.swf" >
+    <embed src="/home/images/flash6407.swf">
 </article>
 <footer>
     <p>Design by <a href="http://www.blog.com" target="_blank">微博客</a> <a href="/">蜀ICP备11002373号-1</a></p>

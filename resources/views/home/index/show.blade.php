@@ -15,8 +15,7 @@
     <script src="/home/js/jquery.easyfader.min.js"></script>
     <script src="/home/js/scrollReveal.js"></script>
     <script src="/home/js/common.js"></script>
-    <script type="text/javascript" src="/home/comment/js/jquery-1.12.0.min.js"></script>
-    <script type="text/javascript" src="/home/comment/js/jquery.flexText.js"></script>
+
     <!--[if lt IE 9]>
     <!--[if lt IE 9]>
     <script src="js/modernizr.js"></script>
@@ -225,17 +224,17 @@
         <a href="/">陌上花开</a> <a href="/">校园生活</a> <a href="/">html5</a> <a href="/">SumSung</a> <a href="/">青春</a> <a href="/">温暖</a> <a href="/">阳光</a> <a href="/">三星</a><a href="/">索尼</a> <a href="/">华维荣耀</a> <a href="/">三星</a> <a href="/">索尼</a>
       </ul>
     </div>
-    <div class="guanzhu" id="follow-us">
-      <h2 class="hometitle">关注我们 么么哒！</h2>
-      <ul>
-        <li class="sina"><a href="/" target="_blank"><span>新浪微博</span>微博客</a></li>
-        <li class="tencent"><a href="/" target="_blank"><span>腾讯微博</span>微博客</a></li>
-        <li class="qq"><a href="/" target="_blank"><span>QQ号</span></a></li>
-        <li class="email"><a href="/" target="_blank"><span>邮箱帐号</span></a></li>
-        <li class="wxgzh"><a href="/" target="_blank"><span>微信号</span> </a></li>
-        <li class="wx"><img src="/home/images/mmqrcode1535504449800.png"></li>
-      </ul>
-    </div>
+        <div class="guanzhu" id="follow-us">
+            <h2 class="hometitle">关注我们 么么哒！</h2>
+            <ul>
+                <li class="sina"><a href="/" target="_blank"><span>新浪微博</span></a></li>
+                <li class="tencent"><a href="/" target="_blank"><span>腾讯微博</span></a></li>
+                <li class="qq"><a href="/" target="_blank"><span>QQ号</span></a></li>
+                <li class="email"><a href="/" target="_blank"><span>邮箱帐号</span></a></li>
+                <li class="wxgzh"><a href="/" target="_blank"><span>微信号</span></a></li>
+                <li class="wx"><img src="/home/images/mmqrcode1535504449800.png"></li>
+            </ul>
+        </div>
   </div>
 </article>
 <footer>
