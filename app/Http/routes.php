@@ -20,21 +20,13 @@ Route::get('/code','admin\CodeController@code');//验证码
 Route::controller('/admin/login','admin\LoginController');//用户登录
 
 Route::group(['middleware'=>'login'],function(){
-
-
 Route::resource('/admin/user','admin\UserController');//后台用户控制器
-
 Route::resource('/admin/cate','admin\CateController');//后台类别控制器
-
 Route::get('admin/cate/childcate/{id}','admin\CateController@childcate');
-
 Route::resource('/admin/comment','admin\CommentController');//评论管理控制器
-
 Route::controller('/admin/image','admin\imageController');//轮番图管理控制器
-
 Route::resource('/admin/good','admin\GoodController');//文章管理
 Route::controller('/admin/index','admin\IndexController');//首页
-
 Route::resource('/admin/link','admin\LinkController');//友情链接管理
 Route::controller('/admin/recycle','admin\RecycleController');//回收站管理
 Route::controller('/admin/photo','admin\PhotoController');//后台相册控制器
@@ -54,8 +46,6 @@ Route::get('/home/comment/{id}','home\CommentController@index');//评论
 Route::post('/home/comment/destroy/{id}','home\CommentController@destroy');//评论
 Route::post('/home/comment/store','home\CommentController@test');//评论
 Route::post('/home/comment/destory','home\CommentController@destroy');//删除评论
-
-
 });
 
 

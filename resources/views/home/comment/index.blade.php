@@ -140,9 +140,11 @@
                         var gid = '{{ $essay['gid'] }}';
                         // 用户头像
                         var user = '{{ session('comment') }}';
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
                         var profile = $('.comment-show-con-img').find('img').first().attr('src');
-
                         //获取输入内容
                         var oSize = $(this).siblings('.flex-text-wrap').find('.comment-input').val();
                           //动态创建评论模块

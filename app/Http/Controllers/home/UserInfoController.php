@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\home\Register;
 use App\Models\home\UserInfo;
 use DB;
+use App\Http\Requests\UserInfoRequest;
 
 class UserInfoController extends Controller
 {
@@ -40,7 +41,7 @@ class UserInfoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserInfoRequest $request)
     {
         // 接收数据 存入数据库
         $user = new UserInfo;

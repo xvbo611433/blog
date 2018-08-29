@@ -81,7 +81,7 @@ class LoginController extends Controller
             // $user->tel = $request->input('tel');
             $res = $user->save();
             if($res){
-            return redirect('/login')->with('success','添加成功');
+            return redirect('/')->with('success','添加成功');
             }else{
             // 失败返回
             return back()->with('error','添加失败');
