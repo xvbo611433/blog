@@ -12,24 +12,14 @@
     <script src="/home/js/jquery.easyfader.min.js"></script>
     <script src="/home/js/scrollReveal.js"></script>
     <script src="/home/js/common.js"></script>
-    <script type="text/javascript" src="/home/bs/js/bootstrap.min.js"></script>
+
     <!--[if lt IE 9]>
     <script src="js/modernizr.js"></script>
     <![endif]-->
 
 </head>
 <body>
-<style>
-    .nav li {
-        float: left;
 
-    }
-
-    nav li:hover {
-        display: block;
-        overflow: hidden;
-    }
-</style>
 <header>
     <!--menu begin-->
     <div class="menu">
