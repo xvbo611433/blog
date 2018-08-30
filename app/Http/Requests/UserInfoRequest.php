@@ -13,7 +13,7 @@ class UserInfoRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,13 +24,14 @@ class UserInfoRequest extends Request
     public function rules()
     {
         return [
-            'nickname' => 'required|unique:user|regex:/^[a-zA-Z]{1,8}[\w]{5,12}$/',
-            'qq' => 'required|unique:user|regex:/^[a-zA-Z]{1,8}[\w]{5,12}$/',
+            'nickname' => 'required|unique:blog_info|regex:/\p{Han}/u',
+            'qq' => 'required|regex:/^1[0-9]{9}$/',
             'tel' => 'required|regex:/^1[3578]{1}\d{9}$/',
-            'rname' => 'required|unique:user|regex:/^[a-zA-Z]{1,8}[\w]{5,12}$/',
-            'city' => 'required|unique:user|regex:/^[a-zA-Z]{1,8}[\w]{5,12}$/',
-            'wname' => 'required|regex:/^[\w]{6,16}$/',
-            'baddress'=>'required|same:upwd',
+            'rname' => 'required|regex:/\p{Han}/u',
+            'city' => 'required|regex:/\p{Han}/u',
+            'wname' => 'required|regex:/^1[0-9]{9}$/',
+            'baddress'=>'required|regex:/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/',
+
 //            'email' => 'required|regex:/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/',
         ];
     }
@@ -43,17 +44,22 @@ class UserInfoRequest extends Request
     public function messages()
     {
         return [
-            'uname.required'=>'用户名不能为空',
-            'uname.regex'=>'用户名格式不正确',
-            'uname.unique'=>'用户名已存在',
-            'email.required'=>'邮箱不能为空',
-            'email.regex'=>'邮箱格式不正确',
-            'upwd.required'=>'密码不能为空',
-            'upwd.regex'=>'密码格式不正确',
-            'password.same'=>'密码格式不一致',
-            'password.required'=>'确认密码不能为空',
+            'nickname.required'=>'用户名不能为空',
+            'nickname.regex'=>'用户名格式不正确',
+            'nickname.unique'=>'用户名已存在',
             'tel.required'=>'电话不能为空',
             'tel.regex'=>'电话格式错误',
+            'qq.required'=>'QQ号不能为空',
+            'qq.regex'=>'QQ号格式不正确',
+            'rname.required'=>'名字不能为空',
+            'rname.regex'=>'名字格式不正确',
+            'city.required'=>'城市不能为空',
+            'city.regex'=>'城市格式不正确',
+            'wname.required'=>'微信号不能为空',
+            'wname.regex'=>'微信号格式不正确',
+            'baddress.required'=>'微博账号不能为空',
+            'baddress.regex'=>'微博账号格式不正确',
+
         ];
     }
 }

@@ -69,6 +69,7 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
+
          $tel_code = $request -> all();
          if(session('mobile_code') != $tel_code['code']){
            alert('验证码错误');
@@ -91,7 +92,6 @@ class LoginController extends Controller
 
 
 
-     
     }
 
 
@@ -115,4 +115,3 @@ class LoginController extends Controller
         curl_close($ch);
         echo $res;
     }
-}

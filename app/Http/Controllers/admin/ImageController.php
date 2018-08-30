@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Image;
 use DB;
+use App\Models\admin\Good;
 
 class ImageController extends Controller
 {
@@ -21,8 +22,11 @@ class ImageController extends Controller
     public function getCreate()
     {
         $data = Image::all();
+        //   获取文章信息
+        $good = Good::orderBy('gid','desc')->limit(1)->get();
+
         // 显示页面
-        return view('admin.image.create',['title'=>'添加图片','data'=>$data,'image'=>'图片浏览']);
+        return view('admin.image.create',['title'=>'添加图片','data'=>$data,'image'=>'图片浏览','good'=>$good]);
     }
 
     /**
@@ -33,32 +37,11 @@ class ImageController extends Controller
      */
     public function postStore(Request $request)
     {
-        // 接收头像信息
-        $profile = $request->file('image');
-        // 判断头像是否上传
-        if($request->hasFile('image')){
-            // 为防止文件信息重复随机文件名
-            $temp_name = str_random(18);
-            // 防止文件格式错误  获取文件后缀名
-            $ext = $profile->getClientOriginalExtension();
-            // 重整文件名
-            $name = $temp_name.'.'.$ext;
-            //为避免存入的文件信息混乱 不好查找 建立新目录
-            $dir = './uploads/'.date('Ymd',time());
-            // 将文件移动到指定位置
-            $profile->move($dir,$name);
-            // 拼接图片存储路径
-            $str = $dir.'/'.$name;
-            // 对图片路径进行处理
-            $tep = ltrim($str,'.');
-            //将文件名路径存储到数据
-            $data['image'] = $tep;
-
-        }
         // 添加数据库
         $image = new Image;
-        $image->image = $data['image'];
+        $image->image = $request->input('image');
         $image->describe = $request->input('describe');
+        $image->gid = $request->input('gid');
         $res = $image->save();
         if ($res) {
             // 成功返回列表页
@@ -67,22 +50,9 @@ class ImageController extends Controller
             // 失败返回添加页
             return back()->with('error', '添加失败');
         }
-
-
-
-
-     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
+
+
 
     /**
      * Show the form for editing the specified resource.

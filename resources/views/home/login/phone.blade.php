@@ -102,35 +102,76 @@
                                         $('#doc-my-tabs').tabs();
                                       })
                                 </script>
-
-                            </div>
+                        </form>
+                        <div class="login-links">
+                            <label for="reader-me">
+                                <input id="reader-me" type="checkbox"> 点击表示您同意商城《服务协议》
+                            </label>
                         </div>
+
+
+                        <hr>
+                    </div>
+                    <script type="text/javascript">
+                        function sendMobileCode() {
+                            var phone = $('#phone').val();
+                            console.log(phone);
+
+
+                            $.ajax({
+                                url: '/home/login/sendMobileCode',
+                                data: {'phone': phone},
+                                datatype: 'json',
+                                async: true,
+                                success: function (msg) {
+                                    if (msg.code == 2) {
+                                        alert('发送成功');
+                                    } else {
+                                        alert(msg.code);
+                                    }
+                                }
+                            });
+                            // $.get('/home/login/sendMobileCode',{'phone':vphone},function(msg){
+                            //     alert(msg);
+                            // },'json');
+                        }
+
+
+                    </script>
+                    <script>
+                        $(function () {
+                            $('#doc-my-tabs').tabs();
+                        })
+                    </script>
 
                 </div>
             </div>
 
-                    <div class="footer ">
-                        <div class="footer-hd ">
-                            <p>
-                                <a href="# ">恒望科技</a>
-                                <b>|</b>
-                                <a href="# ">商城首页</a>
-                                <b>|</b>
-                                <a href="# ">支付宝</a>
-                                <b>|</b>
-                                <a href="# ">物流</a>
-                            </p>
-                        </div>
-                        <div class="footer-bd ">
-                            <p>
-                                <a href="# ">关于恒望</a>
-                                <a href="# ">合作伙伴</a>
-                                <a href="# ">联系我们</a>
-                                <a href="# ">网站地图</a>
-                                <em>© 2015-2025 Hengwang.com 版权所有</em>
-                            </p>
-                        </div>
-                    </div>
-    </body>
+        </div>
+    </div>
+
+    <div class="footer ">
+        <div class="footer-hd ">
+            <p>
+                <a href="# ">恒望科技</a>
+                <b>|</b>
+                <a href="# ">商城首页</a>
+                <b>|</b>
+                <a href="# ">支付宝</a>
+                <b>|</b>
+                <a href="# ">物流</a>
+            </p>
+        </div>
+        <div class="footer-bd ">
+            <p>
+                <a href="# ">关于恒望</a>
+                <a href="# ">合作伙伴</a>
+                <a href="# ">联系我们</a>
+                <a href="# ">网站地图</a>
+                <em>© 2015-2025 Hengwang.com 版权所有</em>
+            </p>
+        </div>
+    </div>
+</body>
 
 </html>

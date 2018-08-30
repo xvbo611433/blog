@@ -74,7 +74,7 @@
         <div class="banner">
             <div id="banner" class="fader">
                 @foreach($data as $v)
-                    <li class="slide"><a href="/" target="_blank"><img src="{{ $v['image'] }}"><span
+                    <li class="slide"><a href="/" target="_blank">{!! $v['image'] !!}<span
                                     class="imginfo">{{ $v['describe'] }}</span></a></li>
                 @endforeach
                 <div class="fader_controls">
