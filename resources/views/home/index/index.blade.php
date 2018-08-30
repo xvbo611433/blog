@@ -73,9 +73,9 @@
     <div class="picsbox">
         <div class="banner">
             <div id="banner" class="fader">
-                @foreach($data as $v)
-                    <li class="slide"><a href="/" target="_blank">{!! $v['image'] !!}<span
-                                    class="imginfo">{{ $v['describe'] }}</span></a></li>
+                @foreach($good as $v)
+                    <li class="slide"><a href="/home/show/{{ $v['gid'] }}" target="_blank">{!! $v['gpic'] !!}<span
+                                    class="imginfo">{{ $v['abs'] }}</span></a></li>
                 @endforeach
                 <div class="fader_controls">
                     <div class="page prev" data-target="prev">&lsaquo;</div>
@@ -118,84 +118,32 @@
         @endforeach
 
         <style type="text/css">
-            #pull_right {
-                text-align: center;
-            }
-
-            .pagination {
-                display: inline-block;
-                padding-left: 0;
-                margin: 20px 0;
-                border-radius: 4px;
-            }
-
-            .pagination > li {
-                display: inline;
-            }
-
+            #pull_right {text-align: center;}
+            .pagination {display: inline-block;padding-left: 0;margin: 20px 0;border-radius: 4px;}
+            .pagination > li {display: inline;}
             .pagination > li > a,
-            .pagination > li > span {
-                position: relative;
-                float: left;
-                padding: 6px 12px;
-                margin-left: -1px;
-                line-height: 1.42857143;
-                color: #428bca;
-                text-decoration: none;
-                background-color: #fff;
-                border: 1px solid #ddd;
-            }
-
+            .pagination > li > span {position: relative;float: left;padding: 6px 12px;margin-left: -1px;line-height: 1.42857143;color: #428bca;text-decoration: none;background-color: #fff;border: 1px solid #ddd;}
             .pagination > li:first-child > a,
-            .pagination > li:first-child > span {
-                margin-left: 0;
-                border-top-left-radius: 4px;
-                border-bottom-left-radius: 4px;
-            }
-
+            .pagination > li:first-child > span {margin-left: 0;border-top-left-radius: 4px;border-bottom-left-radius: 4px;}
             .pagination > li:last-child > a,
-            .pagination > li:last-child > span {
-                border-top-right-radius: 4px;
-                border-bottom-right-radius: 4px;
-            }
-
+            .pagination > li:last-child > span {border-top-right-radius: 4px;border-bottom-right-radius: 4px;}
             .pagination > li > a:hover,
             .pagination > li > span:hover,
             .pagination > li > a:focus,
-            .pagination > li > span:focus {
-                color: #2a6496;
-                background-color: #eee;
-                border-color: #ddd;
-            }
-
+            .pagination > li > span:focus {color: #2a6496;background-color: #eee;border-color: #ddd;}
             .pagination > .active > a,
             .pagination > .active > span,
             .pagination > .active > a:hover,
             .pagination > .active > span:hover,
             .pagination > .active > a:focus,
-            .pagination > .active > span:focus {
-                z-index: 2;
-                color: #fff;
-                cursor: default;
-                background-color: #428bca;
-                border-color: #428bca;
-            }
-
+            .pagination > .active > span:focus {z-index: 2;color: #fff;cursor: default;background-color: #428bca;border-color: #428bca;}
             .pagination > .disabled > span,
             .pagination > .disabled > span:hover,
             .pagination > .disabled > span:focus,
             .pagination > .disabled > a,
             .pagination > .disabled > a:hover,
-            .pagination > .disabled > a:focus {
-                color: #777;
-                cursor: not-allowed;
-                background-color: #fff;
-                border-color: #ddd;
-            }
-
-            .clear {
-                clear: both;
-            }
+            .pagination > .disabled > a:focus {color: #777;cursor: not-allowed;background-color: #fff;border-color: #ddd;}
+            .clear {clear: both;}
         </style>
 
 

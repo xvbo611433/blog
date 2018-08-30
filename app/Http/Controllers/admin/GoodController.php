@@ -87,6 +87,7 @@ class GoodController extends Controller
         $good->gpic = $request->input('gpic');
 
         $good->content = $request->input('content');
+
         $res           = $good->save();
         //判断
         if ($res) {

@@ -23,10 +23,7 @@ class IndexController extends Controller
         //获取链接
 
         $link = Link::get();
-
-        $data = Image::all();
-
-        return view('home/index/index', ['title' => '前台首页', 'good' => $good, 'data' => $data, 'link' => $link]);
+        return view('home/index/index', ['title' => '前台首页', 'good' => $good, 'link' => $link]);
     }
 
     /**
