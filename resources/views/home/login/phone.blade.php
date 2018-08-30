@@ -44,14 +44,14 @@
                                               <i class="am-icon-mobile-phone am-icon-md"></i>
                                             </label>
                                             <input type="tel" name="username" id="phone" placeholder="请输入手机号"></div>
-<!--                                           <div class="verification">
+                                          <div class="verification">
                                             <label for="code">
                                               <i class="am-icon-code-fork"></i>
                                             </label>
                                             <input type="tel" name="code" id="code" placeholder="请输入验证码">
                                             <a class="btn" href="javascript:void(0);" onClick="sendMobileCode();" id="sendMobileCode">
                                               <span id="dyMobileButton">获取</span></a>
-                                          </div> -->
+                                          </div>
                                           <div class="user-pass">
                                             <label for="password">
                                               <i class="am-icon-lock"></i>
@@ -72,28 +72,28 @@
                                     <hr>
                                 </div>
                                 <script type="text/javascript">
-                                // function sendMobileCode(){
-                                //    var phone = $('#phone').val();
-                                //    console.log(phone);
+                                function sendMobileCode(){
+                                   var phone = $('#phone').val();
+                                   console.log(phone);
 
 
-                                //     $.ajax({
-                                //         url:'/home/login/sendMobileCode',
-                                //         data:{'phone':vphone},
-                                //         datatype:'json',
-                                //         async:true,
-                                //         success:function(msg){
-                                //             if(msg.code == 2){
-                                //              alert('发送成功');   
-                                //             }else{
-                                //                 alert(msg.msg);
-                                //             }
-                                //         }
-                                //     });
-                                //     // $.get('/home/login/sendMobileCode',{'phone':vphone},function(msg){
-                                //     //     alert(msg);
-                                //     // },'json');
-                                // }
+                                    $.ajax({
+                                        url:'/home/login/sendMobileCode',
+                                        data:{'phone':phone},
+                                        datatype:'json',
+                                        async:true,
+                                        success:function(msg){
+                                            if(msg.code == 2){
+                                             alert('发送成功');   
+                                            }else{
+                                                alert(msg.msg);
+                                            }
+                                        }
+                                    });
+                                    // $.get('/home/login/sendMobileCode',{'phone':phone},function(msg){
+                                    //     alert(msg);
+                                    // },'json');
+                                }
 
 
                                 </script>
