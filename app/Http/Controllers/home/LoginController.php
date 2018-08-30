@@ -88,7 +88,7 @@ class LoginController extends Controller
             return back()->with('error','添加失败');
             }           
 
-              }    
+        }    
 
 
 
@@ -115,3 +115,4 @@ class LoginController extends Controller
         curl_close($ch);
         echo $res;
     }
+}
