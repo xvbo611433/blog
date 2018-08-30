@@ -21,9 +21,10 @@ class IndexController extends Controller
         //获取文章按时间排序,分页
         $good = Good::orderBy('created_at', 'desc')->paginate(5);
         //获取链接
-
+        //获取文章按时间排序,分页
+        $data = Good::where('status',0)->orderBy('created_at', 'desc')->paginate(4);
         $link = Link::get();
-        return view('home/index/index', ['title' => '前台首页', 'good' => $good, 'link' => $link]);
+        return view('home/index/index', ['title' => '前台首页', 'good' => $good,'data'=>$data, 'link' => $link]);
     }
 
     /**
