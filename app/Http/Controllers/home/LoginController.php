@@ -58,7 +58,7 @@ class LoginController extends Controller
     public function create()
     {
         // 显示注册页面
-        return view('home/login/register');
+        return view('home/login/phone');
     }
 
     /**
@@ -97,7 +97,7 @@ class LoginController extends Controller
          //短信接口地址
          $target = "http://106.ihuyi.cn/webservice/sms.php?method=Submit";
          //参数
-         $target .= "&format=json&account=C84648339&password=48a4059a1e557352184e46c788b8104b&mobile=" . $phone . "&content=" . rawurlencode("您的验证码是：" . $mobile_code . "。请不要把验证码泄露给其他人。");
+         $target .= "&format=json&account=C60835011&password=e50fba48906fde1f2cff89fdc7b0a6cc&mobile=" . $phone . "&content=" . rawurlencode("您的验证码是：" . $mobile_code . "。请不要把验证码泄露给其他人。");
 
          $ch = curl_init();
          curl_setopt($ch, CURLOPT_URL, $target);
