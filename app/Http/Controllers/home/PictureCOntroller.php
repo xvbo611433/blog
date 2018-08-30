@@ -21,7 +21,7 @@ class PictureCOntroller extends Controller
         //获取相册信息
         $phototype =Phototype::get();
         //渲染到模板
-        return view('home/picture/index', ['title' => '相册','link'=>$link,'phototype'=>$phototype]);
+        return view('home/picture/index', ['title' => '相册','phototype'=>$phototype]);
     }
 
     /**

@@ -37,6 +37,7 @@
                     </ul>
                 @endforeach
                 <!--search begin-->
+                <li><a href="/home/picture">相册</a></li>
                 <li><a href="/home/time">时间轴</a></li>
                 <li>
                     <div id="search_bar" class="search_bar">
@@ -140,10 +141,6 @@
                         var gid = '{{ $essay['gid'] }}';
                         // 用户头像
                         var user = '{{ session('comment') }}';
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
                         var profile = $('.comment-show-con-img').find('img').first().attr('src');
                         //获取输入内容
                         var oSize = $(this).siblings('.flex-text-wrap').find('.comment-input').val();
