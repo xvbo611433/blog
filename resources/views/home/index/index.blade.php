@@ -63,7 +63,7 @@
     <div class="picsbox">
         <div class="banner">
             <div id="banner" class="fader">
-                @foreach($good as $v)
+                @foreach($data as $v)
                     <li class="slide"><a href="/home/show/{{ $v['gid'] }}" target="_blank">{!! $v['gpic'] !!}<span
                                     class="imginfo">{{ $v['abs'] }}</span></a></li>
                 @endforeach
@@ -172,7 +172,7 @@
             <ul>
                 @foreach($link as $v)
 
-                    <li width="330px" ;><a href="http://{{$v['LinkAddress']}}" target="_blank">{{$v['LinkName']}} </a>
+                    <li style="width: 54px;height: 54px;"><a href="http://{{ $v['LinkAddress'] }}" target="_blank">{!! $v['LinkInfo'] !!}</a>
                     </li>
                 @endforeach
             </ul>

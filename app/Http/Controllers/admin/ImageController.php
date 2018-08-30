@@ -20,7 +20,7 @@ class ImageController extends Controller
      */
     public function getCreate()
     {
-        $good = Good::orderBy('created_at', 'desc')->get();
+        $good = Good::orderBy('created_at', 'desc')->paginate(5);
 
         // 显示页面
         return view('admin.image.create',['title'=>'浏览图片','good'=>$good,'image'=>'图片浏览']);
@@ -55,5 +55,23 @@ class ImageController extends Controller
             // 失败返回添加页
             return back()->with('error', '删除失败');
         }
+    }
+
+    //显示 隐藏
+    public function getUp($id,$status=0)
+    {
+        $data['status'] =$status;
+        DB::table('blog_goods')->where('gid', $id)->update($data);
+        return redirect('/admin/image/create');
+
+    }
+
+    public function getHidden($id,$status=1)
+    {
+
+        $data['status'] =$status;
+        DB::table('blog_goods')->where('gid', $id)->update($data);
+        return redirect('/admin/image/create');
+
     }
 }
