@@ -31,13 +31,6 @@ class LoginController extends Controller
         $data  = $request->except('_token', 's');
         $uname = $data['username'];
         $upwd  = $data['password'];
-<<<<<<< Updated upstream
-//        //检验验证码是否正确
-        if (session('code') != $request->input('code')) {
-            return back()->with('error', '验证码输入错误');
-        }
-=======
->>>>>>> Stashed changes
         $str = session('goods_url');
         $arr = explode('/', $str);
         $id  = array_pop($arr);
@@ -46,13 +39,8 @@ class LoginController extends Controller
         $tem = Register::where('uname', $uname)->where('password', $upwd)->first();
         if ($tem) {
             // 取值并给session赋值
-<<<<<<< Updated upstream
-            session(['comment' => $tem['uname']]);
-            return redirect('/home/comment/' . $id);
-=======
             session(['comment' => $data]);
             return redirect('/home/comment/'.$id);
->>>>>>> Stashed changes
         } else {
             return back()->with('error', '密码错误');
         }
@@ -77,38 +65,20 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-<<<<<<< Updated upstream
-        //获取验证码信息
-        $tel_code = $request->all();
-        if (session('mobile_code') != $tel_code['code']) {
-            alert('验证码错误');
-=======
         // 将注册信息插入数据库
         $user = new Register;
         $user->uname = $request->input('username');
         $user->password = $request->input('password');
         $res = $user->save();
         $id = $user->id;
-//        session(['info'=>$user,'uname'=>$user['uname'],'password'=>$user['password']]);
         if ($res) {
             session(['id'=>$id]);
             return redirect('/home/create/'.$id)->with('success', '添加成功');
->>>>>>> Stashed changes
-        } else {
-            // 将注册信息插入数据库
-            $user           = new Register;
-            $user->username = $request->input('username');
-            // $user->email = $request->input('email');
-            $user->password = $request->input('password');
-            // $user->tel = $request->input('tel');
-            $res = $user->save();
-            if ($res) {
-                return redirect('/home/create/{id}')->with('success', '添加成功');
             } else {
                 return back()->with('error', '添加失败');
             }
 
-        }
+        
 
     }
 

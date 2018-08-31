@@ -36,11 +36,9 @@ class CommentController extends Controller
         $lg_name = UserInfo::find($data['id']);
         // 获取文章详情
         $comment = Comment::orderBy('created_at','desc')->get();
-<<<<<<< Updated upstream
-        return view('home.comment.index',['cate'=>$cate,'user'=>$user,'essay'=>$essay,'title'=>'评论详情页','comment'=>$comment]);
-=======
+
         return view('home.comment.index',['cate'=>$cate,'user'=>$user,'essay'=>$essay,'title'=>'评论详情页','comment'=>$comment,'li_user'=>$lg_user,'lg_name'=>$lg_name]);
->>>>>>> Stashed changes
+
     }
 
     /**
