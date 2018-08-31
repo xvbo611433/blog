@@ -3,6 +3,7 @@
 namespace App\Models\home;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\home\UserInfo;
 
 class Register extends Model
 {
@@ -14,4 +15,10 @@ class Register extends Model
     protected $table = 'blog_user';
 
     protected $primaryKey='id';
+
+    public function info()
+    {
+        return $this->hasOne((new UserInfo),'uid');
+    }
+
 }

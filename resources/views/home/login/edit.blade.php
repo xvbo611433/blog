@@ -102,6 +102,7 @@
                 <ul class="list-group">
                     <li class="layui-icon layui-icon-set-sm"><a href="/home/create/{{ session('id') }}">个人信息</a></li>
                     <li class="layui-icon layui-icon-password"><a href="/home/edit">修改密码</a></li>
+                    <li class="layui-icon layui-icon-picture"><a href="/home/profile">修改头像</a></li>
                 </ul>
             </div>
         </div>

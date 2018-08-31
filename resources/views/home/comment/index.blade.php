@@ -12,7 +12,7 @@
     <script src="/home/js/jquery.min.js" type="text/javascript"></script>
     <script src="/home/js/jquery.easyfader.min.js"></script>
     <script src="/home/js/scrollReveal.js"></script>
-    <script src="/home/js/common.js"></script>
+    {{--<script src="/home/js/common.js"></script>--}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!--[if lt IE 9]>
     <script src="/home/js/modernizr.js"></script>
@@ -84,7 +84,7 @@
                                                 <span class="my-pl-con">&nbsp;{{ $v['comment'] }}</span>
                                             </div>
                                             <div class="date-dz">
-                                                <span class="date-dz-left pull-left comment-time">2017-5-2 11:11:39</span>
+                                                <span class="date-dz-left pull-left comment-time">{{ $v['created_at'] }}</span>
                                                 <div class="date-dz-right pull-right comment-pl-block">
                                                     <a href="/home/comment/destory/{{ $v['id'] }}" onclick="return false"
                                                        class="removeBlock">删除</a>
@@ -140,22 +140,23 @@
                         // 文章id
                         var gid = '{{ $essay['gid'] }}';
                         // 用户头像
-                        var user = '{{ session('comment') }}';
-                        var profile = $('.comment-show-con-img').find('img').first().attr('src');
+                        var user = '{{ $lg_name['nickname'] }}';
+
+                        var profile = '{{ $lg_name['profile'] }}';
                         //获取输入内容
                         var oSize = $(this).siblings('.flex-text-wrap').find('.comment-input').val();
                           //动态创建评论模块
                          $.ajax({
                             url: '/home/comment/store',
                             type:'post',
-                            data:{'gid':gid,'profile':profile,'user':user,'time':now,'content':oSize},
+                            data:{'gid':gid,'profile':profile,'user':user,'content':oSize},
                          headers: {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             },
                             success: function(data){
                                 var oHtml = '';
                                 $.each(data, function (n, value) {
-                                    oHtml += '<div class="comment-show"><div class="comment-show-con clearfix"><div class="comment-show-con-img pull-left"><img src="' + value.profile + '" alt=""></div><div class="comment-show-con-list pull-left clearfix"><div class="pl-text clearfix"><a href="#" class="comment-size-name">'+value.uname+': </a><span class="my-pl-con">&nbsp;' + value.comment + '</span></div><div class="date-dz"><span class="date-dz-left pull-left comment-time">' + value.time + '</span><div class="date-dz-right pull-right comment-pl-block"><a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a><span class="pull-left date-dz-line">|</span><a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">666</i>)</a></div></div><div class="hf-list-con"></div></div></div></div>';
+                                    oHtml += '<div class="comment-show"><div class="comment-show-con clearfix"><div class="comment-show-con-img pull-left"><img src="' + value.profile + '" alt=""></div><div class="comment-show-con-list pull-left clearfix"><div class="pl-text clearfix"><a href="#" class="comment-size-name">'+value.uname+': </a><span class="my-pl-con">&nbsp;' + value.comment + '</span></div><div class="date-dz"><span class="date-dz-left pull-left comment-time">' + now + '</span><div class="date-dz-right pull-right comment-pl-block"><a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a><span class="pull-left date-dz-line">|</span><a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">666</i>)</a></div></div><div class="hf-list-con"></div></div></div></div>';
 
                                 });
                                 $('.comment-show').first().prepend(oHtml);
@@ -202,19 +203,18 @@
                         var fhName = $(this).parents('.date-dz-right').parents('.date-dz').siblings('.pl-text').find('.comment-size-name').html();
                         //回复@
                         var fhN = '回复@' + fhName;
-                        var oInput = $(this).parents('.date-dz-right').parents('.date-dz').siblings('.hf-con');
-                        var fhHtml = '<div class="hf-con pull-left"> <textarea class="content comment-input hf-input" placeholder="" onkeyup="keyUP(this)"></textarea> <a href="javascript:;" class="hf-pl">评论</a></div>';
+                        var fhHtml = '<div class="hf-con pull-left"><textarea class="content comment-input hf-input" placeholder="" onkeyup="keyUP(this)"></textarea><a href="javascript:;" class="hf-pl">评论</a></div>';
                         //显示回复
                         if ($(this).is('.hf-con-block')) {
                             $(this).parents('.date-dz-right').parents('.date-dz').append(fhHtml);
-                            $(this).removeClass('hf-con-block');
+                            $(this).removeClass('.hf-con-block');
+                            // 获取回复的值
                             $('.content').flexText();
                             $(this).parents('.date-dz-right').siblings('.hf-con').find('.pre').css('padding', '6px 15px');
-                            //console.log($(this).parents('.date-dz-right').siblings('.hf-con').find('.pre'))
                             //input框自动聚焦
                             $(this).parents('.date-dz-right').siblings('.hf-con').find('.hf-input').val('').focus().val(fhN);
                         } else {
-                            $(this).addClass('hf-con-block');
+                            $(this).addClass('.hf-con-block');
                             $(this).parents('.date-dz-right').siblings('.hf-con').remove();
                         }
                     });
@@ -236,44 +236,90 @@
                         var s = myDate.getSeconds();
                         if (s < 10) s = '0' + s;
                         var now = year + '-' + month + "-" + date + " " + h + ':' + m + ":" + s;
+                        // 获取用户昵称
+                        var user = '{{ $lg_name['nickname'] }}';
+                        // 用户头像
+                        var profile = '{{ $lg_name['profile'] }}';
+                        // 用户id
+                        var id = '{{ $lg_name['uid'] }}';
                         //获取输入内容
                         var oHfVal = $(this).siblings('.flex-text-wrap').find('.hf-input').val();
-                        console.log(oHfVal)
+                        // 获取回复对象
                         var oHfName = $(this).parents('.hf-con').parents('.date-dz').siblings('.pl-text').find('.comment-size-name').html();
                         var oAllVal = '回复@' + oHfName;
-                        if (oHfVal.replace(/^ +| +$/g, '') == '' || oHfVal == oAllVal) {
+                        //动态创建评论模块
+                        $.ajax({
+                            url: '/home/comment/reply',
+                            type:'post',
+                            data:{'user':user,'content':oHfVal,'name':oHfName,'profile':profile,'id':id},
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            success: function(data){
+                                if (oHfVal.replace(/^ +| +$/g, '') == '' || oHfVal == oAllVal) {
 
-                        } else {
-                            $.getJSON("json/pl.json", function (data) {
-                                var oAt = '';
-                                var oHf = '';
-                                $.each(data, function (n, v) {
-                                    delete v.hfContent;
-                                    delete v.atName;
-                                    var arr;
-                                    var ohfNameArr;
-                                    if (oHfVal.indexOf("@") == -1) {
-                                        data['atName'] = '';
-                                        data['hfContent'] = oHfVal;
-                                    } else {
-                                        arr = oHfVal.split(':');
-                                        ohfNameArr = arr[0].split('@');
-                                        data['hfContent'] = arr[1];
-                                        data['atName'] = ohfNameArr[1];
-                                    }
+                                } else {
 
-                                    if (data.atName == '') {
-                                        oAt = data.hfContent;
-                                    } else {
-                                        oAt = '回复<a href="#" class="atName">@' + data.atName + '</a> : ' + data.hfContent;
-                                    }
-                                    oHf = data.hfName;
-                                });
+                                        $.each(data, function (n, v) {
+                                            // delete v.reply_content;
+                                            // console.log(data);
+                                            // delete v.reply_object;
+                                            var arr;
+                                            var ohfNameArr;
+                                            if (oHfVal.indexOf("@") == -1) {
 
-                                var oHtml = '<div class="all-pl-con"><div class="pl-text hfpl-text clearfix"><a href="#" class="comment-size-name">我的名字 : </a><span class="my-pl-con">' + oAt + '</span></div><div class="date-dz"> <span class="date-dz-left pull-left comment-time">' + now + '</span> <div class="date-dz-right pull-right comment-pl-block"> <a href="javascript:;" class="removeBlock">删除</a> <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a> <span class="pull-left date-dz-line">|</span> <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">666</i>)</a> </div> </div></div>';
-                                oThis.parents('.hf-con').parents('.comment-show-con-list').find('.hf-list-con').css('display', 'block').prepend(oHtml) && oThis.parents('.hf-con').siblings('.date-dz-right').find('.pl-hf').addClass('hf-con-block') && oThis.parents('.hf-con').remove();
-                            });
-                        }
+                                                data['reply_content'] = oHfVal;
+                                            } else {
+                                                arr = oHfVal.split(':');
+                                                ohfNameArr = arr[0].split('@');
+                                                data['reply_content'] = v.reply_content;
+                                                data['created_at'] = v.created_at;
+                                                data['reply_user'] = v.reply_user;
+                                                data['reply_object'] = ohfNameArr[1];
+                                            }
+
+                                            if (data.reply_object == '') {
+                                                oAt = data.reply_content;
+                                            } else {
+                                                oAt = '回复<a href="#" class="atName">@' + data.reply_object + '</a> : ' + data.reply_content;
+                                            }
+                                            oHf = data.hfName;
+                                        });
+
+                                        var oHtml = '<div class="all-pl-con"><div class="pl-text hfpl-text clearfix"><a href="#" class="comment-size-name">'+data['reply_user']+' : </a><span class="my-pl-con">' + oAt + '</span></div><div class="date-dz"> <span class="date-dz-left pull-left comment-time">' + data['created_at'] + '</span> <div class="date-dz-right pull-right comment-pl-block"> <a href="javascript:;" class="removeBlock">删除</a> <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a> <span class="pull-left date-dz-line">|</span> <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">666</i>)</a> </div> </div></div>';
+                                        oThis.parents('.hf-con').parents('.comment-show-con-list').find('.hf-list-con').css('display', 'block').prepend(oHtml) && oThis.parents('.hf-con').siblings('.date-dz-right').find('.pl-hf').addClass('hf-con-block') && oThis.parents('.hf-con').remove();
+
+                                }
+
+                            },
+                            dataType:'json',
+                            async:true
+                        });
+
+                        // comment
+                        //     :
+                        //     created_at
+                        //         :
+                        //         "2018-08-31 14:59:04"
+                        // id
+                        //     :
+                        //     0
+                        // reply_content
+                        //     :
+                        //     "回复@li611433 沙发沙发"
+                        // reply_object
+                        //     :
+                        //     "li611433 "
+                        // reply_user
+                        //     :
+                        //     "li611433"
+                        // updated_at
+                        //     :
+                        //     "2018-08-31 14:59:04"
+
+                        // console.log(oHfName);
+                        //
+
                     });
                 </script>
 

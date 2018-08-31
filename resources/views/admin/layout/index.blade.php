@@ -334,9 +334,7 @@
                 <li class="active">
                     <a href="#"><i class="icon-picture"></i>轮番图管理</a>
                     <ul class='closed'>
-                        <li class="icon-add-contact"><a href="/admin/image/create">添加轮番图</a></li>
-
-
+                        <li class="icon-add-contact"><a href="/admin/image/create">浏览轮番图</a></li>
                     </ul>
                 </li>
                 <li class="active">

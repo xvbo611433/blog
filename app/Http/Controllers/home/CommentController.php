@@ -10,6 +10,10 @@ use App\Models\admin\Cate;
 use App\Models\admin\Good;
 use App\Models\admin\Comment;
 use DB;
+use  App\Models\home\Reply;
+use App\Models\home\Register;
+use App\Models\home\UserInfo;
+
 class CommentController extends Controller
 {
     /**
@@ -24,9 +28,19 @@ class CommentController extends Controller
         // 类别信息
         $essay = Good::find($id);
         $cate = Cate::getCate();
+        //获取用户登陆信息
+        $lg_user = session('comment');
+
+        //获取注册用户的信息
+        $data = session('info');
+        $lg_name = UserInfo::find($data['id']);
         // 获取文章详情
         $comment = Comment::orderBy('created_at','desc')->get();
+<<<<<<< Updated upstream
         return view('home.comment.index',['cate'=>$cate,'user'=>$user,'essay'=>$essay,'title'=>'评论详情页','comment'=>$comment]);
+=======
+        return view('home.comment.index',['cate'=>$cate,'user'=>$user,'essay'=>$essay,'title'=>'评论详情页','comment'=>$comment,'li_user'=>$lg_user,'lg_name'=>$lg_name]);
+>>>>>>> Stashed changes
     }
 
     /**
@@ -47,14 +61,13 @@ class CommentController extends Controller
      */
     public function test(Request $request)
     {
-
+        // 评论
         $comment = new Comment;
         // 接收ajax数据
         $comment->gid = $request->input('gid');
         $comment->uname = $request->input('user');
         $comment->profile = $request->input('profile');
         $comment->comment = $request->input('content');
-        $comment->time = $request->input('time');
         // 写入数据库
         $res = $comment->save();
         if($res){
@@ -64,6 +77,32 @@ class CommentController extends Controller
         }
         return $arr;
         }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function reply(Request $request)
+    {
+        // 回复
+        $reply = new Reply;
+        $reply->reply_user = $request->input('user');
+        $reply->reply_object = $request->input('name');
+        $reply->reply_content = $request->input('content');
+        $reply->reply_profile = $request->input('profile');
+        $reply->reply_id = $request->input('id');
+
+        // 写入数据库
+        $res = $reply->save();
+        if($res){
+            $arr = ['comment'=>$reply];
+        }else{
+            $arr = ['comment'=>'error'];
+        }
+        return $arr;
+    }
 
 
     /**

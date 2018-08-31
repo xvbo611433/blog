@@ -32,6 +32,7 @@ class UserInfoController extends Controller
     {
         $data = register::find($id);
 
+
         return view('home.login.userinfo',['title'=>'个人详情','data'=>$data]);
     }
 
@@ -56,8 +57,10 @@ class UserInfoController extends Controller
         $user->wname = $request->input('wname');
         $user->baddress = $request->input('baddress');
         $res = $user->save();
+        $id =  session('id');
         if($res){
-                return redirect('/')->with('success','注册成功');
+            session(['info'=>$user]);
+                return redirect('/home/create/'.$id)->with('success','注册成功');
             }else{
                 return back()->with('error','注册成功');
             }
@@ -73,7 +76,7 @@ class UserInfoController extends Controller
     {
         if($request->hasFile('profile')){
             // 接收头像信息
-        $profile = $request->file('profile');
+            $profile = $request->file('profile');
             // 为防止文件信息重复随机文件名
             $temp_name = str_random(6);
             // 获取文件后缀名
@@ -89,8 +92,9 @@ class UserInfoController extends Controller
             // 对图片路径进行处理
             $tep = ltrim($str,'.');
         }
+        $data['profile'] = $tep;
         $id = session('id');
-        $res = DB::table('blog_info')->where('uid', $id)->update(['profile' => $tep]);
+        $res = DB::table('blog_info')->where('uid', $id)->update($data);
         if($res){
             $arr = ['tep'=>$tep];
         }else{
@@ -111,6 +115,22 @@ class UserInfoController extends Controller
         return view('home.login.edit',['title'=>'修改密码']);
     }
 
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function profile(Request $request)
+    {
+        // 显示修改密码页面
+        $id = session('id');
+
+        $data = UserInfo::find($id);
+
+        return view('home.login.profile',['title'=>'修改头像','data'=>$data]);
+    }
     /**
      * Update the specified resource in storage.
      *

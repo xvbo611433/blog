@@ -35,7 +35,7 @@
                             @if($v['status'] == 0)
                                 <a href="/admin/image/hidden/{{ $v['gid'] }}" class="mws-gallery-btn"><i class="icon-refresh"></i>隐藏</a>
                             @elseif($v['status'] == 1)
-                                <a href="/admin/image/up/{{ $v['gid'] }}" class="mws-gallery-btn"><i class="icon-refresh"></i>显示</a>
+                                <a href="/admin/image/show/{{ $v['gid'] }}" class="mws-gallery-btn"><i class="icon-refresh"></i>显示</a>
 
                             @endif
                         </td>
