@@ -22,7 +22,7 @@ Route::controller('/admin/login','admin\LoginController');//用户登录
 Route::group(['middleware'=>'login'],function(){
 Route::resource('/admin/user','admin\UserController');//后台用户控制器
 Route::resource('/admin/cate','admin\CateController');//后台类别控制器
-Route::get('admin/cate/childcate/{id}','admin\CateController@childcate');
+Route::get('admin/cate/childcate/{id}','admin\CateController@childcate');//添加子分类路由
 Route::resource('/admin/comment','admin\CommentController');//评论管理控制器
 Route::controller('/admin/image','admin\imageController');//轮番图管理控制器
 Route::resource('/admin/good','admin\GoodController');//文章管理
@@ -32,8 +32,8 @@ Route::controller('/admin/recycle','admin\RecycleController');//回收站管理
 Route::controller('/admin/photo','admin\PhotoController');//后台相册控制器
 
 });
-//前台
-Route::get('/','home\IndexController@index');
+
+Route::get('/','home\IndexController@index');//前台
 Route::get('/home/show/{id}','home\IndexController@show');//详情
 Route::get('/home/list/{id}','home\IndexController@list');//列表
 Route::get('/register','home\LoginController@create');//注册
@@ -72,17 +72,10 @@ Route::post('/home/editPwd','home\UserInfoController@editPwd');//修改密码
 
 
 
-
-
-
-
-
-
-
-
-
-
 Route::get('/home/time','home\TextController@time');// 时间轴
 Route::get('/home/about','home\TextController@about');//关于我
 Route::get('/home/picture','home\PictureCOntroller@index');//相册
 Route::get('/home/photo/{photo_id}','home\PictureCOntroller@photo');//图片
+
+Route::get('home/show/next/{gid}','home\IndexCOntroller@next');//图片
+

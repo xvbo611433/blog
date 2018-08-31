@@ -15,7 +15,7 @@ class PhotoType extends Model
 
     protected $primaryKey = 'photo_id';
 
-    //和类别模型建立关联
+    //和图片模型建立关联
     public function photo_types()
     {
         return $this->hasMany('Photo', 'photo_id', 'id');

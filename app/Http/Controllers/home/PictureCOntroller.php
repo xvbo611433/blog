@@ -35,7 +35,7 @@ class PictureCOntroller extends Controller
         //获取相册中的图片信息
         $photo =Photo::where('photo_id', $photo_id)->get();
         // 渲染到模板
-        return view('home/picture/show',['title' => '图片','link'=>$link,'photo'=>$photo]);
+        return view('home/picture/show',['title' => '图片','photo'=>$photo]);
     }
 
 }

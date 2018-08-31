@@ -15,9 +15,9 @@ class Photo extends Model
 
     protected $primaryKey = 'id';
 
-		//属于
-        public function photo_types()
+    //与相册模型建立关联
+    public function photo_types()
     {
-   	return $this->belongsTo('App\Models\admin\PhotoType','photo_id');
+        return $this->belongsTo('App\Models\admin\PhotoType', 'photo_id');
     }
 }

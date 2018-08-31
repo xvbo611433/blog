@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="gbk">
-    <title>{{$title}}</title>
+    <title>{{$essay['gname']}}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="/home/css/base.css" rel="stylesheet">
     <link href="/home/css/index.css" rel="stylesheet">
@@ -21,7 +21,7 @@
     <!--menu begin-->
     <div class="menu">
         <nav class="nav" id="topnav">
-            <h1 class="logo"><a href="http://www.yangqq.com">微博客</a></h1>
+            <h1 class="logo"><a href="http://www.blog.com">微博客</a></h1>
             <li><a href="/">网站首页</a></li>
             <?php $cate = \App\Models\admin\Cate::getCate(0);?>
             @foreach($cate as $v)
@@ -106,8 +106,9 @@
       </div>
     </div>
     <div class="nextinfo">
-      <p>上一篇：<a href="/news/life/2018-03-13/804.html">作为一个设计师,如果遭到质疑你是否能恪守自己的原则?</a></p>
-      <p>下一篇：<a href="/news/life/">返回列表</a></p>
+   
+            <p>上一篇：<a href="/home/show/{{$last_name['gid']}}"> {{$last_name['gname']}}</a></p>
+             <p>下一篇：<a href="/home/show/{{$next_name['gid']}}"> {{$next_name['gname']}}</a></p>
     </div>
     <div class="otherlink">
       <h2>相关文章</h2>

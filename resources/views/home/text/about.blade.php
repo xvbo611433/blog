@@ -68,7 +68,7 @@
   <h1 class="t_nav"><span>像“草根”一样，紧贴着地面，低调的存在，冬去春来，枯荣无恙。</span><a href="/" class="n1">网站首页</a><a href="/" class="n2">关于我</a></h1>
   <div class="news_infos">
     <ul>
-      <p>李波，女，一个80后草根女站长！09年入行。一直潜心研究web前端技术，一边工作一边积累经验，分享一些个人博客模板，以及SEO优化等心得。我入行早，大家也亲切的叫我&ldquo;青姐&rdquo;。<br />
+      <p>李波，男，一个90后草根男站长！09年入行。一直潜心研究web前端技术，一边工作一边积累经验，分享一些个人博客模板，以及SEO优化等心得。我入行早，大家也亲切的叫我&ldquo;青姐&rdquo;。<br />
         <br />
         SEO奋斗了将近两年时间，个人博客网站百度排名也从之前的30页后，排到了第一页。期间有很多的不容易，但是都没有放弃过。入了这一行   ，就深深的喜欢上它。我喜欢一句话&ldquo;冥冥中该来则来，无处可逃&rdquo;。<br />
         <br />
@@ -92,7 +92,7 @@
   <div class="sidebar">
     <div class="about">
       <p class="avatar"> <img src="images/avatar.jpg" alt=""> </p>
-      <p class="abname">dancesmile | 杨青</p>
+      <p class="abname">dancesmile | 李波</p>
       <p class="abposition">Web前端设计师、网页设计</p>
       <p class="abtext"> 一个80后草根女站长！09年入行。一直潜心研究web前端技术，一边工作一边积累经验，分享一些个人博客模板，以及SEO优化等心得。 </p>
     </div>

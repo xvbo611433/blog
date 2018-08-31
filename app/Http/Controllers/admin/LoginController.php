@@ -20,7 +20,7 @@ class LoginController extends Controller
      */
     public function getIndex()
     {
-
+        //渲染到模板
         return view('admin/login/index', ['title' => '后台用户登录']);
     }
 
@@ -41,7 +41,7 @@ class LoginController extends Controller
         if ($tem) {
         // 取值并给session赋值
             session(['login' => $tem]);
-            return redirect('/admin/user');
+            return redirect('/admin/index');
             } else {
             return back()->with('error', '密码错误');
         }
@@ -51,7 +51,7 @@ class LoginController extends Controller
     {
         //清除session并跳转页面
         session(['login' => null]);
-        return redirect('/login');
+        return redirect('admin/login');
     }
 
 

@@ -12,24 +12,14 @@
     <script src="/home/js/jquery.easyfader.min.js"></script>
     <script src="/home/js/scrollReveal.js"></script>
     <script src="/home/js/common.js"></script>
-    <script type="text/javascript" src="/home/bs/js/bootstrap.min.js"></script>
+
     <!--[if lt IE 9]>
     <script src="js/modernizr.js"></script>
     <![endif]-->
 
 </head>
 <body>
-<style>
-    .nav li {
-        float: left;
 
-    }
-
-    nav li:hover {
-        display: block;
-        overflow: hidden;
-    }
-</style>
 <header>
     <!--menu begin-->
     <div class="menu">
@@ -49,7 +39,7 @@
                 <li><a href="/home/picture">相册</a></li>
                 <li><a href="/home/time">时间轴</a></li>
                 <li><a href="/home/about">关于我</a></li>
-                <li>
+          
                     <div id="search_bar" class="search_bar">
                         <form id="searchform" action="[!--news.url--]e/search/index.php" method="post"
                               name="searchform">
@@ -61,7 +51,7 @@
                             <span class="search_ico"></span>
                         </form>
                     </div>
-                </li>
+               
 
                 <!--search end-->
         </nav>
