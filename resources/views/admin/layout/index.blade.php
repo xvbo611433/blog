@@ -115,7 +115,7 @@
 
         <!-- Logo Wrapper, images put within this wrapper will always be vertically centered -->
         <div id="mws-logo-wrap">
-          <a href="/admin/index">  <h3>微博客</h3> </a> 
+          <a href="/admin/index" style='text-decoration:none;'>  <h3>微博客</h3> </a> 
        
 
         </div>   
@@ -260,7 +260,7 @@
                 </div>
                 <ul>
                     <li><a href="/admin/index/edit">更改密码</a></li>
-                    <li><a href="/login/outlogin">退出</a></li>
+                    <li><a href="/admin/login/outlogin">退出</a></li>
 
 
                 </ul>
@@ -428,5 +428,5 @@
 </body>
 </html>
 <script type="text/javascript">
-    $('.mws-form-message').slideUp(3000);
+    $('.mws-form-message').slideUp(2000);
 </script>

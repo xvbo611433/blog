@@ -5,8 +5,8 @@ namespace App\Http\Controllers\home;
 use App\Http\Controllers\Controller;
 use App\Models\admin\Cate;
 use App\Models\admin\Good;
-use App\Models\admin\Image;
 use App\Models\admin\Link;
+use DB;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -20,11 +20,12 @@ class IndexController extends Controller
     {
         //获取文章按时间排序,分页
         $good = Good::orderBy('created_at', 'desc')->paginate(5);
-        //获取链接
-        //获取文章按时间排序,分页
-        $data = Good::where('status',0)->orderBy('created_at', 'desc')->paginate(4);
+        //获取友情链接
         $link = Link::get();
-        return view('home/index/index', ['title' => '前台首页', 'good' => $good,'data'=>$data, 'link' => $link]);
+        //轮播图
+        $data = Good::where('status', 0)->orderBy('created_at', 'desc')->paginate(5);
+        //渲染到模板
+        return view('home/index/index', ['title' => '微博客', 'good' => $good, 'data' => $data, 'link' => $link]);
     }
 
     /**
@@ -35,6 +36,7 @@ class IndexController extends Controller
      */
     public function show(Request $request, $gid)
     {
+
         $arr = $request->url();
         session(['goods_url' => $arr]);
         // 文章详情
@@ -46,7 +48,22 @@ class IndexController extends Controller
         $cid     = $essay->id;
         // 类别
         $cate_name = Cate::find($cid)->cname;
-        return view('/home/index/show', ['title'    => '文章详情','essay'=>$essay,'cate_name'=>$cate_name, 'comment'   => $comment, 'good'=> $good,]);
+        //获取下一篇id
+        $next      = DB::table('blog_goods')->where('gid', '>', $gid)->min('gid');
+        $next_name = Good::find($next);
+        //获取上一篇id
+        $last = DB::table('blog_goods')->where('gid', '<', $gid)->max('gid');
+        // dd($last);
+        $last_name = Good::find($last);
+        return view('/home/index/show',
+            [
+                'essay'     => $essay,
+                'cate_name' => $cate_name,
+                'comment'   => $comment,
+                'good'      => $good,
+                'last_name' => $last_name,
+                'next_name' => $next_name,
+            ]);
 
     }
 
@@ -61,7 +78,12 @@ class IndexController extends Controller
         $good = Good::where('id', $id)->paginate(7);
         //获取当前分类 名称
         $cname = Cate::find($id)->cname;
+        //渲染到模板
+        return view('home/index/list', [ 'good' => $good, 'cname' => $cname]);
+    }
 
-        return view('home/index/list', ['title' => '列表页', 'good' => $good, 'cname' => $cname]);
+    protected function next($gid)
+    {
+
     }
 }

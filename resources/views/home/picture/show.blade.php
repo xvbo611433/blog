@@ -12,6 +12,7 @@
     <script src="/home/js/jquery.easyfader.min.js"></script>
     <script src="/home/js/scrollReveal.js"></script>
     <script src="/home/js/common.js"></script>
+    <link href="/home/photo/css/lanrenzhijia.css" type="text/css" rel="stylesheet" />
     <!--[if lt IE 9]>
     <script src="js/modernizr.js"></script>
     <![endif]-->
@@ -67,20 +68,28 @@
   <h1 class="t_nav"><span>不要轻易放弃。学习成长的路上，我们长路漫漫，只因学无止境。 </span><a href="/" class="n1">网站首页</a><a href="/" class="n2">相册</a></h1>
 
   <!--blogsbox begin-->
-<div class="share">
-<ul>
+<div >
+ <style type="text/css">
+ .example img { height: 250px; width: 350px;  }
+ .example p{ height: 250px; width: 350px;  }
+ ul li { width: 350px; padding:5px; float: left; overflow: hidden; position: relative; margin-bottom: 30px; -webkit-transition: all .3s ease; -moz-transition: all .3s ease; -ms-transition: all .3s ease; -o-transition: all .3s ease; transition: all .3s ease; }
+</style>
+<ul style="padding:30px">
   @foreach($photo as $v)
+  <?php
+  $html=$v['photo'];
 
- <li> <div class="shareli"><i>{!!$v['photo']!!}</i>
-      <h2><b>{{$v['photoname']}}</b></h2>
-      <span>喜欢 | 190</span> </div> </li>
+ if (preg_match('|<img\s+src="?(\S+)?"|i', $html, $reg)) $photo_big=$reg[1];
+
+  ?>
+    <li>  <a class="example" href="{{$photo_big}}">{!!$v['photo']!!}</a></li>
      @endforeach
 </ul>
 </div>
   <!--blogsbox end-->
 
-</div>
 
+</div>
 
 
 <footer>
@@ -90,3 +99,17 @@
 
 </body>
 </html>
+<script src="/home/photo/js/jquery.min.js"></script>
+<script src="/home/photo/js/jquery.imgbox.pack.js"></script>
+<script type="text/javascript">
+$(function(){
+
+    $(".example").imgbox({
+        'speedIn'       : 0,
+        'speedOut'      : 0,
+        'alignment'     : 'center',
+        'overlayShow'   : true,
+        'allowMultiple' : false
+    });
+});
+</script>

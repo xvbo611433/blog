@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class LinkRequest extends Request
+class PhotoRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,8 @@ class LinkRequest extends Request
      */
     public function authorize()
     {
-        return true; //开启自动验证
+        //开启验证
+        return true;
     }
 
     /**
@@ -23,15 +24,14 @@ class LinkRequest extends Request
      */
     public function rules()
     {
-        //设置验证条件
+        //设置验证
         return [
-            'LinkName'    => 'required',
-            'LinkAddress' => 'required',
-            // 'LinkInfo' => 'required',
-            'Explain'     => 'required',
+            'photo'     => 'required',
+            'photoname' => 'required',
+            'photo_id'  => 'required',
+
         ];
     }
-
     /**
      * 获取已定义验证规则的错误消息。
      *
@@ -39,12 +39,11 @@ class LinkRequest extends Request
      */
     public function messages()
     {
+        //返回验证信息
         return [
-            'LinkName.required'    => '链接名称不能问空',
-            'LinkAddress.required' => '链接地址不能为空',
-            'LinkInfo.required'    => '链接logo不能为空',
-            'Explain.required'     => '链接介绍不能为空',
-
+            'photo.required'     => '图片不能为空',
+            'photoname.required' => '图片名称不能为空',
+            'photo_id.required'  => '请选择相册',
         ];
     }
 }

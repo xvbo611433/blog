@@ -3,7 +3,20 @@
 @section('title',$title)
 @section('container')
 
-
+            @if(session('success'))
+            <div class="mws-form-message success">
+                {{session('success')}}
+            </div>
+            @endif
+    @if (count($errors) > 0)
+        <div class="mws-form-message error">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
 
 
@@ -11,17 +24,10 @@
         <div class="mws-panel-header">
             <span>添加图片</span>
         </div>
-            @if(session('success'))
-            <div class="mws-form-message success">
-                {{session('success')}}
-            </div>
-            @else
-            <div class="mws-form-message error">
-                {{session('error')}}
-            </div>
-            @endif
+
 
       
+
         <div class="mws-panel-body no-padding">
             <form class="mws-form" action="/admin/photo/store" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
@@ -41,9 +47,9 @@
 
                         <div class="mws-form-item">
                         <select class="small" name="photo_id">
-                              <option value="0">--请选择相册--</option>
+                              <option value="">--请选择相册--</option>
 
-                            @foreach($data as $v)
+                            @foreach($phototype as $v)
                               <option  value="{{$v['photo_id']}}">{{$v['phototype']}}</option>
                               @endforeach
 
@@ -52,7 +58,7 @@
                         <div class="mws-form-row">
                             <label class="mws-form-label"></label>
                             <div class="mws-form-item">
-                                <a href="/admin/photo/type">添加相册</a>
+                                <a href="/admin/photo/type" class="btn btn-danger">添加相册</a>
                             </div>
                         </div>
                     </div>

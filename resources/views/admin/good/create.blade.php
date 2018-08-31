@@ -22,7 +22,7 @@
                         <label class="mws-form-label">请选择文章所属分类</label>
                         <div class="mws-form-item">
                             <select class="large" name="id">
-                                <option value="0">--请选择--</option>
+                                <option value="">--请选择--</option>
                                 @foreach($cate_data as $value)
                                     <option value="{{$value['id']}}">{{$value['cname']}}</option>
                                 @endforeach

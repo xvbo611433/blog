@@ -4,7 +4,6 @@ namespace App\Models\admin;
 
 use DB;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\admin\Good;
 
 class Cate extends Model
 {
@@ -33,23 +32,20 @@ class Cate extends Model
 
             $n = substr_count($value['path'], ',');
 
-
             //处理cname
             $cate_data[$key]['cname'] = str_repeat('&nbsp;', $n * 5) . '-----|' . $value['cname'];
         }
         return $cate_data;
     }
 
-
     //递归遍历 所有分类
     public static function getCate($pid = 0)
     {
-        $cate = Cate::where('pid', $pid)->get();
+        $cate       = Cate::where('pid', $pid)->get();
         $goods_cate = [];
         foreach ($cate as $key => $value) {
             $value->child_cate = self::getCate($value->id);
             //查询所有的二级分类
-            // dump($value);
             $goods_cate[] = $value;
         }
         return ($cate);

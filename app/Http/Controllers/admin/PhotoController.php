@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PhotoRequest;
 use App\models\admin\Photo;
 use App\models\admin\PhotoType;
-use Illuminate\Http\Request;
 use DB;
+use Illuminate\Http\Request;
 
 class PhotoController extends Controller
 {
@@ -16,10 +17,12 @@ class PhotoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function getIndex($photo_id)
-    {
+    {   
+        //获取相册中的图片
         $data = Photo::where('photo_id', $photo_id)->get();
-
+        // 获取相册信息
         $phototype = Phototype::get();
+        //渲染到模板
         return view('admin/photo/index', ['title' => '浏览相册', 'data' => $data]);
     }
 
@@ -30,11 +33,12 @@ class PhotoController extends Controller
      */
     public function getCreate()
     {
+        //获取相册信息
 
-        $data      = PhotoType::get();
         $phototype = Phototype::get();
-        return view('admin/photo/create', ['title' => '相册管理', 'data' => $data, 'phototype' => $phototype]);
-        // echo "123";
+        //渲染到模板
+        return view('admin/photo/create', ['title' => '相册管理', 'phototype' => $phototype]);
+
 
     }
 
@@ -44,10 +48,12 @@ class PhotoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function postStore(Request $request)
+    public function postStore(PhotoRequest $request)
     {
+        //获取请求
         $data = $request->except('_token');
         // dd($data);
+        //保存到数据库
         $photo            = new Photo;
         $photo->photoname = $request->input('photoname');
         $photo->photo_id  = $request->input('photo_id');
@@ -71,7 +77,7 @@ class PhotoController extends Controller
      */
     public function getType(Request $request)
     {
-
+        //渲染到模板
         return view('admin/photo/type', ['title' => '添加相册']);
 
     }
@@ -84,9 +90,12 @@ class PhotoController extends Controller
      */
     public function postType(request $request)
     {
+        //获取请求
         $data = $request->except('_token');
         // dd($data);
+        //保存数据
         $res = PhotoType::insert($data);
+        //判断
         if ($res) {
             return redirect('/admin/photo/create')->with('success', '添加成功');
         } else {
@@ -102,10 +111,11 @@ class PhotoController extends Controller
      */
     public function getEdit($id)
     {
-        
+        //获得要修改的图片信息
         $data      = Photo::find($id);
         $phototype = PhotoType::get();
-        return view('admin/photo/edit', ['title' => '修改图片信息', 'data' => $data,'phototype'=>$phototype]);
+        //渲染到模板
+        return view('admin/photo/edit', ['title' => '修改图片信息', 'data' => $data, 'phototype' => $phototype]);
     }
 
     /**
@@ -126,13 +136,9 @@ class PhotoController extends Controller
 
         //做判断
         if ($res) {
-
             return redirect('/admin/photo/create')->with('success', '修改成功');
-
         } else {
-
             return back()->with('error', '修改失败');
-
         }
     }
 
@@ -144,6 +150,7 @@ class PhotoController extends Controller
      */
     public function postDelete($id)
     {
+        //获得要删除图片信息
         $photo = Photo::find($id);
         $res   = $photo->delete();
         // dd($res);
@@ -163,20 +170,20 @@ class PhotoController extends Controller
      */
     public function getDestroy($photo_id)
     {
-
-        $photos = Photo::where('photo_id','=',$photo_id)->first();
-        $data = $photos['photo_id'];
-        if($data == $photo_id){
-            return back()->with('error', '有文章不能删除');
+        //获取要删除相册的信息
+        $photos = Photo::where('photo_id', '=', $photo_id)->first();
+        //判断相册中是否有图片
+        $data   = $photos['photo_id'];
+        if ($data == $photo_id) {
+            return back()->with('error', '有图片不能删除');
         }
-
-       $res = PhotoType::destroy($photo_id);
+        //执行删除操作
+        $res = PhotoType::destroy($photo_id);
+        //返回结果
         if ($res) {
-            // 成功返回列表页
             return redirect('/admin/photo/create')->with('success', '删除成功');
         } else {
-            // 失败返回添加页
             return back()->with('error', '删除失败');
         }
-    }    
+    }
 }

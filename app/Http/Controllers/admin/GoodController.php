@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\GoodRequest;
 use App\Models\Admin\Cate;
 use App\Models\Admin\Good;
 use DB;
 use Illuminate\Http\Request;
-use App\Http\Requests\GoodRequest;
 
 class GoodController extends Controller
 {
@@ -20,32 +20,21 @@ class GoodController extends Controller
     {
         $search = $request->input('search', ''); //接受文章名称
 
-//
-//        // $id = $request->input('id', ''); //接收文章类
-//        $count = Good::count();
-//        $page_count = $request->input('page_count', 5);
-//        $goods = new Good(); //创建数据对象
-//        if (isset($search) && !empty($search)) {
-//            $goods = $goods->where('gname', 'like', '%' . $search . '%')->where(O);
-//        }
-
-
-
         // 获取类别信息
-         $id = $request -> input('id','');
-         $cate_data = Cate::getDatecate();
+        $id        = $request->input('id', '');
+        $cate_data = Cate::getDatecate();
 
-         $count = Good::count(); //获取数量
-         $page_count = $request->input('page_count', 5); //显示的页数
-         $goods      = new Good(); //创建数据对象
+        $count      = Good::count(); //获取数据的条数
+        $page_count = $request->input('page_count', 5); //显示的条数
+        $goods      = new Good(); //创建数据对象
 
-         // 搜索条件
-         if(isset($search) && !empty($search)){
-            $goods =  $goods::where('gname','like','%'.$search.'%');
-         }
-         if(isset($id) && !empty($id)){
-            $goods =  $goods->where('id','like','%'.$id.'%');
-         }
+        // 搜索条件
+        if (isset($search) && !empty($search)) {
+            $goods = $goods::where('gname', 'like', '%' . $search . '%');
+        }
+        if (isset($id) && !empty($id)) {
+            $goods = $goods->where('id', 'like', '%' . $id . '%');
+        }
         // 分页
         $data = $goods->paginate($page_count);
         // 显示到模板
@@ -76,7 +65,6 @@ class GoodController extends Controller
         $data = $request->except('_token', '_method', 's');
         // dump($data);die;
 
-
         //添加到数据库
         $good        = new Good;
         $good->gname = $request->input('gname');
@@ -88,7 +76,7 @@ class GoodController extends Controller
 
         $good->content = $request->input('content');
 
-        $res           = $good->save();
+        $res = $good->save();
         //判断
         if ($res) {
             return redirect('admin/good')->with('success', '添加成功');
@@ -117,7 +105,7 @@ class GoodController extends Controller
     public function edit($gid)
     {
         //获得要修改的数据
-        $data      = good::find($gid);
+        $data = good::find($gid);
         //类别信息
         $cate_data = Cate::getDatecate();
         //显示到模板
@@ -135,7 +123,6 @@ class GoodController extends Controller
     {
         //获得要修改的数据
         $data = $request->except('_token', '_method', 's');
-
 
         //修改数据
         $res = DB::table('blog_goods')->where('gid', $gid)->update($data);

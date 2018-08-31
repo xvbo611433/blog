@@ -13,7 +13,7 @@ class GoodRequest extends Request
      */
     public function authorize()
     {
-        return true;//开启自动验证
+        return true; //开启自动验证
     }
 
     /**
@@ -25,29 +25,27 @@ class GoodRequest extends Request
     {
         //设置条件
         return [
-       
-            'abs' => 'required',
-            'gname' => 'required',
+
+            'abs'     => 'required',
+            'gname'   => 'required',
             'content' => 'required',
-            // 'gpic' => 'required',
+            'id'      => 'required',
         ];
     }
 
-        /**
-     * 获取已定义验证规则的错误消息。
+    /**
+     * 自定义验证规则的错误消息。
      *
      * @return array
      */
     public function messages()
     {
-        
+
         return [
-            'abs.required'=>'摘要不能问空',
-
-            'gname.required'=>'文章名称不能为空',
-
-            'content.required'=>'文章内容不能为空',
-            'gpic.required'=>'文章缩略图不能为空',
+            'abs.required'     => '摘要不能问空',
+            'gname.required'   => '文章名称不能为空',
+            'content.required' => '文章内容不能为空',
+            'id.required'      => '请选择文章类别',
 
         ];
     }

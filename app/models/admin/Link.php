@@ -13,6 +13,6 @@ class Link extends Model
      */
     protected $table = 'blog_links';
 
-    protected $primaryKey='id';
-    
+    protected $primaryKey = 'id';
+
 }

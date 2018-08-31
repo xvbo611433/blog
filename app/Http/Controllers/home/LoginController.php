@@ -32,9 +32,9 @@ class LoginController extends Controller
         $uname = $data['username'];
         $upwd  = $data['password'];
 //        //检验验证码是否正确
-               if (session('code') != $request->input('code')) {
-                   return back()->with('error', '验证码输入错误');
-               }
+        if (session('code') != $request->input('code')) {
+            return back()->with('error', '验证码输入错误');
+        }
         $str = session('goods_url');
         $arr = explode('/', $str);
         $id  = array_pop($arr);
@@ -44,7 +44,7 @@ class LoginController extends Controller
         if ($tem) {
             // 取值并给session赋值
             session(['comment' => $tem['uname']]);
-            return redirect('/home/comment/'.$id);
+            return redirect('/home/comment/' . $id);
         } else {
             return back()->with('error', '密码错误');
         }
@@ -69,35 +69,31 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-
-         $tel_code = $request -> all();
-         if(session('mobile_code') != $tel_code['code']){
-           alert('验证码错误');
-        }else{
-                // 将注册信息插入数据库
-                        $user = new Register;
+        //获取验证码信息
+        $tel_code = $request->all();
+        if (session('mobile_code') != $tel_code['code']) {
+            alert('验证码错误');
+        } else {
+            // 将注册信息插入数据库
+            $user           = new Register;
             $user->username = $request->input('username');
             // $user->email = $request->input('email');
             $user->password = $request->input('password');
             // $user->tel = $request->input('tel');
             $res = $user->save();
-            if($res){
-            return redirect('/home/create/{id}')->with('success','添加成功');
-            }else{
-            // 失败返回
-            return back()->with('error','添加失败');
-            }           
+            if ($res) {
+                return redirect('/home/create/{id}')->with('success', '添加成功');
+            } else {
+                return back()->with('error', '添加失败');
+            }
 
-        }    
-
-
+        }
 
     }
 
-
     public function sendMobileCode(Request $request)
     {
-        // echo '1231';
+        // 接受请求
         $phone = $request->input('phone');
         // echo $phone;
         $mobile_code = rand(1000, 9999);
