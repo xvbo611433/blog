@@ -19,7 +19,7 @@ class IndexController extends Controller
     public function index()
     {
         //获取文章按时间排序,分页
-        $good = Good::orderBy('created_at', 'desc')->paginate(7);
+        $good = Good::orderBy('created_at', 'desc')->paginate(6);
         //获取友情链接
         $link = Link::get();
         //轮播图
@@ -75,7 +75,7 @@ class IndexController extends Controller
      */
     function list(Request $request, $id) {
         //获取相应类别下文章
-        $good = Good::where('id', $id)->paginate(7);
+        $good = Good::where('id', $id)->paginate(5);
         //获取当前分类 名称
         $cname = Cate::find($id)->cname;
         //渲染到模板

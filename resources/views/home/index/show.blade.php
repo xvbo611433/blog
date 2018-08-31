@@ -168,8 +168,6 @@
                     var id = $('.comment-pl-block').find('a').first('.removeBlock').attr('href');
                     var gid = id.substr(22);
                     var oT = $(this).parents('.date-dz-right').parents('.date-dz').parents('.comment-show-con-list').parents('.comment-show-con').parents('.comment-show');
-
-
                     $.ajax({
                         url: '/home/comment/destroy/{id}',
                         type: 'post',
@@ -186,8 +184,6 @@
                         dataType: 'html',
                         async: true
                     });
-
-
                 })
             </script>
         </div>
