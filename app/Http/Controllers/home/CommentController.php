@@ -25,7 +25,7 @@ class CommentController extends Controller
         $essay = Good::find($id);
         $cate = Cate::getCate();
         // 获取文章详情
-        $comment = Comment::orderBy('time','desc')->get();
+        $comment = Comment::orderBy('created_at','desc')->get();
         return view('home.comment.index',['cate'=>$cate,'user'=>$user,'essay'=>$essay,'title'=>'评论详情页','comment'=>$comment]);
     }
 
