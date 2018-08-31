@@ -19,7 +19,7 @@ class IndexController extends Controller
     public function index()
     {
         //获取文章按时间排序,分页
-        $good = Good::orderBy('created_at', 'desc')->paginate(5);
+        $good = Good::orderBy('created_at', 'desc')->paginate(7);
         //获取友情链接
         $link = Link::get();
         //轮播图

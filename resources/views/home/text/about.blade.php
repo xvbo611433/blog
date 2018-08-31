@@ -33,7 +33,7 @@
 
             @foreach($cate as $v)
 
-                <li><a href="/home/list/{{$v->id}}">{{$v->cname}}</a>
+                <li><a href="#">{{$v->cname}}</a>
                     <ul class="sub-nav">
                         @foreach($v->child_cate as $vv)
                             <li><a href="/home/list/{{$vv->id}}">{{$vv->cname}}</a></li>
