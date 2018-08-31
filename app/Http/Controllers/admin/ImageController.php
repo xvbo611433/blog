@@ -20,7 +20,7 @@ class ImageController extends Controller
      */
     public function getCreate()
     {
-        $good = Good::orderBy('created_at', 'desc')->paginate(5);
+        $good = Good::orderBy('created_at', 'desc')->paginate(3);
 
         // 显示页面
         return view('admin.image.create',['title'=>'浏览图片','good'=>$good,'image'=>'图片浏览']);

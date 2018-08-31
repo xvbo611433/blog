@@ -15,7 +15,14 @@
         <link href="/home/phone/css/dlstyle.css" rel="stylesheet" type="text/css">
         <script src="/home/phone/AmazeUI-2.4.2/assets/js/jquery.min.js"></script>
         <script src="/home/phone/AmazeUI-2.4.2/assets/js/amazeui.min.js"></script>
+        <style type="text/css">
+            body{
 
+                background:url("/315845.jpg") no-repeat;
+                background-size:100% ;/*设置背景图片大小*/
+                background-attachment:fixed;/*固定背景*/
+            }
+         </style>
     </head>
 
     <body>
@@ -29,7 +36,7 @@
                         <div class="am-tabs" id="doc-my-tabs">
                             <ul class="am-tabs-nav am-nav am-nav-tabs am-nav-justify">
 
-                                <li><a href="">手机号注册</a></li>
+                                <li><a href="">注册</a></li>
                             </ul>
 
                             <div class="am-tabs-bd">
@@ -62,11 +69,7 @@
                                             <input type="submit" name="" value="注册" class="am-btn am-btn-primary am-btn-sm am-fl">
                                         </div>
                                         </form>
-                                 <div class="login-links">
-                                        <label for="reader-me">
-                                            <input id="reader-me" type="checkbox"> 点击表示您同意商城《服务协议》
-                                        </label>
-                                </div>
+
 
 
                                     <hr>
@@ -84,7 +87,7 @@
                                         async:true,
                                         success:function(msg){
                                             if(msg.code == 2){
-                                             alert('发送成功');   
+                                             alert('发送成功');
                                             }else{
                                                 alert(msg.msg);
                                             }
@@ -103,11 +106,7 @@
                                       })
                                 </script>
                         </form>
-                        <div class="login-links">
-                            <label for="reader-me">
-                                <input id="reader-me" type="checkbox"> 点击表示您同意商城《服务协议》
-                            </label>
-                        </div>
+
 
 
                         <hr>
@@ -150,28 +149,7 @@
         </div>
     </div>
 
-    <div class="footer ">
-        <div class="footer-hd ">
-            <p>
-                <a href="# ">恒望科技</a>
-                <b>|</b>
-                <a href="# ">商城首页</a>
-                <b>|</b>
-                <a href="# ">支付宝</a>
-                <b>|</b>
-                <a href="# ">物流</a>
-            </p>
-        </div>
-        <div class="footer-bd ">
-            <p>
-                <a href="# ">关于恒望</a>
-                <a href="# ">合作伙伴</a>
-                <a href="# ">联系我们</a>
-                <a href="# ">网站地图</a>
-                <em>© 2015-2025 Hengwang.com 版权所有</em>
-            </p>
-        </div>
-    </div>
+
 </body>
 
 </html>
