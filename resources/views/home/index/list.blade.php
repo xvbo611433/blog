@@ -72,7 +72,7 @@
     <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
 
                     <h3 class="blogtitle"><a href="/home/show/{{ $v['gid'] }}" target="_blank">{{$v['gname']}}</a></h3>
-                    <span class="blogpic"><a href="/" title="">{!!$v['gpic']!!}</a></span>
+                    <span class="blogpic"><a href="/home/show/{{ $v['gid'] }}" title="">{!!$v['gpic']!!}</a></span>
                     <p class="blogtext">{{$v['abs']}} </p>
       <div class="bloginfo">
                         <ul>

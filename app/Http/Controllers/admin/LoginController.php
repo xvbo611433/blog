@@ -31,13 +31,13 @@ class LoginController extends Controller
             return back()->with('error', '验证码输入错误');
         }
         //查询数据库是否存在用户
-        $tem = user::where('uname', $uname)->where('upwd', $upwd)->first();
+        $tem = user::where('uname', $uname)->first();
         if (empty($tem)) {
             return back()->with('error', '用户名不存在');
         }
 
         // 验证密码
-        if ($tem) {
+        if ($upwd == $tem['upwd']) {
             // 取值并给session赋值
             session(['login' => $tem]);
             return redirect('/admin/index');
