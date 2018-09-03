@@ -77,7 +77,7 @@
                                 <script type="text/javascript">
                                 function sendMobileCode(){
                                    var phone = $('#phone').val();
-                                   console.log(phone);
+                                  
 
 
                                     $.ajax({
@@ -87,7 +87,11 @@
                                         async:true,
                                         success:function(msg){
                                             if(msg.code == 2){
+<<<<<<< HEAD
                                              // alert('发送成功');
+=======
+                                             console.log('ok');
+>>>>>>> 25d153717e7f36d5cc1f9b496b51e7f6a8f696e2
                                             }else{
                                                 console.log(msg.msg);
                                             }
@@ -111,32 +115,7 @@
 
                         <hr>
                     </div>
-                    <script type="text/javascript">
-                        function sendMobileCode() {
-                            var phone = $('#phone').val();
-                            console.log(phone);
 
-
-                            $.ajax({
-                                url: '/home/login/sendMobileCode',
-                                data: {'phone': phone},
-                                datatype: 'json',
-                                async: true,
-                                success: function (msg) {
-                                    if (msg.code == 2) {
-                                        alert('发送成功');
-                                    } else {
-                                        alert(msg.code);
-                                    }
-                                }
-                            });
-                            // $.get('/home/login/sendMobileCode',{'phone':vphone},function(msg){
-                            //     alert(msg);
-                            // },'json');
-                        }
-
-
-                    </script>
                     <script>
                         $(function () {
                             $('#doc-my-tabs').tabs();
