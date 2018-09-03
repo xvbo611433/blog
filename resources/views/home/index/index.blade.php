@@ -77,12 +77,15 @@
         </div>
         <!--banner end-->
         <div class="toppic">
-            <li><a href="/" target="_blank"> <i><img src="/home/images/toppic01.jpg"></i>
-                    <h2>别让这些闹心的套路，毁了你的网页设计!</h2>
-                    <span>学无止境</span> </a></li>
-            <li><a href="/" target="_blank"> <i><img src="/home/images/zd01.jpg"></i>
+
+
+            <li><a href="/home/show/39" target="_blank"> <i><img src="/home/images/toppic01.jpg"></i>
+                    <h2>才、情、趣并举，梁实秋散文欣赏</h2>
+                    <span>慢生活</span> </a></li>
+            <li><a href="/home/show/57" target="_blank"> <i><img src="/home/images/zd01.jpg"></i>
                     <h2>个人博客，属于我的小世界！</h2>
                     <span>学无止境</span> </a></li>
+
         </div>
     </div>
     <div class="blank"></div>
@@ -92,7 +95,7 @@
             <div class="blogs" data-scroll-reveal="enter bottom over 1s">
 
                 <h3 class="blogtitle"><a href="/home/show/{{ $v['gid'] }}" target="_blank">{{$v['gname']}}</a></h3>
-                <span class="blogpic"><a href="/" title="">{!!$v['gpic']!!}</a></span>
+                <span class="blogpic"><a href="/home/show/{{ $v['gid'] }}" title="">{!!$v['gpic']!!}</a></span>
                 <p class="blogtext">{{$v['abs']}} </p>
                 <div class="bloginfo">
                     <ul>

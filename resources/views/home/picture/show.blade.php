@@ -68,11 +68,12 @@
   <h1 class="t_nav"><span>不要轻易放弃。学习成长的路上，我们长路漫漫，只因学无止境。 </span><a href="/" class="n1">网站首页</a><a href="/" class="n2">相册</a></h1>
 
   <!--blogsbox begin-->
-<div >
+<div  id="ph">
  <style type="text/css">
+/*ul li {  padding:5px; float: left; overflow: hidden; position: relative; margin-bottom: 30px; -webkit-transition: all .3s ease; -moz-transition: all .3s ease; -ms-transition: all .3s ease; -o-transition: all .3s ease; transition: all .3s ease; }*/
  .example img { height: 250px; width: 350px;  }
  .example p{ height: 250px; width: 350px;  }
- ul li { width: 350px; padding:5px; float: left; overflow: hidden; position: relative; margin-bottom: 30px; -webkit-transition: all .3s ease; -moz-transition: all .3s ease; -ms-transition: all .3s ease; -o-transition: all .3s ease; transition: all .3s ease; }
+
 </style>
 <ul style="padding:30px">
   @foreach($photo as $v)
@@ -82,7 +83,7 @@
  if (preg_match('|<img\s+src="?(\S+)?"|i', $html, $reg)) $photo_big=$reg[1];
 
   ?>
-    <li>  <a class="example" href="{{$photo_big}}">{!!$v['photo']!!}</a></li>
+    <li style="width: 350px;padding:5px; float: left; overflow: hidden; position: relative; margin-bottom: 30px; -webkit-transition: all .3s ease; -moz-transition: all .3s ease; -ms-transition: all .3s ease; -o-transition: all .3s ease; transition: all .3s ease; };">  <a class="example" href="{{$photo_big}}">{!!$v['photo']!!}</a></li>
      @endforeach
 </ul>
 </div>

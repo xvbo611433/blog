@@ -19,7 +19,7 @@ class IndexController extends Controller
     public function index()
     {
         //获取文章按时间排序,分页
-        $good = Good::orderBy('created_at', 'desc')->paginate(7);
+        $good = Good::orderBy('created_at', 'desc')->paginate(6);
         //获取友情链接
         $link = Link::get();
         //轮播图
@@ -43,11 +43,15 @@ class IndexController extends Controller
         $essay = Good::find($gid);
         // 根据时间倒叙排序 获取所有文章
         $good = Good::orderBy('created_at', 'desc')->get();
+                //获取相关文章
+        // $goods = Good::where('gid', $gid)->paginate(5);
         // 获取文章评论信息
         $comment = $essay->goods_comment;
         $cid     = $essay->id;
-        // 类别
+        // 所属类别
         $cate_name = Cate::find($cid)->cname;
+        // 获取相关文章
+        $goods = Good::where('id', $cid)->get();
         //获取下一篇id
         $next      = DB::table('blog_goods')->where('gid', '>', $gid)->min('gid');
         $next_name = Good::find($next);
@@ -61,6 +65,7 @@ class IndexController extends Controller
                 'cate_name' => $cate_name,
                 'comment'   => $comment,
                 'good'      => $good,
+                'goods'      => $goods,
                 'last_name' => $last_name,
                 'next_name' => $next_name,
             ]);
@@ -75,15 +80,12 @@ class IndexController extends Controller
      */
     function list(Request $request, $id) {
         //获取相应类别下文章
-        $good = Good::where('id', $id)->paginate(7);
+        $good = Good::where('id', $id)->paginate(5);
         //获取当前分类 名称
         $cname = Cate::find($id)->cname;
         //渲染到模板
         return view('home/index/list', [ 'good' => $good, 'cname' => $cname]);
     }
 
-    protected function next($gid)
-    {
 
-    }
 }

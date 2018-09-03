@@ -72,7 +72,7 @@
     <div class="blogs" data-scroll-reveal="enter bottom over 1s" >
 
                     <h3 class="blogtitle"><a href="/home/show/{{ $v['gid'] }}" target="_blank">{{$v['gname']}}</a></h3>
-                    <span class="blogpic"><a href="/" title="">{!!$v['gpic']!!}</a></span>
+                    <span class="blogpic"><a href="/home/show/{{ $v['gid'] }}" title="">{!!$v['gpic']!!}</a></span>
                     <p class="blogtext">{{$v['abs']}} </p>
       <div class="bloginfo">
                         <ul>
@@ -88,7 +88,41 @@
     </div>
 
      @endforeach
-{!! $good->render() !!}
+        <style type="text/css">
+            #pull_right {text-align: center;}
+            .pagination {display: inline-block;padding-left: 0;margin: 20px 0;border-radius: 4px;}
+            .pagination > li {display: inline;}
+            .pagination > li > a,
+            .pagination > li > span {position: relative;float: left;padding: 6px 12px;margin-left: -1px;line-height: 1.42857143;color: #428bca;text-decoration: none;background-color: #fff;border: 1px solid #ddd;}
+            .pagination > li:first-child > a,
+            .pagination > li:first-child > span {margin-left: 0;border-top-left-radius: 4px;border-bottom-left-radius: 4px;}
+            .pagination > li:last-child > a,
+            .pagination > li:last-child > span {border-top-right-radius: 4px;border-bottom-right-radius: 4px;}
+            .pagination > li > a:hover,
+            .pagination > li > span:hover,
+            .pagination > li > a:focus,
+            .pagination > li > span:focus {color: #2a6496;background-color: #eee;border-color: #ddd;}
+            .pagination > .active > a,
+            .pagination > .active > span,
+            .pagination > .active > a:hover,
+            .pagination > .active > span:hover,
+            .pagination > .active > a:focus,
+            .pagination > .active > span:focus {z-index: 2;color: #fff;cursor: default;background-color: #428bca;border-color: #428bca;}
+            .pagination > .disabled > span,
+            .pagination > .disabled > span:hover,
+            .pagination > .disabled > span:focus,
+            .pagination > .disabled > a,
+            .pagination > .disabled > a:hover,
+            .pagination > .disabled > a:focus {color: #777;cursor: not-allowed;background-color: #fff;border-color: #ddd;}
+            .clear {clear: both;}
+        </style>
+
+
+        <div id="pull_right">
+            <div class="pull-right">
+                {!! $good->render() !!}
+            </div>
+        </div>
   </div>
   <!--blogsbox end-->
   <div class="sidebar">
