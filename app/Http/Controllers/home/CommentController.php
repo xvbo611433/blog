@@ -29,15 +29,13 @@ class CommentController extends Controller
         $essay = Good::find($id);
         $cate = Cate::getCate();
         //获取用户登陆信息
-        $lg_user = session('comment');
-
-        //获取注册用户的信息
-        $data = session('info');
-        $lg_name = UserInfo::find($data['id']);
+        $arr = session('comment');
+        $arr = Register::find($arr['id']);
+        $lg_user = $arr->info;
         // 获取文章详情
         $comment = Comment::orderBy('created_at','desc')->get();
 
-        return view('home.comment.index',['cate'=>$cate,'user'=>$user,'essay'=>$essay,'title'=>'评论详情页','comment'=>$comment,'li_user'=>$lg_user,'lg_name'=>$lg_name]);
+        return view('home.comment.index',['cate'=>$cate,'user'=>$user,'essay'=>$essay,'title'=>'评论详情页','comment'=>$comment,'lg_user'=> $lg_user]);
 
     }
 

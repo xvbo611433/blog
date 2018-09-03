@@ -88,8 +88,34 @@
         <div class="container edit_info">
             <h3><span class="glyphicon glyphicon-cog" aria-hidden="true"> 完善个人信息</span></h3>
             <hr class="hr1">
+            <div class="form-group father-file">
+                <input type="hidden" name="_token" class="tag_token" value="<?php echo csrf_token(); ?>">
+                <img src="/home/images/aa.jpg" class="img-file" id="img-file">
+                <button type="button" class="layui-btn" id="img-file" style="display: none">
+                    <i class="layui-icon">&#xe67c;</i>上传图片
+                </button>
+                <script>
 
-            <form action="/home/store/info" method="post" class="form-horizontal" style="width:77%;margin-top: 35px;">
+                    layui.use('upload', function(){
+                        var upload = layui.upload;
+
+                        //执行实例
+                        var uploadInst = upload.render({
+                            elem: '#img-file' //绑定元素
+                            ,url: '/home/showInfo' //上传接口
+                            ,data: {'_token':$(".tag_token").val()}
+                            ,field:'profile'
+                            ,done: function(res){
+                                // 修改当前头像
+                                $("img").first('.img-file').attr('src',res.tep);
+                            }
+
+                        });
+                    });
+                </script>
+
+            </div>
+            <form action="/home/store/info" method="post" class="form-horizontal" style="width:77%;margin-left: 150px;">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="inputPassword3" class="col-sm-2 control-label"></label>
@@ -152,7 +178,7 @@
 
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="layui-btn layui-btn-lg layui-btn-warm layui-btn-radius ">提交</button>
+                        <button type="submit" class="layui-btn layui-btn-lg layui-btn-warm layui-btn-radius ">保存</button>
                     </div>
                 </div>
             </form>
@@ -161,7 +187,7 @@
             <ul>
                 <li class="layui-icon layui-icon-set-sm"><a href="/home/create/{{ session('id') }}">个人信息</a></li>
                 <li class="layui-icon layui-icon-password"><a href="/home/edit">修改密码</a></li>
-                <li class="layui-icon layui-icon-picture"><a href="/home/profile">修改头像</a></li>
+
             </ul>
         </div>
     </div>

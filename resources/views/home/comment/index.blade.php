@@ -139,10 +139,10 @@
                         var now = year + '-' + month + "-" + date + " " + h + ':' + m + ":" + s;
                         // 文章id
                         var gid = '{{ $essay['gid'] }}';
+                        // 用户名
+                        var user = '{{ $lg_user['nickname'] }}';
                         // 用户头像
-                        var user = '{{ $lg_name['nickname'] }}';
-
-                        var profile = '{{ $lg_name['profile'] }}';
+                        var profile = '{{ $v['profile'] }}';
                         //获取输入内容
                         var oSize = $(this).siblings('.flex-text-wrap').find('.comment-input').val();
                           //动态创建评论模块
@@ -237,11 +237,11 @@
                         if (s < 10) s = '0' + s;
                         var now = year + '-' + month + "-" + date + " " + h + ':' + m + ":" + s;
                         // 获取用户昵称
-                        var user = '{{ $lg_name['nickname'] }}';
+                        var user = '{{ $lg_user['nickname']  }}';
                         // 用户头像
-                        var profile = '{{ $lg_name['profile'] }}';
+                        var profile = '{{ $v['profile'] }}';
                         // 用户id
-                        var id = '{{ $lg_name['uid'] }}';
+                        var id = '{{ $lg_user['uid'] }}';
                         //获取输入内容
                         var oHfVal = $(this).siblings('.flex-text-wrap').find('.hf-input').val();
                         // 获取回复对象
@@ -295,30 +295,6 @@
                             dataType:'json',
                             async:true
                         });
-
-                        // comment
-                        //     :
-                        //     created_at
-                        //         :
-                        //         "2018-08-31 14:59:04"
-                        // id
-                        //     :
-                        //     0
-                        // reply_content
-                        //     :
-                        //     "回复@li611433 沙发沙发"
-                        // reply_object
-                        //     :
-                        //     "li611433 "
-                        // reply_user
-                        //     :
-                        //     "li611433"
-                        // updated_at
-                        //     :
-                        //     "2018-08-31 14:59:04"
-
-                        // console.log(oHfName);
-                        //
 
                     });
                 </script>

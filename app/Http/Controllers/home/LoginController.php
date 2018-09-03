@@ -31,6 +31,7 @@ class LoginController extends Controller
         $data  = $request->except('_token', 's');
         $uname = $data['username'];
         $upwd  = $data['password'];
+        // 文章的id
         $str = session('goods_url');
         $arr = explode('/', $str);
         $id  = array_pop($arr);
@@ -39,7 +40,7 @@ class LoginController extends Controller
         $tem = Register::where('uname', $uname)->where('password', $upwd)->first();
         if ($tem) {
             // 取值并给session赋值
-            session(['comment' => $data]);
+            session(['comment' => $tem]);
             return redirect('/home/comment/'.$id);
         } else {
             return back()->with('error', '密码错误');
@@ -54,7 +55,7 @@ class LoginController extends Controller
     public function create()
     {
         // 显示注册页面
-        return view('home/login/register');
+        return view('home/login/phone');
     }
 
     /**
@@ -92,7 +93,7 @@ class LoginController extends Controller
         //短信接口地址
         $target = "http://106.ihuyi.com/webservice/sms.php?method=Submit";
         //参数
-        $target .= "&format=json&account=C63076896&password=b3d0073c343dc7d124152531617aed98&mobile=" . $phone . "&content=" . rawurlencode("您的验证码是：" . $mobile_code . "。请不要把验证码泄露给其他人。");
+        $target .= "&format=json&account=C63076896&password=e50fba48906fde1f2cff89fdc7b0a6cc&mobile=" . $phone . "&content=" . rawurlencode("您的验证码是：" . $mobile_code . "。请不要把验证码泄露给其他人。");
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $target);

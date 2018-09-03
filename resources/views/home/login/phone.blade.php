@@ -87,9 +87,9 @@
                                         async:true,
                                         success:function(msg){
                                             if(msg.code == 2){
-                                             alert('发送成功');
+                                             // alert('发送成功');
                                             }else{
-                                                alert(msg.msg);
+                                                console.log(msg.msg);
                                             }
                                         }
                                     });

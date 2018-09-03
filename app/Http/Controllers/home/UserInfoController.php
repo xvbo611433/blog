@@ -94,7 +94,7 @@ class UserInfoController extends Controller
         }
         $data['profile'] = $tep;
         $id = session('id');
-        $res = DB::table('blog_info')->where('uid', $id)->update($data);
+        $res = DB::table('blog_user')->where('id', $id)->update($data);
         if($res){
             $arr = ['tep'=>$tep];
         }else{
