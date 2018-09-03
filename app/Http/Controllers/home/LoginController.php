@@ -16,7 +16,7 @@ class LoginController extends Controller
     public function index()
     {
         // 显示登陆页面
-        return view('home.login.login');
+        return view('home.login.register');
     }
 
     /**
@@ -54,7 +54,7 @@ class LoginController extends Controller
     public function create()
     {
         // 显示注册页面
-        return view('home/login/register');
+        return view('home/login/phone');
     }
 
     /**
