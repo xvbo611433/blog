@@ -34,7 +34,7 @@
                     <tr>
                         <td>{{ $v['id'] }}</td>
                         <td>{{ $v['gid'] }}</td>
-                        <td>{{ $v['cname'] }}</td>
+                        <td>{{ $v['uname'] }}</td>
                         <td><img style="width: 80px;height:80px;border-radius:60px" src="{{ $v['profile'] }}"></td>
                         <td>{{ $v['status'] }}</td>
                         <td>{!! $v['comment'] !!}</td>
