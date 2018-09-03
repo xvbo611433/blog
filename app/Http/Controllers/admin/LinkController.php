@@ -18,7 +18,7 @@ class LinkController extends Controller
     public function index(request $request)
     {
         $search = $request->input('search', ''); //接受名称
-        $id     = $request->input('id', ''); //接收商品类
+
         $count  = Link::count();
         // dd($count);
         $page_count = $request->input('page_count', 5); //分页

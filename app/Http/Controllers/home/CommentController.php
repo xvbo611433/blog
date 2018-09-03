@@ -30,8 +30,11 @@ class CommentController extends Controller
         $cate = Cate::getCate();
         //获取用户登陆信息
         $arr = session('comment');
+
         $arr = Register::find($arr['id']);
+
         $lg_user = $arr->info;
+                // dd($lg_user);
         // 获取文章详情
         $comment = Comment::orderBy('created_at','desc')->get();
 

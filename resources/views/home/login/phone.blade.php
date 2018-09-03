@@ -26,8 +26,11 @@
     </head>
 
     <body>
-
-
+<script type="text/javascript">
+            @if(session('error'))
+            alert('验证码错误');
+            @endif
+    </script>
         <div class="res-banner">
             <div class="res-main">
 
@@ -50,7 +53,14 @@
                                             <label for="phone">
                                               <i class="am-icon-mobile-phone am-icon-md"></i>
                                             </label>
-                                            <input type="tel" name="username" id="phone" placeholder="请输入手机号"></div>
+                                            <input type="tel" name="username" id="username" placeholder="请输入用户名">
+                                            </div>
+                                          <div class="user-phone">
+                                            <label for="phone">
+                                              <i class="am-icon-mobile-phone am-icon-md"></i>
+                                            </label>
+                                            <input type="tel" name="phone" id="phone" placeholder="请输入手机号">
+                                            </div>                                            
                                           <div class="verification">
                                             <label for="code">
                                               <i class="am-icon-code-fork"></i>
@@ -87,11 +97,10 @@
                                         async:true,
                                         success:function(msg){
                                             if(msg.code == 2){
-<<<<<<< HEAD
-                                             // alert('发送成功');
-=======
+
+
                                              console.log('ok');
->>>>>>> 25d153717e7f36d5cc1f9b496b51e7f6a8f696e2
+
                                             }else{
                                                 console.log(msg.msg);
                                             }

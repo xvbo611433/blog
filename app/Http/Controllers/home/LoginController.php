@@ -16,7 +16,7 @@ class LoginController extends Controller
     public function index()
     {
         // 显示登陆页面
-        return view('home.login.register');
+        return view('home.login.login');
     }
 
     /**
@@ -66,10 +66,16 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        // 将注册信息插入数据库
+         $tel_code = $request -> all();
+         // dd($tel_code);
+         if(session('mobile_code') != $tel_code['code']){
+            return back()->with('error', '验证码错误');
+        }else{
+                // 将注册信息插入数据库
         $user = new Register;
         $user->uname = $request->input('username');
         $user->password = $request->input('password');
+        $user->phone = $request->input('phone');
         $res = $user->save();
         $id = $user->id;
         if ($res) {
@@ -79,7 +85,7 @@ class LoginController extends Controller
                 return back()->with('error', '添加失败');
             }
 
-
+        }
 
     }
 
@@ -91,9 +97,9 @@ class LoginController extends Controller
         $mobile_code = rand(1000, 9999);
         session(['mobile_code' => $mobile_code]);
         //短信接口地址
-        $target = "http://106.ihuyi.com/webservice/sms.php?method=Submit";
+         $target = "http://106.ihuyi.com/webservice/sms.php?method=Submit";
         //参数
-        $target .= "&format=json&account=C63076896&password=e50fba48906fde1f2cff89fdc7b0a6cc&mobile=" . $phone . "&content=" . rawurlencode("您的验证码是：" . $mobile_code . "。请不要把验证码泄露给其他人。");
+        $target .= "&format=json&account=C60835011&password=e50fba48906fde1f2cff89fdc7b0a6cc&mobile=" . $phone . "&content=" . rawurlencode("您的验证码是：" . $mobile_code . "。请不要把验证码泄露给其他人。");
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $target);

@@ -347,6 +347,15 @@
                 <li class="active">
                     <a href="/admin/recycle/index"><i class="icon-trash"></i>回收站</a>
                 </li>
+                <li class="active">
+                    <a href="#"><i class="icon-edit"></i>关于站长</a>
+                    <ul class='closed'>
+                        <!-- <li><a href="/admin/about/create">添加</a></li> -->
+                        <li><a href="/admin/about/4/edit">修改信息</a></li>
+<!--                         <li><a href="/admin/about/">浏览</a></li> -->
+
+                    </ul>
+                </li>                   
             </ul>
 
         </div>
