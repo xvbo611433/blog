@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="gbk">
-    <title></title>
+    <title>搜索详情</title>
   
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/home/css/base.css" rel="stylesheet">

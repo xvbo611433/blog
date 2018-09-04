@@ -46,6 +46,7 @@
                             <li><a href="/home/about">关于我</a></li>  
 
                 <!--search begin-->
+                    <div id="search_bar" class="search_bar">
                         <form id="searchform" action="/home/search" method="get"
                               name="searchform">
                             <input class="input" placeholder="想搜点什么呢..." type="text" name="gname" id="keyboard">
@@ -55,6 +56,7 @@
 
                             <span class="search_ico"></span>
                         </form>
+                    </div>
                     <!--search end-->
         </nav>
     </div>
