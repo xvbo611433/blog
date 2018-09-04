@@ -44,6 +44,7 @@
                         @endforeach
 
                     </ul>
+<<<<<<< HEAD
             @endforeach
             <li><a href="/home/picture">相册</a></li>
             <li><a href="/home/time">时间轴</a></li>
@@ -61,6 +62,25 @@
                 </form>
             </div>
             <!--search end-->
+=======
+                @endforeach
+                                <li><a href="/home/picture">相册</a></li> 
+                                <li><a href="/home/time">时间轴</a></li> 
+                                <li><a href="/home/about">关于我</a></li> 
+                <!--search begin-->
+                    <div id="search_bar" class="search_bar">
+                        <form id="searchform" action="/home/search" method="get"
+                              name="searchform">
+                            <input class="input" placeholder="想搜点什么呢..." type="text" name="gname" id="keyboard">
+
+                            <input type="hidden" name="Submit" value="搜索"/>
+
+
+                            <span class="search_ico"></span>
+                        </form>
+                    </div>
+                    <!--search end-->
+>>>>>>> bc617fbc86b95f33352dd14f936e9551297f5b13
         </nav>
     </div>
 

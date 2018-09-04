@@ -42,13 +42,13 @@
                 <li><a href="/home/create/{{ session('id') }}">个人中心</a></li>
                 <li>
                     <div id="search_bar" class="search_bar">
-                        <form id="searchform" action="[!--news.url--]e/search/index.php" method="post"
+                        <form id="searchform" action="/home/search" method="get"
                               name="searchform">
-                            <input class="input" placeholder="想搜点什么呢..." type="text" name="keyboard" id="keyboard">
-                            <input type="hidden" name="show" value="title"/>
-                            <input type="hidden" name="tempid" value="1"/>
-                            <input type="hidden" name="tbname" value="news">
+                            <input class="input" placeholder="想搜点什么呢..." type="text" name="gname" id="keyboard">
+
                             <input type="hidden" name="Submit" value="搜索"/>
+
+
                             <span class="search_ico"></span>
                         </form>
                     </div>
@@ -143,6 +143,7 @@
                 <!--点击评论创建评论条-->
                 <script type="text/javascript">
 
+
                     $('.commentAll').on('click', '.plBtn', function () {
                         var myDate = new Date();
                         //获取当前年
@@ -159,8 +160,10 @@
                         var now = year + '-' + month + "-" + date + " " + h + ':' + m + ":" + s;
                         // 文章id
                         var gid = '{{ $essay['gid'] }}';
+
                         // 用户名
                         var user = '{{ $lg_user['nickname'] }}';
+                      
                         // 用户头像
                         var profile = '{{ $Register['profile'] }}';
                         var uid = '{{ $tep = session('comment') }}';

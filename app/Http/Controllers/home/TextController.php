@@ -38,7 +38,13 @@ class TextController extends Controller
     }
     public function search(Request $request)
     {
+<<<<<<< HEAD
         $search = $request->input('gname',''); //接受名称
+=======
+        $search = $request->input('gname'); //接受名称
+         // dd($search);
+
+>>>>>>> bc617fbc86b95f33352dd14f936e9551297f5b13
         if (isset($search) && !empty($search)) {
             $goods = Good::where('gname', 'like', '%' . $search . '%')->paginate(5);
         }
