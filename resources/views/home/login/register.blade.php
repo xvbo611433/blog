@@ -37,9 +37,9 @@
         <form action="/home/login/store" method="post">
             {{ csrf_field() }}
             用户名：<input type="text" name="username" placeholder="账号" required=""><br><br>
-            邮  箱：<input type="text" name="email" placeholder="邮箱" required=""><br><br>
+
             密  码：<input type="password" name="password" placeholder="密码" required=""><br><br>
-            手机号：<input type="text" name="tel" placeholder="手机号码" required=""><br><br>
+
             <div class="send-button w3layouts agileits">
                 <input type="submit" value="提交">
             </div>

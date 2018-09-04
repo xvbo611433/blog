@@ -25,6 +25,7 @@
                     <th>头像</th>
                     <th>状态</th>
                     <th>评论内容</th>
+                    <th>点赞</th>
                     <th>创建时间</th>
                     <th>操作</th>
                 </tr>
@@ -38,6 +39,7 @@
                         <td><img style="width: 80px;height:80px;border-radius:60px" src="{{ $v['profile'] }}"></td>
                         <td>{{ $v['status'] }}</td>
                         <td>{!! $v['comment'] !!}</td>
+                        <td>{!! $v['like'] !!}</td>
                         <td>{{ $v['created_at'] }}</td>
                         <td>
                             <form action="/admin/comment/{{ $v['id'] }}" method="post" style="display: inline;">
@@ -45,6 +47,12 @@
                                 {{ method_field('DELETE') }}
                                 <input id="ha" type="submit" onclick="return confirm('您确定要删除吗')" class="btn btn-danger" value="删除">
                             </form>
+                            @if($v['status'] == 0)
+                                <a href="/admin/image/hidden/{{ $v['gid'] }}" class="mws-gallery-btn"><i class="icon-refresh"></i>屏蔽</a>
+                            @elseif($v['status'] == 1)
+                                <a href="/admin/image/show/{{ $v['gid'] }}" class="mws-gallery-btn"><i class="icon-refresh"></i>启用</a>
+
+                            @endif
                         </td>
                     </tr>
                 @endforeach

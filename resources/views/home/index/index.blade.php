@@ -41,13 +41,13 @@
                 <li><a href="/home/about">关于我</a></li>
           
                     <div id="search_bar" class="search_bar">
-                        <form id="searchform" action="[!--news.url--]e/search/index.php" method="post"
+                        <form id="searchform" action="/home/search" method="get"
                               name="searchform">
-                            <input class="input" placeholder="想搜点什么呢..." type="text" name="keyboard" id="keyboard">
-                            <input type="hidden" name="show" value="title"/>
-                            <input type="hidden" name="tempid" value="1"/>
-                            <input type="hidden" name="tbname" value="news">
+                            <input class="input" placeholder="想搜点什么呢..." type="text" name="gname" id="keyboard">
+
                             <input type="hidden" name="Submit" value="搜索"/>
+
+
                             <span class="search_ico"></span>
                         </form>
                     </div>
@@ -183,11 +183,9 @@
         <div class="guanzhu" id="follow-us">
             <h2 class="hometitle">关注我们 么么哒！</h2>
             <ul>
-                <li class="sina"><a href="/" target="_blank"><span>新浪微博</span></a></li>
-                <li class="tencent"><a href="/" target="_blank"><span>腾讯微博</span></a></li>
-                <li class="qq"><a href="/" target="_blank"><span>QQ号</span></a></li>
+                <li class="tencent">zcc1452073959<a href="http://t.qq.com/zcc1452073959" target="_blank"><span>腾讯微博</span></a></li>
+                <li class="qq">1452073959<a href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1452073959&website=www.oicqzone.com" target="_blank"><span>QQ号</span></a></li>
                 <li class="email"><a href="/" target="_blank"><span>邮箱帐号</span></a></li>
-                <li class="wxgzh"><a href="/" target="_blank"><span>微信号</span></a></li>
                 <li class="wx"><img src="/home/images/mmqrcode1535504449800.png"></li>
             </ul>
         </div>

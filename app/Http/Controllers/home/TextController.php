@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\admin\Good;
+use App\Models\admin\About;
 
 class TextController extends Controller
 {
@@ -29,8 +30,21 @@ class TextController extends Controller
      */
     public function about()
     {
+        //获个人信息
+        $about=About::find(4);
+        // dd($about);
      //渲染到模板
-       return view('home/text/about',['title'=>'关于我']);
+       return view('home/text/about',['title'=>'关于我','about'=>$about]);
     }
+    public function search(request $request)
+    {
+        $search = $request->input('gname', ''); //接受名称
+        // dd($search);
 
+        if (isset($search) && !empty($search)) {
+            $goods = Good::where('gname', 'like', '%' . $search . '%')->paginate(5);
+        }
+        // dd($goods);
+        return view('home/text/search',['goods'=>$goods]);
+    }
 }

@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 //后台
 
-Route::get('/code','admin\CodeController@code');//验证码
+Route::get('/home/code/{tmp}','admin\CodeController@code');//验证码
 Route::controller('/admin/login','admin\LoginController');//用户登录
 
 Route::group(['middleware'=>'login'],function(){
@@ -30,12 +30,14 @@ Route::controller('/admin/index','admin\IndexController');//首页
 Route::resource('/admin/link','admin\LinkController');//友情链接管理
 Route::controller('/admin/recycle','admin\RecycleController');//回收站管理
 Route::controller('/admin/photo','admin\PhotoController');//后台相册控制器
+Route::resource('/admin/about','admin\AboutController');//关于我
 
 });
-
-Route::get('/','home\IndexController@index');//前台
+//前台
+Route::get('/','home\IndexController@index');//首页
 Route::get('/home/show/{id}','home\IndexController@show');//详情
 Route::get('/home/list/{id}','home\IndexController@list');//列表
+Route::get('/home/search','home\TextController@search');//搜索
 Route::get('/register','home\LoginController@create');//注册
 Route::get('/login','home\LoginController@index');//登陆页面
 Route::post('/info','home\LoginController@info');//验证登陆
@@ -62,6 +64,14 @@ Route::get('/home/profile','home\UserInfoController@profile');//修改头像
 
 
 
+//找回密码
+Route::get('/home/forget','home\PasswordController@forget');
+Route::get('/home/forget2','home\PasswordController@forget2');
+Route::get('/home/forget3','home\PasswordController@forget3');
+Route::get('/home/forget4','home\PasswordController@forget4');
+Route::post('/home/doforget','home\PasswordController@doforget');
+Route::post('/home/doforget2','home\PasswordController@doforget2');
+Route::post('/home/doforget3','home\PasswordController@doforget3');
 
 
 

@@ -32,8 +32,10 @@
             {{ csrf_field() }}
             <input type="text" Name="username" placeholder="用户名" ><br><br>
             <input type="password" Name="password" placeholder="密码" ><br><br>
+            <a href="/home/forget" style="text-decoration:underline;">忘记密码?</a>
             <div class="send-button w3layouts agileits">
                 <input type="submit" value="登 录"><a href="/register" class="login-register">注册</a>
+
             </div>
         </form>
         <div class="clear"></div>

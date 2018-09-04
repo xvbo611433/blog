@@ -32,7 +32,6 @@ class CommentController extends Controller
         $arr = session('comment');
         $Register = Register::find($arr['id']);
         $lg_user = $Register->info;
-
         // 回复信息
         $reply = Reply::all();
         // 获取文章详情
@@ -145,5 +144,22 @@ class CommentController extends Controller
             $arr = ['like'=>'error'];
         }
         return $arr;
+    }
+
+    //屏蔽 启用
+    public function getShow($id,$status=0)
+    {
+        $data['status'] =$status;
+        DB::table('blog_goods')->where('gid', $id)->update($data);
+        return redirect('/admin/image/create');
+
+    }
+
+    public function getHidden($id,$status=1)
+    {
+
+        $data['status'] =$status;
+        DB::table('blog_goods')->where('gid', $id)->update($data);
+        return redirect('/admin/image/create');
     }
 }
