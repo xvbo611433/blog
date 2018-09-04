@@ -35,7 +35,7 @@ class CommentController extends Controller
         // 回复信息
         $reply = Reply::all();
         // 获取文章详情
-        $comment = Comment::orderBy('created_at','desc')->get();
+        $comment = Comment::where('status', 1)->orderBy('created_at','desc')->get();
 
         return view('home.comment.index',['cate'=>$cate,'user'=>$user,'essay'=>$essay,'title'=>'评论详情页','comment'=>$comment,'lg_user'=> $lg_user,'Register'=>$Register,'arr'=>$arr,'reply'=>$reply]);
 

@@ -27,19 +27,6 @@ class ImageController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function getEdit($id)
-    {
-        $data = Good::find($id);
-        return view('admin.image.edit',['title'=>'图片修改','data'=>$data]);
-    }
-
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id

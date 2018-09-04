@@ -326,7 +326,6 @@
                 <li class="active">
                     <a href="#"><i class="icon-comments"></i>评论管理</a>
                     <ul class='closed'>
-                        <li class="icon-add-contact"><a href="/admin/comment/create">添加评论</a></li>
                         <li><a href="/admin/comment">浏览评论</a></li>
 
                     </ul>

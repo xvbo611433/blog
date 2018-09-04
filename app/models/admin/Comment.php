@@ -18,9 +18,9 @@ class Comment extends Model
         return $this->belongsTo('(new Good)','gid');
     }
 
-   // 一条评论对多条回复
-    public function reply()
-    {
-        return $this->hasMany((new Reply),'');
-    }
+//   // 一条评论对多条回复
+//    public function reply()
+//    {
+//        return $this->hasMany((new Reply),'');
+//    }
 }

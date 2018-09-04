@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Comment;
-
+use DB;
 class CommentController extends Controller
 {
     /**
@@ -15,7 +15,7 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function getIndex(Request $request)
     {
         // 接收数据
         $search = $request->input('search', '');
@@ -28,7 +28,7 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function gitCreate()
     {
         return view('admin.comment.create',['title'=>'添加评论']);
     }
@@ -39,7 +39,7 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function postStore(Request $request)
     {
 
         $data = new Comment;
@@ -85,7 +85,7 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function getDestroy($id)
     {
         $res = Comment::destroy($id);
         if ($res) {
@@ -95,5 +95,22 @@ class CommentController extends Controller
             // 失败返回添加页
             return back()->with('error', '删除失败');
         }
+    }
+
+    //启用  屏蔽
+    public function getShow($id,$status=1)
+    {
+        $data['status'] =$status;
+        DB::table('blog_comment')->where('id', $id)->update($data);
+        return redirect('/admin/comment/index');
+
+    }
+
+    public function getHidden($id,$status=2)
+    {
+
+        $data['status'] =$status;
+        DB::table('blog_comment')->where('id', $id)->update($data);
+        return redirect('/admin/comment/index');
     }
 }

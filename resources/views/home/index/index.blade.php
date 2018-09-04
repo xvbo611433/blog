@@ -46,8 +46,6 @@
                             <input class="input" placeholder="想搜点什么呢..." type="text" name="gname" id="keyboard">
 
                             <input type="hidden" name="Submit" value="搜索"/>
-
-
                             <span class="search_ico"></span>
                         </form>
                     </div>
