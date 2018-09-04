@@ -7,16 +7,11 @@
             <div class="mws-form-message success">
                 {{session('success')}}
             </div>
+            @else
+            <div class="mws-form-message error">
+                {{session('error')}}
+            </div>
             @endif
-    @if (count($errors) > 0)
-        <div class="mws-form-message error">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
 
 
 
