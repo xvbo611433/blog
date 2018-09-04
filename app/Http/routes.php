@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 //后台
 
-Route::get('/home/code/{tmp}','admin\CodeController@code');//验证码
+Route::get('/home/code/','admin\CodeController@code');//验证码
 Route::controller('/admin/login','admin\LoginController');//用户登录
 
 Route::group(['middleware'=>'login'],function(){

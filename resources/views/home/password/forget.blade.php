@@ -46,7 +46,7 @@
                 <section class="form-b6px1">
                         <input type="text" name="code" maxlength="6" placeholder="验证码">
         
-            <img src="/home/code/1" style="float: right;" title="点击切换" onclick="rand_code(this)">
+            <img src="/home/code/" style="float: right;" title="点击切换" onclick="rand_code(this)">
           
                 </section>
 

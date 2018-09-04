@@ -45,7 +45,7 @@
             <input name="upwd" lay-verify="required" placeholder="密码"  type="password" class="layui-input">
             <hr class="hr15">
             <div>
-            <img src="/home/code/1" style="float: right;" title="点击切换" onclick="rand_code(this)"><input type="text" name="code" lay-verify="required" placeholder="请输入验证码"  class="layui-input" style="width: 130px;">
+            <img src="/home/code/" style="float: right;" title="点击切换" onclick="rand_code(this)"><input type="text" name="code" lay-verify="required" placeholder="请输入验证码"  class="layui-input" style="width: 130px;">
             </div>
             <hr class="hr15">
               <script type="text/javascript">
