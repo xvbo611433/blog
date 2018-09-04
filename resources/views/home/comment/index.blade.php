@@ -39,7 +39,7 @@
                 <!--search begin-->
                 <li><a href="/home/picture">相册</a></li>
                 <li><a href="/home/time">时间轴</a></li>
-                <li><a href="/home/create/{{ session('id') }}">个人中心</a></li>
+                <li><a href="/home/create/{{ $arr['id'] }}">个人中心</a></li>
                 <li>
                     <div id="search_bar" class="search_bar">
                         <form id="searchform" action="/home/search" method="get"

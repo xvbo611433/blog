@@ -31,10 +31,10 @@ class LoginController extends Controller
         $data  = $request->except('_token', 's');
         $uname = $data['username'];
         $upwd  = $data['password'];
-        // 文章的id
-        $str = session('goods_url');
-        $arr = explode('/', $str);
-        $id  = array_pop($arr);
+//        // 文章的id
+//        $str = session('goods_url');
+//        $arr = explode('/', $str);
+//        $id  = array_pop($arr);
 
         //查询数据库是否存在用户
         $tem = Register::where('uname', $uname)->where('password', $upwd)->first();

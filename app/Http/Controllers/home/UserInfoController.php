@@ -33,7 +33,11 @@ class UserInfoController extends Controller
         $data = register::find($id);
         $info = $data->info;
 
-        return view('home.login.userinfo',['title'=>'个人详情','data'=>$data,'info'=>$info]);
+        //获取用户登陆信息
+        $arr = session('comment');
+        // 注册id
+        $info_id = session('id');
+        return view('home.login.userinfo',['title'=>'个人详情','data'=>$data,'info_id'=> $info_id,'info'=>$info,'arr'=>$arr]);
     }
 
     /**
@@ -57,7 +61,7 @@ class UserInfoController extends Controller
         $user->wname = $request->input('wname');
         $user->baddress = $request->input('baddress');
         $res = $user->save();
-        $id =  session('id');
+//        $id =  session('id');
         if($res){
             session(['info'=>$user]);
             $arr = ['data'=>$user];
@@ -94,8 +98,16 @@ class UserInfoController extends Controller
             $tep = ltrim($str,'.');
         }
         $data['profile'] = $tep;
-        $id = session('id');
-        $res = DB::table('blog_user')->where('id', $id)->update($data);
+        //获取用户登陆信息
+        if(!empty(session('id'))){
+            $id = session('id');
+            $res = DB::table('blog_user')->where('id', $id)->update($data);
+        }else{
+            $arr = session('comment');
+            $id = $arr['id'];
+            $res = DB::table('blog_user')->where('id', $id)->update($data);
+        }
+
         if($res){
             $arr = ['tep'=>$tep];
         }else{
@@ -112,10 +124,13 @@ class UserInfoController extends Controller
      */
     public function edit()
     {
+        //获取用户登陆信息
+        $arr = session('comment');
+        // 注册id
+        $info_id = session('id');
         // 显示修改密码页面
-        $id = session('id');
-        $user = Register::find($id);
-        return view('home.login.edit',['title'=>'修改密码','user'=>$user]);
+        $user = Register::find($info_id);
+        return view('home.login.edit',['title'=>'修改密码','user'=>$user,'arr'=>$arr,'info_id'=>$info_id]);
     }
 
 
@@ -132,12 +147,12 @@ class UserInfoController extends Controller
         $this->validate($request, [
             'pwd' => 'required',
             'repwd' => 'required',
-            'upwd' => 'required|regex:/^[a-zA-Z]{2-6}[\w]{6-10}$/',
+            'upwd' => 'required',
         ],[
             'pwd.required'=>'原密码不能为空',
             'repwd.required'=>'确认密码不能为空',
             'upwd.required'=>'新密码不能为空',
-            'upwd.regex'=>'密码必须以字母开头',
+
         ]);
         $arr = $request->except('s','_token');
         // 获取提交信息
@@ -149,16 +164,19 @@ class UserInfoController extends Controller
         if($repwd != $upwd){
             return back()->with('error','两次密码不一致');
         }
-        // 获取session用户信息
-        $id = session('id');
-        $user = Register::find($id);
+
 //        Hash::check($pwd, $user['password']);
 //        //密码加密
 //        $password = Hash::make($upwd);
-        if($user['password'] != $pwd){
-            return back();
-        }
-        $res =  DB::table('blog_user')->where('id', $id)->update(['password'=>$upwd]);
+
+        //获取用户登陆信息
+            $id = session('id');
+            $user = Register::find($id);
+            if($user['password'] != $pwd){
+                return back();
+            }
+            $res =  DB::table('blog_user')->where('id', $id)->update(['password'=>$upwd]);
+
         // 更新到数据库
         if($res){
             return redirect('/login')->with('success','您的密码有更改,请重新登录');

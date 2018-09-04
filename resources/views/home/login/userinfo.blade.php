@@ -51,7 +51,7 @@
                             <li><a href="/home/list/{{$vv->id}}">{{$vv->cname}}</a></li>
                         @endforeach
                     </ul>
-            @endforeach
+                @endforeach
                 <!--search begin-->
                 <li><a href="/home/time">时间轴</a></li>
                 <li>
@@ -74,168 +74,167 @@
 
 </header>
 <article>
-<div class="container">
-    @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-    <div class="user_info_content">
-        <div class="container edit_info">
-            <h3><span class="glyphicon glyphicon-cog" aria-hidden="true"> 完善个人信息</span></h3>
-            <hr class="hr1">
-            <div class="form-group father-file">
-                <input type="hidden" name="_token" class="tag_token" value="<?php echo csrf_token(); ?>">
-                @if(!empty($data['profile']))
-                <img src="{{ $data['profile'] }}" class="img-file" id="img-file">
-                @else
-                    <img src="/home/images/aa.jpg" class="img-file" id="img-file">
-                @endif
-                <button type="button" class="layui-btn" id="img-file" style="display: none">
-                    <i class="layui-icon">&#xe67c;</i>上传图片
-                </button>
-                <script>
-
-                    layui.use('upload', function(){
-                        var upload = layui.upload;
-
-                        //执行实例
-                        var uploadInst = upload.render({
-                            elem: '#img-file' //绑定元素
-                            ,url: '/home/showInfo' //上传接口
-                            ,data: {'_token':$(".tag_token").val()}
-                            ,field:'profile'
-                            ,done: function(res){
-                                // 修改当前头像
-                                $("img").first('.img-file').attr('src',res.tep);
-                            }
-
-                        });
-                    });
-                </script>
-
+    <div class="container">
+        @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
             </div>
-            <form action="/home/store/info" method="post" class="form-horizontal" style="width:77%;margin-left: 150px;">
-                {{ csrf_field() }}
+        @endif
+        <div class="user_info_content">
+            <div class="container edit_info">
+                <h3><span class="glyphicon glyphicon-cog" aria-hidden="true"> 完善个人信息</span></h3>
+                <hr class="hr1">
+                <div class="form-group father-file">
+                    <input type="hidden" name="_token" class="tag_token" value="<?php echo csrf_token(); ?>">
+                    @if(!empty($data['profile']))
+                        <img src="{{ $data['profile'] }}" class="img-file" id="img-file">
+                    @else
+                        <img src="/home/images/aa.jpg" class="img-file" id="img-file">
+                    @endif
+                    <button type="button" class="layui-btn" id="img-file" style="display: none">
+                        <i class="layui-icon">&#xe67c;</i>上传图片
+                    </button>
+                    <script>
 
-                <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label"></label>
-                    <div class="col-sm-10">
-                        <input type="hidden" name="uid" value="{{ $data['id'] }}" class="form-control" id="inputPassword3" placeholder="Password">
-                    </div>
-                </div>
+                        layui.use('upload', function(){
+                            var upload = layui.upload;
 
-                <div class="form-group">
-                    <label for="inputPassword7" class="col-sm-2 control-label">用户昵称：</label>
-                    <div class="col-sm-10">
-                        <input type="text" name="nickname" value="{{ $info['nickname'] }}" class="form-control" id="inputPassword7" placeholder="请输入汉字6-18个字符">
-                    </div>
-                </div>
+                            //执行实例
+                            var uploadInst = upload.render({
+                                elem: '#img-file' //绑定元素
+                                ,url: '/home/showInfo' //上传接口
+                                ,data: {'_token':$(".tag_token").val()}
+                                ,field:'profile'
+                                ,done: function(res){
+                                    // 修改当前头像
+                                    $("img").first('.img-file').attr('src',res.tep);
+                                }
 
-                <div class="form-group">
-                    <label for="inputPassword8" class="col-sm-2 control-label">QQ号：</label>
-                    <div class="col-sm-10">
-                        <input type="text" name="qq" value="{{ $info['qq'] }}" class="form-control" id="inputPassword8" placeholder="请输入8-10数字">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputPassword9" class="col-sm-2 control-label">性别：</label>
-                    <div class="col-sm-10">
-                        <select class="form-control" name="sex" id="inputPassword9">
-                            <option selected value="{{$info['sex'] }}">男</option>
-                            <option value="{{$info['sex'] }}">女</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputPassword1" class="col-sm-2 control-label">手机号：</label>
-                    <div class="col-sm-10">
-                        <input type="text" name="tel" value="{{ $info['tel'] }}" class="form-control" id="inputPassword1" placeholder="请输入十一位数字">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputPassword2" class="col-sm-2 control-label">真实姓名：</label>
-                    <div class="col-sm-10">
-                        <input type="text" name="rname" value="{{ $info['rname'] }}" class="form-control" id="inputPassword2" placeholder="请输入汉字6-18个字符">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputPassword4" class="col-sm-2 control-label">城市：</label>
-                    <div class="col-sm-10">
-                        <input type="text" name="city" value="{{ $info['city'] }}" class="form-control" id="inputPassword4" placeholder="请输入汉字6-18个字符">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputPassword5" class="col-sm-2 control-label">微信号：</label>
-                    <div class="col-sm-10">
-                        <input type="text" name="wname" value="{{ $info['wname'] }}" class="form-control" id="inputPassword5" placeholder="请输入8-10位数字">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputPassword6" class="col-sm-2 control-label">微博账号：</label>
-                    <div class="col-sm-10">
-                        <input type="text" name="baddress" value="{{ $info['baddress'] }}" class="form-control" id="inputPassword6" placeholder="邮箱格式">
-                    </div>
-                </div>
+                            });
+                        });
+                    </script>
 
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" onclick="return false" class="layui-btn layui-btn-lg layui-btn-warm layui-btn-radius" id="save-info">保存</button>
-                    </div>
                 </div>
+                <form action="/home/store/info" method="post" class="form-horizontal" style="width:77%;margin-left: 150px;">
+                    {{ csrf_field() }}
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label"></label>
+                        <div class="col-sm-10">
+                            <input type="hidden" name="uid" value="{{ $data['id'] }}" class="form-control" id="inputPassword3" placeholder="Password">
+                        </div>
+                    </div>
 
-            </form>
+                    <div class="form-group">
+                        <label for="inputPassword7" class="col-sm-2 control-label">用户昵称：</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="nickname" value="{{ $info['nickname'] }}" class="form-control" id="inputPassword7" placeholder="请输入汉字6-18个字符">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inputPassword8" class="col-sm-2 control-label">QQ号：</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="qq" value="{{ $info['qq'] }}" class="form-control" id="inputPassword8" placeholder="请输入8-10数字">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword9" class="col-sm-2 control-label">性别：</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" name="sex" id="inputPassword9">
+                                <option selected value="{{$info['sex'] }}">男</option>
+                                <option value="{{$info['sex'] }}">女</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword1" class="col-sm-2 control-label">手机号：</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="tel" value="{{ $info['tel'] }}" class="form-control" id="inputPassword1" placeholder="请输入十一位数字">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword2" class="col-sm-2 control-label">真实姓名：</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="rname" value="{{ $info['rname'] }}" class="form-control" id="inputPassword2" placeholder="请输入汉字6-18个字符">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword4" class="col-sm-2 control-label">城市：</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="city" value="{{ $info['city'] }}" class="form-control" id="inputPassword4" placeholder="请输入汉字6-18个字符">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword5" class="col-sm-2 control-label">微信号：</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="wname" value="{{ $info['wname'] }}" class="form-control" id="inputPassword5" placeholder="请输入8-10位数字">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword6" class="col-sm-2 control-label">微博账号：</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="baddress" value="{{ $info['baddress'] }}" class="form-control" id="inputPassword6" placeholder="邮箱格式">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" onclick="return false" class="layui-btn layui-btn-lg layui-btn-warm layui-btn-radius" id="save-info">保存</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <script>
+                $('#save-info').click(function(){
+                    var uid = $('.form-horizontal').find('#inputPassword3').val();
+                    var nickname = $('.form-horizontal').find('#inputPassword7').val();
+                    var qq = $('.form-horizontal').find('#inputPassword8').val();
+                    var sex = $('.form-horizontal').find('#inputPassword9').val();
+                    var tel = $('.form-horizontal').find('#inputPassword1').val();
+                    var rname = $('.form-horizontal').find('#inputPassword2').val();
+                    var city = $('.form-horizontal').find('#inputPassword4').val();
+                    var wname = $('.form-horizontal').find('#inputPassword5').val();
+                    var baddress = $('.form-horizontal').find('#inputPassword6').val();
+                // alert(uid);
+                    $.ajax({
+                        url: '/home/store/info',
+                        type:'post',
+                        data:{'uid':uid,'nickname':nickname,'qq':qq,'sex':sex,'tel':tel,'rname':rname,'city':city,'wname':wname,'baddress':baddress},
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function(data){
+                            console.log(data);
+                            nickname = $('.form-horizontal').find('#inputPassword7').val(data.nickname);
+                            qq = $('.form-horizontal').find('#inputPassword8').val(data.qq);
+                            sex = $('.form-horizontal').find('#inputPassword9').val(data.sex);
+                            tel = $('.form-horizontal').find('#inputPassword1').val(data.tel);
+                            rname = $('.form-horizontal').find('#inputPassword2').val(data.rname);
+                            city = $('.form-horizontal').find('#inputPassword4').val(data.city);
+                            wname = $('.form-horizontal').find('#inputPassword5').val(data.wname);
+                            baddress = $('.form-horizontal').find('#inputPassword6').val(data.baddress);
+                        },
+                        dataType:'json',
+                        async:true
+                    });
+                })
+            </script>
+            <div class="user_info">
+                <ul>
+                    <li class="layui-icon layui-icon-set-sm"><a href="/home/create/@if(!empty($info_id)){{ $info_id }}@else{{ $arr['id'] }}@endif">个人信息</a></li>
+                    <li class="layui-icon layui-icon-password"><a href="/home/edit">修改密码</a></li>
+
+                </ul>
+            </div>
         </div>
-        <script>
-            $('#save-info').click(function(){
-                var uid = $('.form-horizontal').find('#inputPassword3').val();
-                var nickname = $('.form-horizontal').find('#inputPassword7').val();
-                var qq = $('.form-horizontal').find('#inputPassword8').val();
-                var sex = $('.form-horizontal').find('#inputPassword9').val();
-                var tel = $('.form-horizontal').find('#inputPassword1').val();
-                var rname = $('.form-horizontal').find('#inputPassword2').val();
-                var city = $('.form-horizontal').find('#inputPassword4').val();
-                var wname = $('.form-horizontal').find('#inputPassword5').val();
-                var baddress = $('.form-horizontal').find('#inputPassword6').val();
 
-                $.ajax({
-                    url: '/home/store/info',
-                    type:'post',
-                    data:{'uid':uid,'nickname':nickname,'qq':qq,'sex':sex,'tel':tel,'rname':rname,'city':city,'wname':wname,'baddress':baddress},
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function(data){
-                        console.log(data);
-                         nickname = $('.form-horizontal').find('#inputPassword7').val(data.nickname);
-                         qq = $('.form-horizontal').find('#inputPassword8').val(data.qq);
-                         sex = $('.form-horizontal').find('#inputPassword9').val(data.sex);
-                         tel = $('.form-horizontal').find('#inputPassword1').val(data.tel);
-                         rname = $('.form-horizontal').find('#inputPassword2').val(data.rname);
-                         city = $('.form-horizontal').find('#inputPassword4').val(data.city);
-                         wname = $('.form-horizontal').find('#inputPassword5').val(data.wname);
-                         baddress = $('.form-horizontal').find('#inputPassword6').val(data.baddress);
-                    },
-                    dataType:'json',
-                    async:true
-                });
-            })
-        </script>
-        <div class="user_info">
-            <ul>
-                <li class="layui-icon layui-icon-set-sm"><a href="/home/create/{{ session('id') }}">个人信息</a></li>
-                <li class="layui-icon layui-icon-password"><a href="/home/edit">修改密码</a></li>
 
-            </ul>
-        </div>
     </div>
-
-
-</div>
 </article>
 <footer>
     <p>Design by <a href="http://www.blog.com" target="_blank">微博客</a> <a href="/">蜀ICP备11002373号-1</a></p>

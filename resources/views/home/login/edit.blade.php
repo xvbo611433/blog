@@ -19,14 +19,16 @@
 
     <style type="text/css">
         .user_info_content{width: 100%;float: left;}
-        .user_info{width: 25%;font-size: 20px;margin-top: 20px;text-align: center;line-height: 42px;border:1px solid #0f9e92;}
+        .user_info{width: 25%;font-size: 20px;margin-top: 20px;padding:20px;text-align: center;line-height: 42px;border:1px solid #0f9e92;}
         .user_info ul li:hover{background-color: orange;}
-        .edit_info{float: right;padding-bottom: 100px;margin: 20px 20px;width: 68%;border:1px solid #0f9e92;clear: both;}
+        .edit_info{float: right;padding-bottom: 50px;margin: 20px 20px;width: 68%;border:1px solid #0f9e92;clear: both;}
         .hr1{ height:1px;border:none;border-top:1px solid #000;}
         .glyphicon{text-align: center;line-height: 24px;height: 24px;}
         label{font-weight: bold;}
     </style>
+    <style>
 
+    </style>
 </head>
 <script>
     //一般直接写在一个js文件中
@@ -75,30 +77,32 @@
 
 </header>
 <article>
-    <div class="container">
+<body>
+    <div class="container" >
+
         <div class="user_info_content">
             <div class="container edit_info">
                 <h3><span class="glyphicon glyphicon-edit" aria-hidden="true"> 修改密码</span></h3>
                 <hr class="hr1">
-                <form class="layui-form" action="/home/editPwd" method="post" style="width:50%;border:1px solid #909090;margin: 50px auto;">
+                <form class="layui-form" action="/home/editPwd" method="post" style="padding-top:50px;width:70%;border:1px solid #909090;margin: 50px auto;">
                    {{ csrf_field() }}
                     <div class="layui-form-item">
                         <label class="layui-form-label">旧密码</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="pwd" required  lay-verify="required|pwd" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                            <input type="text" name="pwd" required  lay-verify="required|pwd" placeholder="请输入旧密码" autocomplete="off" class="layui-input">
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">新密码</label>
                         <div class="layui-input-inline">
-                            <input type="password" name="upwd" required lay-verify="required|upwd" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                            <input type="password" name="upwd" required lay-verify="required|upwd" placeholder="请输入新密码" autocomplete="off" class="layui-input">
                         </div>
                         <div class="layui-form-mid layui-word-aux"></div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">确认密码</label>
                         <div class="layui-input-inline">
-                            <input type="password" name="repwd" required lay-verify="required|repwd" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                            <input type="password" name="repwd" required lay-verify="required|repwd" placeholder="请再次确认密码" autocomplete="off" class="layui-input">
                         </div>
                         <div class="layui-form-mid layui-word-aux"></div>
                     </div>
@@ -114,14 +118,14 @@
             </div>
             <div class="user_info">
                 <ul class="list-group">
-                    <li class="layui-icon layui-icon-set-sm"><a href="/home/create/{{ session('id') }}">个人信息</a></li>
+                    <li class="layui-icon layui-icon-set-sm"><a href="/home/create/@if(!empty($info_id)){{ $info_id }}@else{{ $arr['id'] }}@endif">个人信息</a></li>
                     <li class="layui-icon layui-icon-password"><a href="/home/edit">修改密码</a></li>
 
                 </ul>
             </div>
         </div>
     </div>
-
+</body>
 </article>
 <footer>
     <p>Design by <a href="http://www.blog.com" target="_blank">微博客</a> <a href="/">蜀ICP备11002373号-1</a></p>
