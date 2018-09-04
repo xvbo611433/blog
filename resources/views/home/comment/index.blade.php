@@ -39,6 +39,7 @@
                 <!--search begin-->
                 <li><a href="/home/picture">相册</a></li>
                 <li><a href="/home/time">时间轴</a></li>
+                <li><a href="/home/create/{{ session('id') }}">个人中心</a></li>
                 <li>
                     <div id="search_bar" class="search_bar">
                         <form id="searchform" action="[!--news.url--]e/search/index.php" method="post"
@@ -318,9 +319,7 @@
 
                     });
                 </script>
-
-
-                <!--点赞-->
+        <!--点赞-->
                 <script type="text/javascript">
                     $('.comment-show').on('click', '.date-dz-z', function () {
                         var zNum = $(this).find('.z-num').html();
@@ -349,9 +348,6 @@
                                 if(id = msg.id ){
                                     $(this).find('.z-num').html(zNum);
                                 }
-
-
-
                             },
                             dataType: 'json',
                             async: true
@@ -359,8 +355,42 @@
                     })
                 </script>
 
+
+        <div class="sidebar">
+
+            <div class="tuijian">
+                <h2 class="hometitle">推荐文章</h2>
+                <ul class="tjpic">
+                    @foreach($good as $v)
+                        <i>{!!$v['gpic']!!}</i>
+                        <p><a href="/home/show/{{ $v['gid'] }}">{{$v['abs']}}</a></p>
+
+                    @endforeach
+                </ul>
+
             </div>
 
+            <div class="cloud">
+                <h2 class="hometitle">标签云</h2>
+                <ul>
+                    <a href="/">陌上花开</a> <a href="/">校园生活</a> <a href="/">html5</a> <a href="/">SumSung</a> <a
+                            href="/">青春</a> <a href="/">温暖</a> <a href="/">阳光</a> <a href="/">三星</a><a href="/">索尼</a> <a
+                            href="/">华维荣耀</a> <a href="/">三星</a> <a href="/">索尼</a>
+                </ul>
+            </div>
+            <div class="guanzhu" id="follow-us">
+                <h2 class="hometitle">关注我们 么么哒！</h2>
+                <ul>
+                    <li class="tencent">zcc1452073959<a href="http://t.qq.com/zcc1452073959"
+                                                        target="_blank"><span>腾讯微博</span></a></li>
+                    <li class="qq">1452073959<a
+                                href="tencent://AddContact/?fromId=45&fromSubId=1&subcmd=all&uin=1452073959&website=www.oicqzone.com"
+                                target="_blank"><span>QQ号</span></a></li>
+                    <li class="email"><a href="/" target="_blank"><span>邮箱帐号</span></a></li>
+                    <li class="wx"><img src="/home/images/mmqrcode1535504449800.png"></li>
+                </ul>
+            </div>
+        </div>
 
     </article>
 

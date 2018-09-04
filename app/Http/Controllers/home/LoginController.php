@@ -41,7 +41,7 @@ class LoginController extends Controller
         if ($tem) {
             // 取值并给session赋值
             session(['comment' => $tem]);
-            return redirect('/home/comment/'.$id);
+            return redirect('/');
         } else {
             return back()->with('error', '密码错误');
         }
@@ -67,7 +67,6 @@ class LoginController extends Controller
     public function store(Request $request)
     {
          $tel_code = $request -> all();
-         // dd($tel_code);
          if(session('mobile_code') != $tel_code['code']){
             return back()->with('error', '验证码错误');
         }else{
@@ -99,7 +98,7 @@ class LoginController extends Controller
         //短信接口地址
          $target = "http://106.ihuyi.com/webservice/sms.php?method=Submit";
         //参数
-        $target .= "&format=json&account=C60835011&password=e50fba48906fde1f2cff89fdc7b0a6cc&mobile=" . $phone . "&content=" . rawurlencode("您的验证码是：" . $mobile_code . "。请不要把验证码泄露给其他人。");
+        $target .= "&format=json&account=C16903095&password=24369e1e5b92f2209aea8c4501bddd10&mobile=" . $phone . "&content=" . rawurlencode("您的验证码是：" . $mobile_code . "。请不要把验证码泄露给其他人。");
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $target);

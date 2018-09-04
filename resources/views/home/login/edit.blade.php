@@ -80,33 +80,48 @@
             <div class="container edit_info">
                 <h3><span class="glyphicon glyphicon-edit" aria-hidden="true"> 修改密码</span></h3>
                 <hr class="hr1">
-                <form  action="/home/editPwd" method="post" style="width: 77%;">
-                    {{ csrf_field() }}
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">旧密码</label>
-                        <input type="text" name="pwd" value="{{ old('pwd') }}" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                <form class="layui-form" action="/home/editPwd" method="post" style="width:50%;border:1px solid #909090;margin: 50px auto;">
+                   {{ csrf_field() }}
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">旧密码</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="pwd" required  lay-verify="required|pwd" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">新密码</label>
-                        <input type="password" name="upwd" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">新密码</label>
+                        <div class="layui-input-inline">
+                            <input type="password" name="upwd" required lay-verify="required|upwd" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                        </div>
+                        <div class="layui-form-mid layui-word-aux"></div>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">确认密码</label>
-                        <input type="password" name="repwd" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">确认密码</label>
+                        <div class="layui-input-inline">
+                            <input type="password" name="repwd" required lay-verify="required|repwd" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                        </div>
+                        <div class="layui-form-mid layui-word-aux"></div>
                     </div>
 
-                    <button type="submit" class="layui-btn layui-btn-lg layui-btn-warm layui-btn-radius ">提交</button>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
                 </form>
+
             </div>
             <div class="user_info">
                 <ul class="list-group">
                     <li class="layui-icon layui-icon-set-sm"><a href="/home/create/{{ session('id') }}">个人信息</a></li>
                     <li class="layui-icon layui-icon-password"><a href="/home/edit">修改密码</a></li>
-                    <li class="layui-icon layui-icon-picture"><a href="/home/profile">修改头像</a></li>
+
                 </ul>
             </div>
         </div>
     </div>
+
 </article>
 <footer>
     <p>Design by <a href="http://www.blog.com" target="_blank">微博客</a> <a href="/">蜀ICP备11002373号-1</a></p>

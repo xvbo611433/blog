@@ -31,9 +31,9 @@ class UserInfoController extends Controller
     public function create(Request $request,$id)
     {
         $data = register::find($id);
+        $info = $data->info;
 
-
-        return view('home.login.userinfo',['title'=>'个人详情','data'=>$data]);
+        return view('home.login.userinfo',['title'=>'个人详情','data'=>$data,'info'=>$info]);
     }
 
     /**
@@ -60,10 +60,11 @@ class UserInfoController extends Controller
         $id =  session('id');
         if($res){
             session(['info'=>$user]);
-                return redirect('/home/create/'.$id)->with('success','注册成功');
+            $arr = ['data'=>$user];
             }else{
-                return back()->with('error','注册成功');
+            $arr = ['data'=>'error'];
             }
+            return $arr;
     }
 
     /**
@@ -112,25 +113,13 @@ class UserInfoController extends Controller
     public function edit()
     {
         // 显示修改密码页面
-        return view('home.login.edit',['title'=>'修改密码']);
-    }
-
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function profile(Request $request)
-    {
-        // 显示修改密码页面
         $id = session('id');
-
-        $data = UserInfo::find($id);
-
-        return view('home.login.profile',['title'=>'修改头像','data'=>$data]);
+        $user = Register::find($id);
+        return view('home.login.edit',['title'=>'修改密码','user'=>$user]);
     }
+
+
+
     /**
      * Update the specified resource in storage.
      *
@@ -143,29 +132,34 @@ class UserInfoController extends Controller
         $this->validate($request, [
             'pwd' => 'required',
             'repwd' => 'required',
-            'upwd' => 'required',
+            'upwd' => 'required|regex:/^[a-zA-Z]{2-6}[\w]{6-10}$/',
         ],[
             'pwd.required'=>'原密码不能为空',
             'repwd.required'=>'确认密码不能为空',
             'upwd.required'=>'新密码不能为空',
+            'upwd.regex'=>'密码必须以字母开头',
         ]);
         $arr = $request->except('s','_token');
         // 获取提交信息
-        $pwd = $arr['pwd'];
-        $repwd = $arr['repwd'];
-        $upwd = $arr['upwd'];
+        $pwd = $arr['pwd'];//原密码
+        $upwd = $arr['upwd'];//新密码
+        $repwd = $arr['repwd'];//确认密码
+
         // 判断两次密码是否一致
         if($repwd != $upwd){
             return back()->with('error','两次密码不一致');
         }
         // 获取session用户信息
-        $data = session('password');
         $id = session('id');
-        Hash::check($pwd, $data);
-        //密码加密
-        $password = Hash::make($upwd);
+        $user = Register::find($id);
+//        Hash::check($pwd, $user['password']);
+//        //密码加密
+//        $password = Hash::make($upwd);
+        if($user['password'] != $pwd){
+            return back();
+        }
+        $res =  DB::table('blog_user')->where('id', $id)->update(['password'=>$upwd]);
         // 更新到数据库
-        $res =  DB::table('blog_user')->where('id', $id)->update(['password'=>$password]);
         if($res){
             return redirect('/login')->with('success','您的密码有更改,请重新登录');
         }else{
