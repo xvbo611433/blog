@@ -36,14 +36,13 @@ class IndexController extends Controller
      */
     public function show(Request $request, $gid)
     {
-
         $arr = $request->url();
         session(['goods_url' => $arr]);
         // 文章详情
         $essay = Good::find($gid);
         // 根据时间倒叙排序 获取所有文章
         $good = Good::orderBy('created_at', 'desc')->get();
-                //获取相关文章
+        //获取相关文章
         // $goods = Good::where('gid', $gid)->paginate(5);
         // 获取文章评论信息
         $comment = $essay->goods_comment;

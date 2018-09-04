@@ -4,6 +4,7 @@ namespace App\Models\admin;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\admin\Good;
+use App\Models\home\Reply;
 
 class Comment extends Model
 {
@@ -17,4 +18,9 @@ class Comment extends Model
         return $this->belongsTo('(new Good)','gid');
     }
 
+//   // 一条评论对多条回复
+//    public function reply()
+//    {
+//        return $this->hasMany((new Reply),'');
+//    }
 }

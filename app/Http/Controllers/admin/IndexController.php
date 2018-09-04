@@ -62,14 +62,18 @@ class IndexController extends Controller
             return back()->with('error','两次密码不一致');
         }
         // 获取session用户信息
-        $data = $request->session()->all();
-         Hash::check($pwd, $data['upwd']);
-        //密码加密
-        $password = Hash::make($upwd);
+        $data = session('login');
+
+       Hash::check($pwd, $data['upwd']);
+           //密码加密
+//           $password = Hash::make($upwd);
+//
+
+
         // 更新到数据库
-        $res =  DB::table('user')->where('id', $data['id'])->update(['upwd'=>$password]);
+        $res =  DB::table('user')->where('id', $data['id'])->update(['upwd'=>$upwd]);
         if($res){
-            return redirect('/login')->with('success','您的密码有更改,请重新登录');
+            return redirect('/admin/login')->with('success','您的密码有更改,请重新登录');
         }else{
             return back()->with('error','修改失败');
         }

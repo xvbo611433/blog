@@ -23,7 +23,7 @@ Route::group(['middleware'=>'login'],function(){
 Route::resource('/admin/user','admin\UserController');//后台用户控制器
 Route::resource('/admin/cate','admin\CateController');//后台类别控制器
 Route::get('admin/cate/childcate/{id}','admin\CateController@childcate');//添加子分类路由
-Route::resource('/admin/comment','admin\CommentController');//评论管理控制器
+Route::controller('/admin/comment','admin\CommentController');//评论管理控制器
 Route::controller('/admin/image','admin\imageController');//轮番图管理控制器
 Route::resource('/admin/good','admin\GoodController');//文章管理
 Route::controller('/admin/index','admin\IndexController');//首页
@@ -45,6 +45,7 @@ Route::post('/home/login/store','home\LoginController@store');
 Route::get('/home/login/sendMobileCode','home\LoginController@sendMobileCode');
 Route::group(['middleware'=>'comment'],function(){
 Route::get('/home/comment/{id}','home\CommentController@index');//评论
+Route::post('/home/comment/like','home\CommentController@like');//点赞
 Route::post('/home/comment/destroy/{id}','home\CommentController@destroy');//评论
 Route::post('/home/comment/store','home\CommentController@test');//评论
 Route::post('/home/comment/destory','home\CommentController@destroy');//删除评论

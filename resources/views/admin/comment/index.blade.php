@@ -25,6 +25,7 @@
                     <th>头像</th>
                     <th>状态</th>
                     <th>评论内容</th>
+                    <th>点赞</th>
                     <th>创建时间</th>
                     <th>操作</th>
                 </tr>
@@ -36,15 +37,27 @@
                         <td>{{ $v['gid'] }}</td>
                         <td>{{ $v['uname'] }}</td>
                         <td><img style="width: 80px;height:80px;border-radius:60px" src="{{ $v['profile'] }}"></td>
-                        <td>{{ $v['status'] }}</td>
+                        <td>
+                            @if($v['status'] == 1)
+                                启用
+                            @elseif($v['status'] == 2)
+                                屏蔽
+                            @endif
+                        </td>
                         <td>{!! $v['comment'] !!}</td>
+                        <td>{!! $v['like'] !!}</td>
                         <td>{{ $v['created_at'] }}</td>
                         <td>
-                            <form action="/admin/comment/{{ $v['id'] }}" method="post" style="display: inline;">
-                                {{ csrf_field() }}
-                                {{ method_field('DELETE') }}
-                                <input id="ha" type="submit" onclick="return confirm('您确定要删除吗')" class="btn btn-danger" value="删除">
-                            </form>
+
+
+                            <a href="/admin/comment/destroy/{{ $v['id'] }}" onclick="return confirm('您确定要删除吗')" class="mws-gallery-btn"><i class=""></i>删除</a>
+
+                        @if($v['status'] == 1)
+                                <a href="/admin/comment/hidden/{{ $v['id'] }}" class="mws-gallery-btn"><i class="icon-refresh"></i>屏蔽</a>
+                            @elseif($v['status'] == 2)
+                                <a href="/admin/comment/show/{{ $v['id'] }}" class="mws-gallery-btn"><i class="icon-refresh"></i>启用</a>
+
+                            @endif
                         </td>
                     </tr>
                 @endforeach

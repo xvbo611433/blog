@@ -31,7 +31,7 @@
                             @endif
                         </td>
                         <td style="width: 100px;">
-                            <a href="/admin/image/edit/{{ $v['gid'] }}" class="mws-gallery-btn"><i class="icon-pencil"></i>删除</a>
+                            <a href="/admin/image/destroy/{{ $v['gid'] }}" class="mws-gallery-btn"><i class="icon-pencil"></i>删除</a>
                             @if($v['status'] == 0)
                                 <a href="/admin/image/hidden/{{ $v['gid'] }}" class="mws-gallery-btn"><i class="icon-refresh"></i>隐藏</a>
                             @elseif($v['status'] == 1)
