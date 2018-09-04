@@ -91,11 +91,30 @@
                                                     <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a>
                                                     <span class="pull-left date-dz-line">|</span>
                                                     <a href="javascript:;" class="date-dz-z pull-left"><i
-                                                                class="date-dz-z-click-red"></i>赞 (<i class="z-num">666</i>)</a>
+                                                                class="date-dz-z-click-red"></i>赞 (<i class="z-num">{{ $v['like'] }}</i>)</a>
                                                 </div>
                                             </div>
                                             <div class="hf-list-con"></div>
                                         </div>
+
+                                            {{--@foreach($reply as $kk=>$vv)--}}
+                                            {{--<div class="all-pl-con">--}}
+                                                {{--<div class="pl-text hfpl-text clearfix">--}}
+                                                    {{--<a href="#" class="comment-size-name">{{ $vv['reply_content'] }} : </a>--}}
+                                                    {{--<span class="my-pl-con"></span></div>--}}
+                                                {{--<div class="date-dz">--}}
+                                                    {{--<span class="date-dz-left pull-left comment-time">{{ $vv['created_at'] }}</span>--}}
+                                                    {{--<div class="date-dz-right pull-right comment-pl-block"><a--}}
+                                                                {{--href="javascript:;" class="removeBlock">删除</a> <a--}}
+                                                                {{--href="javascript:;"--}}
+                                                                {{--class="date-dz-pl pl-hf hf-con-block pull-left">回复</a>--}}
+                                                        {{--<span class="pull-left date-dz-line">|</span> <a--}}
+                                                                {{--href="javascript:;" class="date-dz-z pull-left"><i--}}
+                                                                    {{--class="date-dz-z-click-red"></i>赞 (<i class="z-num">0</i>)</a>--}}
+                                                    {{--</div>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                            {{--@endforeach--}}
                                     </div>
                                 </div>
                             @endforeach
@@ -142,21 +161,24 @@
                         // 用户名
                         var user = '{{ $lg_user['nickname'] }}';
                         // 用户头像
-                        var profile = '{{ $v['profile'] }}';
+                        var profile = '{{ $Register['profile'] }}';
+                        var uid = '{{ $tep = session('comment') }}';
+                         uid = '{{ $tep['id'] }}';
+
                         //获取输入内容
                         var oSize = $(this).siblings('.flex-text-wrap').find('.comment-input').val();
                           //动态创建评论模块
                          $.ajax({
                             url: '/home/comment/store',
                             type:'post',
-                            data:{'gid':gid,'profile':profile,'user':user,'content':oSize},
+                            data:{'gid':gid,'profile':profile,'user':user,'content':oSize,'uid':uid},
                          headers: {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             },
                             success: function(data){
                                 var oHtml = '';
                                 $.each(data, function (n, value) {
-                                    oHtml += '<div class="comment-show"><div class="comment-show-con clearfix"><div class="comment-show-con-img pull-left"><img src="' + value.profile + '" alt=""></div><div class="comment-show-con-list pull-left clearfix"><div class="pl-text clearfix"><a href="#" class="comment-size-name">'+value.uname+': </a><span class="my-pl-con">&nbsp;' + value.comment + '</span></div><div class="date-dz"><span class="date-dz-left pull-left comment-time">' + now + '</span><div class="date-dz-right pull-right comment-pl-block"><a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a><span class="pull-left date-dz-line">|</span><a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">666</i>)</a></div></div><div class="hf-list-con"></div></div></div></div>';
+                                    oHtml += '<div class="comment-show"><div class="comment-show-con clearfix"><div class="comment-show-con-img pull-left"><img src="' + value.profile + '" alt=""></div><div class="comment-show-con-list pull-left clearfix"><div class="pl-text clearfix"><a href="#" class="comment-size-name">'+value.uname+': </a><span class="my-pl-con">&nbsp;' + value.comment + '</span></div><div class="date-dz"><span class="date-dz-left pull-left comment-time">' + now + '</span><div class="date-dz-right pull-right comment-pl-block"><a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a><span class="pull-left date-dz-line">|</span><a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">0</i>)</a></div></div><div class="hf-list-con"></div></div></div></div>';
 
                                 });
                                 $('.comment-show').first().prepend(oHtml);
@@ -239,11 +261,12 @@
                         // 获取用户昵称
                         var user = '{{ $lg_user['nickname']  }}';
                         // 用户头像
-                        var profile = '{{ $v['profile'] }}';
+                        var profile = '{{ $Register['profile'] }}';
                         // 用户id
-                        var id = '{{ $lg_user['uid'] }}';
+                        var id = '{{ $Register['id'] }}';
                         //获取输入内容
                         var oHfVal = $(this).siblings('.flex-text-wrap').find('.hf-input').val();
+                        alert(oHfVal)
                         // 获取回复对象
                         var oHfName = $(this).parents('.hf-con').parents('.date-dz').siblings('.pl-text').find('.comment-size-name').html();
                         var oAllVal = '回复@' + oHfName;
@@ -251,7 +274,7 @@
                         $.ajax({
                             url: '/home/comment/reply',
                             type:'post',
-                            data:{'user':user,'content':oHfVal,'name':oHfName,'profile':profile,'id':id},
+                            data:{'user':user,'content':oHfVal,'name':oAllVal,'profile':profile,'id':id},
                             headers: {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             },
@@ -261,9 +284,6 @@
                                 } else {
 
                                         $.each(data, function (n, v) {
-                                            // delete v.reply_content;
-                                            // console.log(data);
-                                            // delete v.reply_object;
                                             var arr;
                                             var ohfNameArr;
                                             if (oHfVal.indexOf("@") == -1) {
@@ -281,12 +301,12 @@
                                             if (data.reply_object == '') {
                                                 oAt = data.reply_content;
                                             } else {
-                                                oAt = '回复<a href="#" class="atName">@' + data.reply_object + '</a> : ' + data.reply_content;
+                                                oAt = data.reply_content;
                                             }
                                             oHf = data.hfName;
                                         });
 
-                                        var oHtml = '<div class="all-pl-con"><div class="pl-text hfpl-text clearfix"><a href="#" class="comment-size-name">'+data['reply_user']+' : </a><span class="my-pl-con">' + oAt + '</span></div><div class="date-dz"> <span class="date-dz-left pull-left comment-time">' + data['created_at'] + '</span> <div class="date-dz-right pull-right comment-pl-block"> <a href="javascript:;" class="removeBlock">删除</a> <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a> <span class="pull-left date-dz-line">|</span> <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">666</i>)</a> </div> </div></div>';
+                                        var oHtml = '<div class="all-pl-con"><div class="pl-text hfpl-text clearfix"><a href="#" class="comment-size-name">'+data['reply_user']+' : </a><span class="my-pl-con">' + oAt + '</span></div><div class="date-dz"> <span class="date-dz-left pull-left comment-time">' + data['created_at'] + '</span> <div class="date-dz-right pull-right comment-pl-block"> <a href="javascript:;" class="removeBlock">删除</a> <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a> <span class="pull-left date-dz-line">|</span> <a href="javascript:;" class="date-dz-z pull-left"><i class="date-dz-z-click-red"></i>赞 (<i class="z-num">0</i>)</a> </div> </div></div>';
                                         oThis.parents('.hf-con').parents('.comment-show-con-list').find('.hf-list-con').css('display', 'block').prepend(oHtml) && oThis.parents('.hf-con').siblings('.date-dz-right').find('.pl-hf').addClass('hf-con-block') && oThis.parents('.hf-con').remove();
 
                                 }
@@ -304,6 +324,8 @@
                 <script type="text/javascript">
                     $('.comment-show').on('click', '.date-dz-z', function () {
                         var zNum = $(this).find('.z-num').html();
+                        var id = $(this).parents().first('.comment-pl-block').find('a').first().attr('href').slice(22);
+
                         if ($(this).is('.date-dz-z-click')) {
                             zNum--;
                             $(this).removeClass('date-dz-z-click red');
@@ -315,6 +337,25 @@
                             $(this).find('.z-num').html(zNum);
                             $(this).find('.date-dz-z-click-red').addClass('red');
                         }
+
+                        $.ajax({
+                            url: '/home/comment/like',
+                            type: 'post',
+                            data: {'like': zNum,'id':id},
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            success: function (msg) {
+                                if(id = msg.id ){
+                                    $(this).find('.z-num').html(zNum);
+                                }
+
+
+
+                            },
+                            dataType: 'json',
+                            async: true
+                        });
                     })
                 </script>
 

@@ -43,6 +43,7 @@ Route::post('/home/login/store','home\LoginController@store');
 Route::get('/home/login/sendMobileCode','home\LoginController@sendMobileCode');
 Route::group(['middleware'=>'comment'],function(){
 Route::get('/home/comment/{id}','home\CommentController@index');//评论
+Route::post('/home/comment/like','home\CommentController@like');//点赞
 Route::post('/home/comment/destroy/{id}','home\CommentController@destroy');//评论
 Route::post('/home/comment/store','home\CommentController@test');//评论
 Route::post('/home/comment/destory','home\CommentController@destroy');//删除评论

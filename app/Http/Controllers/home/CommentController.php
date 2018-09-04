@@ -30,12 +30,15 @@ class CommentController extends Controller
         $cate = Cate::getCate();
         //获取用户登陆信息
         $arr = session('comment');
-        $arr = Register::find($arr['id']);
-        $lg_user = $arr->info;
+        $Register = Register::find($arr['id']);
+        $lg_user = $Register->info;
+
+        // 回复信息
+        $reply = Reply::all();
         // 获取文章详情
         $comment = Comment::orderBy('created_at','desc')->get();
 
-        return view('home.comment.index',['cate'=>$cate,'user'=>$user,'essay'=>$essay,'title'=>'评论详情页','comment'=>$comment,'lg_user'=> $lg_user]);
+        return view('home.comment.index',['cate'=>$cate,'user'=>$user,'essay'=>$essay,'title'=>'评论详情页','comment'=>$comment,'lg_user'=> $lg_user,'Register'=>$Register,'arr'=>$arr,'reply'=>$reply]);
 
     }
 
@@ -64,8 +67,12 @@ class CommentController extends Controller
         $comment->uname = $request->input('user');
         $comment->profile = $request->input('profile');
         $comment->comment = $request->input('content');
+        $comment->uid = $request->input('uid');
+
         // 写入数据库
         $res = $comment->save();
+        $id = $comment->id;
+        session(['comment_id'=>$id]);
         if($res){
             $arr = ['comment'=>$comment];
         }else{
@@ -89,7 +96,6 @@ class CommentController extends Controller
         $reply->reply_content = $request->input('content');
         $reply->reply_profile = $request->input('profile');
         $reply->reply_id = $request->input('id');
-
         // 写入数据库
         $res = $reply->save();
         if($res){
@@ -118,5 +124,26 @@ class CommentController extends Controller
             } else {
             echo 'error';
             }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function like(Request $request)
+    {
+        $data = $request->except('s','_token');
+
+        $id = $request->input('id');
+//        dd($id);
+        $res = DB::table('blog_comment')->where('id',$id)->update($data);
+        if($res){
+            $arr = ['like'=>$data];
+        }else{
+            $arr = ['like'=>'error'];
         }
+        return $arr;
+    }
 }
