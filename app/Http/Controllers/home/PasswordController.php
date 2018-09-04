@@ -63,6 +63,10 @@ class PasswordController extends Controller
         if($res==null){
             return back()->with('error','手机号不能为空');
         }
+        $tem = Register::where('phone', $res)->first();
+         if(empty($tem)){
+            return back()->with('error','该手机未注册');
+        }
         $reg = '/^1[3456789]\d{9}$/';
         $check = preg_match($reg, $res);
         if($check==0){

@@ -44,7 +44,13 @@
                         @endforeach
 
                     </ul>
+<<<<<<< HEAD
             @endforeach
+=======
+
+
+                @endforeach
+>>>>>>> 15d2c27ce2ff411f74a998c112d965282ece3aef
                                 <li><a href="/home/picture">相册</a></li> 
                                 <li><a href="/home/time">时间轴</a></li> 
                                 <li><a href="/home/about">关于我</a></li> 
