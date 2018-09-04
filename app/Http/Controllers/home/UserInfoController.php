@@ -170,12 +170,24 @@ class UserInfoController extends Controller
 //        $password = Hash::make($upwd);
 
         //获取用户登陆信息
+        if(!empty(session('id'))){
             $id = session('id');
             $user = Register::find($id);
-            if($user['password'] != $pwd){
-                return back();
+            if($user['password'] == $pwd){
+                $res =  DB::table('blog_user')->where('id', $id)->update(['password'=>$upwd]);
             }
-            $res =  DB::table('blog_user')->where('id', $id)->update(['password'=>$upwd]);
+
+        }else{
+            $arr = session('comment');
+            $id = $arr['id'];
+            $user = Register::find($id);
+            if($user['password'] == $pwd){
+                $res =  DB::table('blog_user')->where('id', $id)->update(['password'=>$upwd]);
+            }
+
+        }
+
+
 
         // 更新到数据库
         if($res){

@@ -44,13 +44,7 @@
                         @endforeach
 
                     </ul>
-<<<<<<< HEAD
             @endforeach
-=======
-
-
-                @endforeach
->>>>>>> 15d2c27ce2ff411f74a998c112d965282ece3aef
                                 <li><a href="/home/picture">相册</a></li> 
                                 <li><a href="/home/time">时间轴</a></li> 
                                 <li><a href="/home/about">关于我</a></li> 
@@ -177,7 +171,7 @@
                                         <a href="javascript:;" class="date-dz-pl pl-hf hf-con-block pull-left">回复</a>
                                         <span class="pull-left date-dz-line">|</span>
                                         <a href="javascript:;" class="date-dz-z pull-left"><i
-                                                    class="date-dz-z-click-red"></i>赞 (<i class="z-num">666</i>)</a>
+                                                    class="date-dz-z-click-red"></i>赞 (<i class="z-num">{{ $v['like'] }}</i>)</a>
                                     </div>
                                 </div>
                                 <div class="hf-list-con"></div>

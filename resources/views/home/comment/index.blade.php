@@ -270,7 +270,7 @@
                         var id = '{{ $Register['id'] }}';
                         //获取输入内容
                         var oHfVal = $(this).siblings('.flex-text-wrap').find('.hf-input').val();
-                        alert(oHfVal)
+                        // alert(oHfVal)
                         // 获取回复对象
                         var oHfName = $(this).parents('.hf-con').parents('.date-dz').siblings('.pl-text').find('.comment-size-name').html();
                         var oAllVal = '回复@' + oHfName;
